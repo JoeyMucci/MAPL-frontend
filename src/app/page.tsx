@@ -6,19 +6,19 @@ import classes from "./page.module.css";
 import axios from "axios";
 
 export default async function Home() {
-  async function fetchData() {
+  async function fetchBouts() {
     try {
-      console.log("Fetching next day of bouts...");
-      const response = await axios.get("http://127.0.0.1:8000/api/bouts/");
-      return response.data;
+      console.log("Fetching next day of bouts...")
+      const response = await axios.get("http://127.0.0.1:8000/api/bouts/")
+      return response.data
     }
     catch (error) {
-      console.error("Error fetching data:", error);
-      return {};
+      console.error("Error fetching data:", error)
+      return {}
     }
   }
 
-  const data = await fetchData();
+  const data = await fetchBouts()
   const day = data.day
   const month = data.month
   const bouts: SimpleBout[] = data.bout_info
