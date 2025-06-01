@@ -1,0 +1,8 @@
+.nameLink:hover {
+    text-decoration: underline;
+}
+
+.nameLink {
+    color: black;
+    text-decoration: none;
+}

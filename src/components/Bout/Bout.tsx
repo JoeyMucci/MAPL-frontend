@@ -14,12 +14,11 @@ interface BoutLineProps {
 
 export const Bout: FC<{ bout: SimpleBout }> = ({ bout }) => {
     const BoutLine: FC<BoutLineProps> = ({ pebbler, stats, hasBoutOccurred }) => {
-        const camelName: string = toCamelCase(pebbler.name);
         return (
             <Flex justify="space-between">
                 <Flex gap="xs" align="center">
                     <Text w={10} span c="orange" size="sm">{pebbler.current_rank}</Text>
-                    <Link href={`/pebblers/${camelName}`} style={{ textDecoration: "none" }}>
+                    <Link href={`/pebblers/${toCamelCase(pebbler.name)}`} style={{ textDecoration: "none" }}>
                         <Text span size="sm" >{pebbler.name}</Text>
                     </Link>
                 </Flex>
