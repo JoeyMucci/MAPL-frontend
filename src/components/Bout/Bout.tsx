@@ -1,7 +1,10 @@
 import { FC } from "react";
-import { Badge, Card, CardSection, CheckIcon, Flex, Radio, Text } from "@mantine/core"
+import { Badge, Card, CardSection, Flex, Radio, Text } from "@mantine/core"
 import { SimpleBout } from "@/types/bouts";
 import { SimplePebbler, SimplePebblerStats } from "@/types/pebblers";
+import { colorMap } from "@/vars/divisions";
+import Link from "next/link";
+import { toCamelCase } from "@/functions/pebblers";
 
 interface BoutLineProps {
     pebbler: SimplePebbler;
@@ -11,21 +14,24 @@ interface BoutLineProps {
 
 export const Bout: FC<{ bout: SimpleBout }> = ({ bout }) => {
     const BoutLine: FC<BoutLineProps> = ({ pebbler, stats, hasBoutOccurred }) => {
+        const camelName: string = toCamelCase(pebbler.name);
         return (
             <Flex justify="space-between">
-                <Flex gap="xs">
+                <Flex gap="xs" align="center">
                     <Text w={10} span c="orange" size="sm">{pebbler.current_rank}</Text>
-                    <Text span size="sm">{pebbler.name}</Text>
+                    <Link href={`/pebblers/${camelName}`} style={{ textDecoration: "none" }}>
+                        <Text span size="sm" >{pebbler.name}</Text>
+                    </Link>
                 </Flex>
 
                 {hasBoutOccurred && (
-                    <Flex gap="xs">
+                    <Flex gap="xs" align="center">
                         <Radio color="purple" iconColor="purple" size="xs" checked={stats.quirk_activated} readOnly />
                         {bout.division !== "Learner" && (
                             <Radio color="pink" iconColor="pink" size="xs" checked={stats.ability_triggered} readOnly />
                         )}
                         <Text w={5} span size="sm">{stats.roll_final}</Text>
-                        <Text w={20} span size="sm">{"+"}{stats.score}</Text>
+                        <Text w={25} span size="sm">{"+"}{stats.score}</Text>
                     </Flex>
                 )}
             </Flex>
@@ -50,13 +56,6 @@ export const Bout: FC<{ bout: SimpleBout }> = ({ bout }) => {
     const hasBoutOccurred: boolean = bout.away_roll_final !== null && bout.home_roll_final !== null;
     const timeDisplay: string = hasTimePassed ? (hasBoutOccurred ? "FINAL" : "LIVE 🔴") :
         new Date(bout.time).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-
-    const colorMap: { [key: string]: string } = {
-        "Master": "red",
-        "All-Star": "blue",
-        "Professional": "gray",
-        "Learner": "yellow",
-    };
 
     return (
         <Card w={225} withBorder>
