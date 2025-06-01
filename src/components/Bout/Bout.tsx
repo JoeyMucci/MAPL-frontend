@@ -25,13 +25,13 @@ export const Bout: FC<{ bout: SimpleBout }> = ({ bout }) => {
                 </Flex>
 
                 {hasBoutOccurred && (
-                    <Flex gap="xs">
+                    <Flex gap="xs" align="center">
                         <Radio color="purple" iconColor="purple" size="xs" checked={stats.quirk_activated} readOnly />
                         {bout.division !== "Learner" && (
                             <Radio color="pink" iconColor="pink" size="xs" checked={stats.ability_triggered} readOnly />
                         )}
                         <Text w={5} span size="sm">{stats.roll_final}</Text>
-                        <Text w={20} span size="sm">{"+"}{stats.score}</Text>
+                        <Text w={25} span size="sm">{"+"}{stats.score}</Text>
                     </Flex>
                 )}
             </Flex>
