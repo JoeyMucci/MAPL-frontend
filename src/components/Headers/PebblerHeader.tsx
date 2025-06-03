@@ -1,7 +1,7 @@
 import { FC } from "react"
 import { FullPebbler } from "@/types/pebblers"
 import { Container, Flex, Image, Stack, Text, Title } from "@mantine/core"
-import classes from "./PebblerHeader.module.css"
+import classes from "./Header.module.css"
 import { colorMap } from "@/vars/divisions"
 import { toCamelCase } from "@/functions/pebblers"
 

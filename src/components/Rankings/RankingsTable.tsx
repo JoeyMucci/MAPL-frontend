@@ -10,10 +10,11 @@ import {
     Image,
     Flex,
     Tooltip,
+    ScrollArea,
     UnstyledButton
 } from "@mantine/core"
 import { toCamelCase } from "@/functions/pebblers";
-import { colorMap } from "@/vars/divisions";
+import { divisions } from "@/vars/divisions";
 import { theme } from "@/theme"
 import {
     IconArrowsUp,
@@ -22,8 +23,11 @@ import {
     IconArrowDown,
     IconArrowsRightLeft
 } from "@tabler/icons-react";
+import classes from "./Rankings.module.css";
 
 const MATCHES_PER_ROUND = 12
+const PROMOTE_DEMOTE = 5
+const PEBBLERS_PER_DIVISION = 25
 
 export const RankingsTable: FC<{ pebblerRows: PebblerRowStats[], division: string }> = ({ pebblerRows, division }) => {
     const RankingChangeWidget: FC<{ rank: number, oldRank: number }> = ({ rank, oldRank }) => {
@@ -63,15 +67,17 @@ export const RankingsTable: FC<{ pebblerRows: PebblerRowStats[], division: strin
 
     const includeRankChange: boolean = totalPlayed % (2 * MATCHES_PER_ROUND) == 0
 
+    {/* change stickyHeaderOffset when web header is made */ }
+
     return (
-        <>
-            <Table striped withColumnBorders>
+        <ScrollArea>
+            <Table striped stickyHeader stickyHeaderOffset={0}>
                 <TableThead>
-                    <TableTr ta="center" fw={700} color={colorMap[division]}>
+                    <TableTr ta="center" fw={700}>
                         <TableTd>Rank</TableTd>
                         <TableTd ta="left">Pebbler</TableTd>
                         <TableTd>Pebbles</TableTd>
-                        <TableTd>Quirk Pebbles</TableTd>
+                        <TableTd className={classes.oneLine}>Quirk Pebbles</TableTd>
                         <TableTd>Played</TableTd>
                         <TableTd>Won</TableTd>
                         <TableTd>Tied</TableTd>
@@ -81,8 +87,8 @@ export const RankingsTable: FC<{ pebblerRows: PebblerRowStats[], division: strin
                         <TableTd>PA</TableTd>
                         {includeForm && <TableTd>Form</TableTd>}
                         <TableTd>PPB</TableTd>
-                        <TableTd>Home PPB</TableTd>
-                        <TableTd>Away PPB</TableTd>
+                        <TableTd className={classes.oneLine}>Home PPB</TableTd>
+                        <TableTd className={classes.oneLine}>Away PPB</TableTd>
                     </TableTr>
                 </TableThead>
                 <TableTbody>
@@ -95,8 +101,17 @@ export const RankingsTable: FC<{ pebblerRows: PebblerRowStats[], division: strin
                             "N/A" : (pebblerRow.away_pebbles / pebblerRow.away_played).toFixed(2);
 
                         return (
-                            <TableTr key={i} ta="center">
-                                <TableTd>
+                            <TableTr
+                                key={i}
+                                ta="center"
+                                className={pebblerRow.rank <= PROMOTE_DEMOTE && division !== divisions[0] ? classes.promotion : (
+                                    pebblerRow.rank >= PEBBLERS_PER_DIVISION - PROMOTE_DEMOTE + 1 &&
+                                        division !== divisions[divisions.length - 1] ?
+                                        classes.demotion :
+                                        ""
+                                )}
+                            >
+                                <TableTd w={70}>
                                     <Flex justify="space-evenly">
                                         {pebblerRow.rank}
                                         {includeRankChange && (
@@ -112,7 +127,7 @@ export const RankingsTable: FC<{ pebblerRows: PebblerRowStats[], division: strin
                                             h={25}
                                             w={25}
                                         />
-                                        <Anchor href={`/pebblers/${toCamelCase(pebblerRow.pebbler)}`} c="black" underline="hover">
+                                        <Anchor href={`/pebblers/${toCamelCase(pebblerRow.pebbler)}`} c="black" underline="hover" className={classes.oneLine}>
                                             {pebblerRow.pebbler}
                                         </Anchor>
                                     </Flex>
@@ -135,6 +150,6 @@ export const RankingsTable: FC<{ pebblerRows: PebblerRowStats[], division: strin
                     })}
                 </TableTbody>
             </Table>
-        </>
+        </ScrollArea>
     )
 }

@@ -1,8 +1,7 @@
-import { RankingsTable } from "@/components/RankingsTable/RankingsTable";
-import { divisions } from "@/vars/divisions";
+import { Rankings } from "@/components/Rankings/Rankings";
 import axios from "axios";
 
-export default async function Rankings() {
+export default async function RankingsPage() {
     async function fetchRankings(month: number, year: number) {
         try {
             console.log("Fetching rankings...")
@@ -19,9 +18,7 @@ export default async function Rankings() {
 
     return (
         <>
-            {divisions.map((division, i) => (
-                <RankingsTable key={i} pebblerRows={rankings[division]} division={division} />
-            ))}
+            <Rankings rankings={rankings} />
         </>
     )
 }

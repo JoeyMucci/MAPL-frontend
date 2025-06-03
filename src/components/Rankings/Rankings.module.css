@@ -1,0 +1,11 @@
+.oneLine {
+    white-space: nowrap;
+}
+
+.promotion {
+    border-left: 5px solid var(--mantine-color-goodGreen-5)
+}
+
+.demotion {
+    border-left: 5px solid var(--mantine-color-alarmRed-5)
+}

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { FullPebbler } from "@/types/pebblers";
-import { PebblerHeader } from "@/components/Pebbler/PebblerHeader";
+import { PebblerHeader } from "@/components/Headers/PebblerHeader";
 
 export default async function PebblerPage({
     params,

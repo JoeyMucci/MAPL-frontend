@@ -1,0 +1,23 @@
+.header {
+  background-color:  var(--mantine-color-purple-5); /* For browsers that do not support gradients */
+  background-image: linear-gradient(225deg, var(--mantine-color-purple-5), var(--mantine-color-pink-5));
+}
+
+.ghostButton {
+  background-color: var(--mantine-color-transparent);
+}
+
+.ghostButton:hover {
+  background-color: var(--mantine-color-transparent);
+  border-bottom: 5px solid black;
+}
+
+.ghostButtonSelected {
+  background-color: var(--mantine-color-transparent);
+  border-bottom: 5px solid black;
+}
+
+.ghostButtonSelected:hover {
+  background-color: var(--mantine-color-transparent);
+  border-bottom: 5px solid black;
+}
