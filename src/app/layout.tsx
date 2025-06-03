@@ -8,7 +8,7 @@ import { theme } from "@/theme";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "MAPL",
+  title: "Mega Auto Pebble League",
   description: "Official website for the Mega Automated Pebble League",
 };
 

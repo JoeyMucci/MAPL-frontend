@@ -21,17 +21,7 @@ export default async function Home() {
   const data = await fetchBouts()
   const day = data.day
   const month = data.month
-  const bouts: SimpleBout[] = data.bout_info
-
-  const boutsDict: { [key: string]: SimpleBout[] } = {}
-
-  for (let i = 0; i < divisions.length; i++) {
-    boutsDict[divisions[i]] = []
-  }
-
-  for (let i = 0; i < bouts.length; i++) {
-    boutsDict[bouts[i].division].push(bouts[i])
-  }
+  const bouts: { [key: string]: SimpleBout[] } = data.bout_info
 
   return (
     <>
@@ -40,7 +30,7 @@ export default async function Home() {
         {divisions.map((division, i) => (
           <ScrollArea key={i}>
             <Flex my="md" align="center">
-              {boutsDict[division].map((bout, j) => (
+              {bouts[division].map((bout, j) => (
                 <div className={classes.item} key={j}>
                   <Bout
                     bout={bout}
