@@ -92,6 +92,45 @@ export const theme = createTheme({
             "#bf00b9",
             "#a700a1"
         ],
+
+        goodGreen: [
+            "#e6ffee",
+            "#d3f9e0",
+            "#a8f2c0",
+            "#7aea9f",
+            "#54e382",
+            "#3bdf70",
+            "#2bdd66",
+            "#1bc455",
+            "#0bae4a",
+            "#00973c"
+        ],
+
+        alarmRed: [
+            "#ffe9f2",
+            "#ffd1e0",
+            "#faa1bd",
+            "#f66e99",
+            "#f2437a",
+            "#f02866",
+            "#f0185c",
+            "#d6084c",
+            "#c00043",
+            "#a90039"
+        ],
+
+        midBlue: [
+            "#eff2ff",
+            "#dfe2f2",
+            "#bdc2de",
+            "#99a0ca",
+            "#7a84b9",
+            "#6672af",
+            "#5c69ac",
+            "#4c5897",
+            "#424e88",
+            "#36437a"
+        ],
     },
 
     fontFamily: `DynaPuff`,
@@ -99,5 +138,4 @@ export const theme = createTheme({
     headings: {
         fontFamily: `DynaPuff`,
     },
-
 });

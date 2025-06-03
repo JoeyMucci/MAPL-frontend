@@ -1,9 +1,8 @@
 import { FC } from "react";
-import { Badge, Card, CardSection, Flex, Radio, Text } from "@mantine/core"
+import { Anchor, Badge, Card, CardSection, Flex, Radio, Text } from "@mantine/core"
 import { SimpleBout } from "@/types/bouts";
 import { SimplePebbler, SimplePebblerStats } from "@/types/pebblers";
 import { colorMap } from "@/vars/divisions";
-import Link from "next/link";
 import { toCamelCase } from "@/functions/pebblers";
 
 interface BoutLineProps {
@@ -18,9 +17,9 @@ export const Bout: FC<{ bout: SimpleBout }> = ({ bout }) => {
             <Flex justify="space-between">
                 <Flex gap="xs" align="center">
                     <Text w={10} span c="orange" size="sm">{pebbler.current_rank}</Text>
-                    <Link href={`/pebblers/${toCamelCase(pebbler.name)}`} style={{ textDecoration: "none" }}>
+                    <Anchor href={`/pebblers/${toCamelCase(pebbler.name)}`} c="black" underline="hover">
                         <Text span size="sm" >{pebbler.name}</Text>
-                    </Link>
+                    </Anchor>
                 </Flex>
 
                 {hasBoutOccurred && (
