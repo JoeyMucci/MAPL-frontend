@@ -1,13 +1,13 @@
 'use client'
 
 import { FC, useState } from "react";
-import { PebblerRowStats } from "@/types/pebblers";
-import { divisions } from "@/vars/divisions";
+import { PebblerRowStats } from "@/types/stats";
+import { divisions } from "@/vars";
 import { RankingsHeader } from "../Headers/RankingsHeader";
 import { useMediaQuery } from "@mantine/hooks";
 import { RankingsTable } from "./RankingsTable";
 import { RankingsFooter } from "./RankingsFooter";
-import { Space } from "@mantine/core";
+import { Space, Title } from "@mantine/core";
 
 export const Rankings: FC<{ rankings: { [key: string]: PebblerRowStats[] } }> = ({ rankings }) => {
     const [division, setDivision] = useState<string>(divisions[0])
@@ -21,6 +21,7 @@ export const Rankings: FC<{ rankings: { [key: string]: PebblerRowStats[] } }> = 
     return (
         <>
             <RankingsHeader divisionSelected={division} toggler={toggleDivision} largeScreen={largeScreen} />
+            {!largeScreen && <Title ta="center" order={3}>{division} Division</Title>}
             <RankingsTable pebblerRows={rankings[division]} division={division} />
             <Space h="lg" />
             <RankingsFooter division={division} />

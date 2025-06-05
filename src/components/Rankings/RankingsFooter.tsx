@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { divisions } from "@/vars/divisions";
+import { divisions } from "@/vars";
 import { Title, Stack, Badge, Flex } from "@mantine/core";
 import classes from "./Rankings.module.css"
 
@@ -17,7 +17,7 @@ export const RankingsFooter: FC<{ division: string }> = ({ division }) => {
             <Title order={3}>
                 Promotion & Demotion Key
             </Title>
-            <Flex gap="lg" mb="md">
+            <Flex wrap="wrap" gap="lg" mb="md">
                 {divisionIndex !== 0 && (
                     <Badge radius="xs" py="md" className={classes.promotion} color="white" style={{ color: "black" }}>
                         Promotion to {divisions[divisionIndex - 1]} division

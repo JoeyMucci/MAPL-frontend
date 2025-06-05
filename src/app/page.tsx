@@ -1,7 +1,7 @@
 import { Bout } from "@/components/Bout/Bout";
 import { SimpleBout } from "@/types/bouts";
 import { Flex, ScrollArea, Stack, Title } from "@mantine/core";
-import { divisions } from "@/vars/divisions";
+import { divisions } from "@/vars";
 import classes from "./page.module.css";
 import axios from "axios";
 

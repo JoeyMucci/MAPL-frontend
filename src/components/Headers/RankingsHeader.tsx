@@ -1,13 +1,14 @@
 import { FC } from "react";
-import { Container, Title, Button, Flex, Stack } from "@mantine/core";
-import { divisions, colorMap } from "@/vars/divisions";
+import { Container, Title, Stack } from "@mantine/core";
+import { HeaderButtons } from "./HeaderButtons";
+import { divisions } from "@/vars";
 import classes from "./Header.module.css";
 
-export const RankingsHeader: FC<{ divisionSelected: string, toggler: (a: string) => void, largeScreen: boolean }> =
+export const RankingsHeader: FC<{ divisionSelected: string, largeScreen: boolean, toggler: (a: string) => void }> =
     ({
         divisionSelected,
+        largeScreen,
         toggler,
-        largeScreen
     }) => {
 
         return (
@@ -16,20 +17,12 @@ export const RankingsHeader: FC<{ divisionSelected: string, toggler: (a: string)
                     <Title order={1}>
                         Rankings
                     </Title>
-                    <Flex wrap="wrap">
-                        {divisions.map((division, i) => (
-                            <Button
-                                key={i}
-                                w={largeScreen ? 150 : 50}
-                                style={{ color: colorMap[division] }}
-                                className={division === divisionSelected ? classes.ghostButtonSelected : classes.ghostButton}
-                                onClick={() => toggler(division)}
-                                radius="xs"
-                            >
-                                {largeScreen ? division : division[0]}
-                            </Button>
-                        ))}
-                    </Flex>
+                    <HeaderButtons
+                        options={divisions}
+                        selected={divisionSelected}
+                        largeScreen={largeScreen}
+                        toggler={toggler}
+                    />
                 </Stack>
             </Container>
         )

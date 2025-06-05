@@ -1,16 +1,22 @@
 import { FC } from "react"
-import { FullPebbler } from "@/types/pebblers"
-import { Container, Flex, Image, Stack, Text, Title } from "@mantine/core"
-import classes from "./Header.module.css"
-import { colorMap } from "@/vars/divisions"
+import { MediumPebbler } from "@/types/pebblers"
+import { Center, Container, Flex, Image, Stack, Text, Title } from "@mantine/core"
+import { tabs, colorMap } from "@/vars"
 import { toCamelCase } from "@/functions/pebblers"
+import { HeaderButtons } from "./HeaderButtons"
+import classes from "./Header.module.css"
 
-export const PebblerHeader: FC<{ pebbler: FullPebbler }> = ({ pebbler }) => {
-    const imageName: string = toCamelCase(pebbler.name);
-    console.log("Image name:", imageName);
 
-    return (
-        <Container fluid className={classes.header} pb="md">
+export const PebblerHeader: FC<{ pebbler: MediumPebbler, tabSelected: string, largeScreen: boolean, toggler: (a: string) => void }> =
+    ({
+        pebbler,
+        tabSelected,
+        largeScreen,
+        toggler,
+    }) => {
+        const imageName: string = toCamelCase(pebbler.name);
+
+        const MainInfo: FC<{ pebbler: MediumPebbler }> = ({ pebbler }) => (
             <Flex wrap="wrap" justify="space-evenly">
                 <Stack ta="center">
                     <Title order={1}>
@@ -41,9 +47,23 @@ export const PebblerHeader: FC<{ pebbler: FullPebbler }> = ({ pebbler }) => {
                         <Text size="lg">Quirk Pebbles: {pebbler.qp}</Text>
                         <Text size="lg">Ability Triggers: {pebbler.at}</Text>
                     </Stack>
-
                 </Stack>
             </Flex>
-        </Container>
-    )
-}
+        )
+
+        return (
+            <Container fluid className={classes.header}>
+                <Stack>
+                    <MainInfo pebbler={pebbler} />
+                    <Center>
+                        <HeaderButtons
+                            options={tabs}
+                            selected={tabSelected}
+                            largeScreen={largeScreen}
+                            toggler={toggler}
+                        />
+                    </Center>
+                </Stack>
+            </Container>
+        )
+    }

@@ -14,7 +14,7 @@ import {
     UnstyledButton
 } from "@mantine/core"
 import { toCamelCase } from "@/functions/pebblers";
-import { divisions } from "@/vars/divisions";
+import { divisions } from "@/vars";
 import { theme } from "@/theme"
 import {
     IconArrowsUp,

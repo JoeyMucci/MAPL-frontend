@@ -2,7 +2,7 @@ import { FC } from "react";
 import { Anchor, Badge, Card, CardSection, Flex, Radio, Text } from "@mantine/core"
 import { SimpleBout } from "@/types/bouts";
 import { SimplePebbler, SimplePebblerStats } from "@/types/pebblers";
-import { colorMap } from "@/vars/divisions";
+import { colorMap } from "@/vars";
 import { toCamelCase } from "@/functions/pebblers";
 
 interface BoutLineProps {
