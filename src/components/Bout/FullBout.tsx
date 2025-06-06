@@ -1,60 +1,207 @@
+"use client"
+
 import { FC } from "react"
 import { ComplicatedBout } from "@/types/bouts"
-import { Card, Flex, Image, ScrollArea, Text } from "@mantine/core"
+import { Anchor, Card, Center, Flex, Image, rem, Stack, Text, Title, Tooltip } from "@mantine/core"
 import { toCamelCase } from "@/functions/pebblers"
+import { abilityActionMap, abilityDescMap, abilityMap, colorMap, quirkDescMap, quirkMap, quirkMultMap, traitDescMap, traitMap } from "@/vars"
+import classes from "./Bout.module.css";
 
 export const FullBout: FC<{ bout: ComplicatedBout }> = ({ bout }) => {
     const awayPebbler = bout.away
     const homePebbler = bout.home
 
     const bullets = [
-        `${bout.month.toString().padStart(2, "0")}/${bout.day.toString().padStart(2, "0")}/${bout.year}`,
         `${awayPebbler.name} rolled a ${bout.away_roll} with a ${awayPebbler.trait} die`,
         `${homePebbler.name} rolled a ${bout.home_roll} with a ${homePebbler.trait} die`,
-        `Bout Status: ${bout.away_roll} - ${bout.home_roll}`,
+        `${bout.away_roll} - ${bout.home_roll}`,
     ]
 
-    if (bout.away_quirk) {
-        bullets.push(`${awayPebbler.name} activates their ${awayPebbler.quirk} quirk!`)
+    const quirkPebbles = quirkMultMap[bout.division]
+    const AwayTraitIcon = traitMap[awayPebbler.trait]
+    const HomeTraitIcon = traitMap[homePebbler.trait]
+    const AwayQuirkIcon = quirkMap[awayPebbler.quirk]
+    const HomeQuirkIcon = quirkMap[homePebbler.quirk]
+    const AwayAbilityIcon = abilityMap[awayPebbler.ability]
+    const HomeAbilityIcon = abilityMap[homePebbler.ability]
+    const awayNet = bout.away_score - (bout.away_quirk ? quirkPebbles : 0)
+    const homeNet = bout.home_score - (bout.home_quirk ? quirkPebbles : 0)
+    let awayResult = ""
+    let homeResult = ""
+
+    if (bout.away_roll_final !== null && bout.home_roll_final !== null) {
+        if (bout.away_roll_final > bout.home_roll_final) {
+            awayResult = "winning"
+        }
+        else if (bout.away_roll_final < bout.home_roll_final) {
+            homeResult = "winning"
+        }
+        else {
+            awayResult = "drawing"
+            homeResult = "drawing"
+        }
     }
 
-    if (bout.home_quirk) {
-        bullets.push(`${homePebbler.name} activates their ${homePebbler.quirk} quirk!`)
-    }
+    const finished = awayResult !== "" || homeResult !== ""
 
-    if (bout.away_ability) {
-        bullets.push(`${awayPebbler.name} triggers their ${awayPebbler.ability} ability!`)
-        bullets.push(`Bout Status: ${bout.away_roll_half} - ${bout.home_roll_half}`)
-    }
+    const DoneBlock = () => (
+        <Stack w={550} gap="xs">
+            <Flex justify="flex-start" gap={rem(4)}>
+                <Text span>{awayPebbler.name} rolls a {bout.away_roll} with</Text>
+                <Flex gap={rem(4)}>
+                    <AwayTraitIcon color={colorMap[awayPebbler.trait]} />
+                    {awayPebbler.trait}
+                </Flex>
+            </Flex>
 
-    if (bout.home_ability) {
-        bullets.push(`${homePebbler.name} triggers their ${homePebbler.ability} ability!`)
-        bullets.push(`Bout Status: ${bout.away_roll_final} - ${bout.home_roll_final}`)
-    }
+            <Flex justify="flex-end" gap={rem(4)}>
+                <Text span>{homePebbler.name} rolls a {bout.home_roll} with</Text>
+                <Flex gap={rem(4)}>
+                    <HomeTraitIcon color={colorMap[homePebbler.trait]} />
+                    {homePebbler.trait}
+                </Flex>
+            </Flex>
 
-    bullets.push(`${awayPebbler.name} gains ${bout.away_score} pebble${bout.away_score !== 1 ? "s" : ""}`)
-    bullets.push(`${homePebbler.name} gains ${bout.home_score} pebble${bout.home_score !== 1 ? "s" : ""}`)
+            <Text ta="center" size="xl">{bout.away_roll}-{bout.home_roll}</Text>
+
+            {bout.away_quirk &&
+                <Flex justify="flex-start" gap={rem(4)}>
+                    <Text span>{awayPebbler.name} gains {quirkPebbles} pebble{quirkPebbles !== 1 ? "s " : " "} with</Text>
+                    <Flex gap={rem(4)}>
+                        <AwayQuirkIcon color="purple" />
+                        {awayPebbler.quirk}
+                    </Flex>
+                </Flex>
+            }
+
+            {bout.home_quirk &&
+                <Flex justify="flex-end" gap={rem(4)}>
+                    <Text span>{homePebbler.name} gains {quirkPebbles} pebble{quirkPebbles !== 1 ? "s " : " "} with</Text>
+                    <Flex gap={rem(4)}>
+                        <HomeQuirkIcon color="purple" />
+                        {homePebbler.quirk}
+                    </Flex>
+                </Flex>
+            }
+
+            {bout.away_ability &&
+                <>
+                    <Flex justify="flex-start" gap={rem(4)}>
+                        <Text span>{awayPebbler.name} {abilityActionMap[awayPebbler.ability]} with</Text>
+                        <Flex gap={rem(4)}>
+                            <AwayAbilityIcon color="pink" />
+                            {awayPebbler.ability}
+                        </Flex>
+                    </Flex>
+                    {/* Generosity does not change rolls so do not display them again */}
+                    {awayPebbler.ability !== "Generosity" && <Text ta="center" size="xl">{bout.away_roll_half}-{bout.home_roll_half}</Text>}
+                </>
+            }
+
+            {bout.home_ability &&
+                <>
+                    <Flex justify="flex-end" gap={rem(4)}>
+                        <Text span>{homePebbler.name} {abilityActionMap[homePebbler.ability]} with</Text>
+                        <Flex gap={rem(4)}>
+                            <HomeAbilityIcon color="pink" />
+                            {homePebbler.ability}
+                        </Flex>
+                    </Flex>
+                    {/* Generosity does not change rolls so do not display them again */}
+                    {homePebbler.ability !== "Generosity" && <Text ta="center" size="xl">{bout.away_roll_final}-{bout.home_roll_final}</Text>}
+                </>
+            }
+
+            {awayNet > 0 && <Text ta="left">{awayPebbler.name} gains {awayNet} pebbles from {awayResult}</Text>}
+            {homeNet > 0 && <Text ta="right">{homePebbler.name} gains {homeNet} pebbles from {homeResult}</Text>}
+
+        </Stack>
+    )
+
+    const PreviewBlock = () => (
+        <Stack w={550} gap="xl">
+            <Flex justify="space-between">
+                <Text span size="xl" >{awayPebbler.name}</Text>
+                <Text span size="xl">vs.</Text>
+                <Text span size="xl" >{homePebbler.name}</Text>
+            </Flex>
+            <Flex justify="space-between">
+                <Tooltip label={traitDescMap[awayPebbler.trait]} color={colorMap[awayPebbler.trait]}>
+                    <Flex gap={rem(4)}>
+                        <AwayTraitIcon color={colorMap[awayPebbler.trait]} />
+                        {awayPebbler.trait}
+                    </Flex>
+                </Tooltip>
+                <Tooltip label={traitDescMap[homePebbler.trait]} color={colorMap[homePebbler.trait]}>
+                    <Flex gap={rem(4)}>
+                        <HomeTraitIcon color={colorMap[homePebbler.trait]} />
+                        {homePebbler.trait}
+                    </Flex>
+                </Tooltip>
+
+            </Flex>
+            <Flex justify="space-between">
+                <Tooltip label={quirkDescMap[awayPebbler.quirk]} color="purple">
+                    <Flex gap={rem(4)}>
+                        <AwayQuirkIcon color="purple" />
+                        {awayPebbler.quirk}
+                    </Flex>
+                </Tooltip>
+                <Tooltip label={quirkDescMap[homePebbler.quirk]} color="purple">
+                    <Flex gap={rem(4)}>
+                        <HomeQuirkIcon color="purple" />
+                        {homePebbler.quirk}
+                    </Flex>
+                </Tooltip>
+            </Flex>
+            <Flex justify="space-between">
+                <Tooltip label={abilityDescMap[awayPebbler.ability]} color="pink">
+                    <Flex gap={rem(4)}>
+                        <AwayAbilityIcon color="pink" />
+                        {awayPebbler.ability}
+                    </Flex>
+                </Tooltip>
+                <Tooltip label={abilityDescMap[homePebbler.ability]} color="pink">
+                    <Flex gap={rem(4)}>
+                        <HomeAbilityIcon color="pink" />
+                        {homePebbler.ability}
+                    </Flex>
+                </Tooltip>
+            </Flex>
+        </Stack>
+    )
 
     return (
-        <Card h={300} w={1000} radius="md" withBorder>
-            <Flex justify="space-between" mt="xl">
-                <Image
-                    src={"/pebblers/" + toCamelCase(awayPebbler.name) + ".png"}
-                    alt={"Image of " + awayPebbler.name + " the pebbler"}
-                    h={200}
-                    w={200}
-                />
-                <ScrollArea>
-                    {bullets.map((bull, i) => (
-                        <Text key={i}>{bull}</Text>
-                    ))}
-                </ScrollArea>
-                <Image
-                    src={"/pebblers/" + toCamelCase(homePebbler.name) + ".png"}
-                    alt={"Image of " + homePebbler.name + " the pebbler"}
-                    h={200}
-                    w={200}
-                />
+        <Card w={1000} radius="md" withBorder style={{ minHeight: 300 }}>
+            <Center>
+                <Flex gap="lg">
+                    <Title order={2} c={colorMap[bout.division]}>{bout.division}</Title>
+                    <Title ta="center" order={2}>
+                        {"     "}{bout.month.toString().padStart(2, "0")}/{bout.day.toString().padStart(2, "0")}/{bout.year}
+                    </Title>
+                </Flex>
+            </Center>
+            <Flex align="center" justify="space-between" style={{ minHeight: 300 }}>
+                <Stack align="center">
+                    <Image
+                        onClick={() => window.location.href = `/pebblers/${toCamelCase(awayPebbler.name)}`}
+                        src={"/pebblers/" + toCamelCase(awayPebbler.name) + ".png"}
+                        alt={"Image of " + awayPebbler.name + " the pebbler"}
+                        h={200}
+                        w={200}
+                    />
+                </Stack>
+                {finished ? <DoneBlock /> : <PreviewBlock />}
+                <Stack align="center">
+                    <Image
+                        className={classes.flipY}
+                        onClick={() => window.location.href = `/pebblers/${toCamelCase(homePebbler.name)}`}
+                        src={"/pebblers/" + toCamelCase(homePebbler.name) + ".png"}
+                        alt={"Image of " + homePebbler.name + " the pebbler"}
+                        h={200}
+                        w={200}
+                    />
+                </Stack>
             </Flex>
         </Card>
     )

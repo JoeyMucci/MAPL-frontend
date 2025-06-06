@@ -1,3 +1,5 @@
+"use client"
+
 import { FC } from "react";
 import { Anchor, Badge, Card, CardSection, Flex, Radio, Text } from "@mantine/core"
 import { SimpleBout } from "@/types/bouts";
@@ -57,7 +59,11 @@ export const Bout: FC<{ bout: SimpleBout }> = ({ bout }) => {
         new Date(bout.time).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
 
     return (
-        <Card w={225} withBorder>
+        <Card
+            w={225}
+            onClick={() => window.location.href = `/bouts/${bout.id}`}
+            withBorder
+        >
             <CardSection>
                 <Flex justify={"space-between"} align="center">
                     <Badge w={125} color={colorMap[bout.division]}>{bout.division}</Badge>

@@ -19,7 +19,7 @@ export const Activity: FC<{ pebblerName: string }> = async ({ pebblerName }) => 
     const bouts: ComplicatedBout[] = await fetchActivity();
 
     return (
-        <Stack align="center" mt="sm">
+        <Stack align="center" mt="md" mb="md">
             {bouts.map((bout, i) => (
                 <FullBout key={i} bout={bout} />
             ))}

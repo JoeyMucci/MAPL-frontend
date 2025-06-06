@@ -2,6 +2,7 @@ import { FC } from "react";
 import { PebblerRowStats } from "@/types/stats";
 import {
     Anchor,
+    Badge,
     Table,
     TableThead,
     TableTbody,
@@ -23,9 +24,11 @@ import {
     IconArrowDown,
     IconArrowsRightLeft
 } from "@tabler/icons-react";
+import { colorMap } from "@/vars";
 import classes from "./Rankings.module.css";
 
 const MATCHES_PER_ROUND = 12
+const FORM_THRESHOLD = 5
 const PROMOTE_DEMOTE = 5
 const PEBBLERS_PER_DIVISION = 25
 
@@ -58,7 +61,22 @@ export const RankingsTable: FC<{ pebblerRows: PebblerRowStats[], division: strin
         )
     }
 
-    const includeForm: boolean = !pebblerRows.some(row => row.form.length < 5);
+    const FormWidget: FC<{ results: string }> = ({ results }) => {
+        const recentResults = []
+        for (let i = results.length - FORM_THRESHOLD; i < results.length; i++) {
+            recentResults.push(results[i]);
+        }
+
+        return (
+            <Flex justify="space-between">
+                {recentResults.map((letter, i) => (
+                    <Badge key={i} color={colorMap[letter]} size="sm">{letter}</Badge>
+                ))}
+            </Flex>
+        )
+    }
+
+    const includeForm: boolean = !pebblerRows.some(row => row.form.length < FORM_THRESHOLD);
 
     let totalPlayed = 0
     for (let i = 0; i < pebblerRows.length; i++) {
@@ -141,7 +159,7 @@ export const RankingsTable: FC<{ pebblerRows: PebblerRowStats[], division: strin
                                 <TableTd>{pebblerRow.pd}</TableTd>
                                 <TableTd>{pebblerRow.pf}</TableTd>
                                 <TableTd>{pebblerRow.pa}</TableTd>
-                                {includeForm && <TableTd>{pebblerRow.form}</TableTd>}
+                                {includeForm && <TableTd><FormWidget results={pebblerRow.form} /></TableTd>}
                                 <TableTd>{ppb}</TableTd>
                                 <TableTd>{ppbHome}</TableTd>
                                 <TableTd>{ppbAway}</TableTd>

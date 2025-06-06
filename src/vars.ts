@@ -32,6 +32,10 @@ export const colorMap: { [key: string]: string } = {
     "Skill": "blue",
     "Power": "gray",
     "Speed": "yellow",
+    "W": "goodGreen",
+    "L": "alarmRed",
+    "T": "midBlue",
+    "D": "midBlue", // Remove when db is fixed from D->T
 };
 
 export const traitMap: { [key: string]: typeof IconFeatherFilled } = {
@@ -75,7 +79,22 @@ export const quirkDescMap: { [key: string]: string } = {
 export const abilityDescMap: { [key: string]: string } = {
     "Miracle": "If trailing opponent, upgrade roll to opponent's roll (12% trigger rate)",
     "Lucky Seven": "If leading opponent, upgrade roll to 7 (12% trigger rate)",
-    "Generosity": "If tied with opponent, double draw pebbles (36% trigger rate)",
-    "Will to Win": "If tied with opponent, reroll and double win pebbles (36% trigger rate)",
+    "Generosity": "If tied with opponent, double draw bonus (36% trigger rate)",
+    "Will to Win": "If tied with opponent, reroll and double win bonus (36% trigger rate)",
     "Tip the Scales": "If trailing by one, switch rolls with opponent (24% trigger rate)",
+}
+
+export const abilityActionMap: { [key: string]: string } = {
+    "Miracle": "upgrades roll to opponent's roll",
+    "Lucky Seven": "upgrades roll to 7",
+    "Generosity": "doubles draw bonus",
+    "Will to Win": "rerolls and doubles win bonus",
+    "Tip the Scales": "switches roll with opponent",
+}
+
+export const quirkMultMap: { [key: string]: number } = {
+    "Master": 2,
+    "All-Star": 2,
+    "Professional": 1,
+    "Learner": 1,
 }

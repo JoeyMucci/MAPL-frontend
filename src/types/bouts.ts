@@ -1,6 +1,7 @@
 import { PersonalPebbler, SimplePebbler } from "./pebblers";
 
 export interface SimpleBout {
+    id: number;
     away: SimplePebbler;
     home: SimplePebbler;
     division: string;
