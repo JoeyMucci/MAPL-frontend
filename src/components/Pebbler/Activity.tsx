@@ -1,6 +1,6 @@
 import { FC } from "react";
-import { SimpleBout } from "@/types/bouts";
-import { Bout } from "@/components/Bout/Bout";
+import { ComplicatedBout } from "@/types/bouts";
+import { FullBout } from "@/components/Bout/FullBout";
 import { Stack } from "@mantine/core";
 import axios from "axios";
 
@@ -16,12 +16,12 @@ export const Activity: FC<{ pebblerName: string }> = async ({ pebblerName }) => 
         }
     }
 
-    const bouts: SimpleBout[] = await fetchActivity();
+    const bouts: ComplicatedBout[] = await fetchActivity();
 
     return (
-        <Stack>
+        <Stack align="center" mt="sm">
             {bouts.map((bout, i) => (
-                <Bout key={i} bout={bout} />
+                <FullBout key={i} bout={bout} />
             ))}
         </Stack>
     )

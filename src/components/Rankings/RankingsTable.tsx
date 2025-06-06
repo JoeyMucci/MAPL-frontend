@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { PebblerRowStats } from "@/types/pebblers";
+import { PebblerRowStats } from "@/types/stats";
 import {
     Anchor,
     Table,

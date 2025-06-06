@@ -15,6 +15,7 @@ export interface SimplePebbler {
 }
 
 export interface PersonalPebbler {
+    name: string;
     description: string;
     trait: string;
     quirk: string;

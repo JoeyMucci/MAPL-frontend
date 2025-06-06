@@ -1,7 +1,15 @@
 import { FC } from "react";
 import { PersonalPebbler } from "@/types/pebblers";
-import { Flex, Text, Title, Stack, Card } from "@mantine/core";
-import { traitMap, quirkMap, abilityMap, colorMap } from "@/vars";
+import { Flex, Text, Title, Stack, Card, Tooltip } from "@mantine/core";
+import {
+    traitMap,
+    quirkMap,
+    abilityMap,
+    colorMap,
+    traitDescMap,
+    quirkDescMap,
+    abilityDescMap
+} from "@/vars";
 import axios from "axios";
 
 export const Meet: FC<{ pebblerName: string }> = async ({ pebblerName }) => {
@@ -19,10 +27,28 @@ export const Meet: FC<{ pebblerName: string }> = async ({ pebblerName }) => {
     const pebbler: PersonalPebbler = await fetchPebbler();
 
     const displayData = [
-        { label: "Trait", value: pebbler.trait, Icon: traitMap[pebbler.trait], iconColor: colorMap[pebbler.trait] },
-        { label: "Quirk", value: pebbler.quirk, Icon: quirkMap[pebbler.quirk], iconColor: "purple" },
-        { label: "Ability", value: pebbler.ability, Icon: abilityMap[pebbler.ability], iconColor: "pink" },
-    ]
+        {
+            attribute: "Trait",
+            value: pebbler.trait,
+            Icon: traitMap[pebbler.trait],
+            iconColor: colorMap[pebbler.trait],
+            label: traitDescMap[pebbler.trait]
+        },
+        {
+            attribute: "Quirk",
+            value: pebbler.quirk,
+            Icon: quirkMap[pebbler.quirk],
+            iconColor: "purple",
+            label: quirkDescMap[pebbler.quirk]
+        },
+        {
+            attribute: "Ability",
+            value: pebbler.ability,
+            Icon: abilityMap[pebbler.ability],
+            iconColor: "pink",
+            label: abilityDescMap[pebbler.ability]
+        },
+    ];
 
     return (
         <Flex wrap="wrap" align="center" justify="space-evenly" mt="md">
@@ -31,11 +57,13 @@ export const Meet: FC<{ pebblerName: string }> = async ({ pebblerName }) => {
                 {displayData.map((datum, i) => (
                     <Card key={i} radius="md" w={300} bg="orange" px="sm">
                         <Flex align="center" justify="space-between">
-                            <Text span>{datum.label}:</Text>
-                            <Flex align="center" gap="xs">
-                                <datum.Icon size={32} color={datum.iconColor} />
-                                <Title order={3}>{datum.value}</Title>
-                            </Flex>
+                            <Text span>{datum.attribute}:</Text>
+                            <Tooltip label={datum.label} color={datum.iconColor}>
+                                <Flex align="center" gap="xs">
+                                    <datum.Icon size={32} color={datum.iconColor} />
+                                    <Title order={3}>{datum.value}</Title>
+                                </Flex>
+                            </Tooltip>
                         </Flex>
                     </Card>
                 ))}
