@@ -172,14 +172,25 @@ export const FullBout: FC<{ bout: ComplicatedBout }> = ({ bout }) => {
     )
 
     return (
-        <Card w={1000} radius="md" withBorder style={{ minHeight: 300 }}>
+        <Card w={1000} radius="md" withBorder style={{ minHeight: 300 }} bg="orange">
             <Center>
-                <Flex gap="lg">
-                    <Title order={2} c={colorMap[bout.division]}>{bout.division}</Title>
-                    <Title ta="center" order={2}>
-                        {"     "}{bout.month.toString().padStart(2, "0")}/{bout.day.toString().padStart(2, "0")}/{bout.year}
-                    </Title>
-                </Flex>
+                <Stack align="center" gap={rem(4)} mb="lg">
+                    <Flex gap="md">
+                        <Anchor href={`/pebblers/${toCamelCase(awayPebbler.name)}`} c="black" underline="hover">
+                            <Title order={2} w={200} ta="right">{awayPebbler.name}</Title>
+                        </Anchor>
+                        <Title order={2}>@</Title>
+                        <Anchor href={`/pebblers/${toCamelCase(homePebbler.name)}`} c="black" underline="hover">
+                            <Title order={2} w={200} ta="left">{homePebbler.name}</Title>
+                        </Anchor>
+                    </Flex>
+                    <Flex gap="lg">
+                        <Title order={4} c={colorMap[bout.division]}>{bout.division}</Title>
+                        <Title ta="center" order={4}>
+                            {"     "}{bout.month.toString().padStart(2, "0")}/{bout.day.toString().padStart(2, "0")}/{bout.year}
+                        </Title>
+                    </Flex>
+                </Stack>
             </Center>
             <Flex align="center" justify="space-between" style={{ minHeight: 300 }}>
                 <Stack align="center">

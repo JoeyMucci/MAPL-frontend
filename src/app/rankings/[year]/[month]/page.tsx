@@ -2,7 +2,11 @@ import { Rankings } from "@/components/Rankings/Rankings";
 import { MonthPicker } from "@mantine/dates";
 import axios from "axios";
 
-export default async function RankingsPage() {
+export default async function RankingsPage({
+    params,
+}: {
+    params: Promise<{ month: number, year: number }>
+}) {
     async function fetchRankings(month: number, year: number) {
         try {
             console.log("Fetching rankings...")
@@ -15,10 +19,8 @@ export default async function RankingsPage() {
         }
     }
 
+    const { month, year } = await params
 
-    const date = new Date();
-    const month = date.getMonth() + 1; // Months are 0-indexed in JavaScript
-    const year = date.getFullYear();
     const rankings = await fetchRankings(month, year)
 
     if (!rankings || Object.keys(rankings).length === 0) {

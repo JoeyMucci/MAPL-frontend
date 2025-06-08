@@ -11,6 +11,7 @@ import {
     Image,
     Flex,
     Tooltip,
+    Text,
     ScrollArea,
     UnstyledButton
 } from "@mantine/core"
@@ -70,7 +71,7 @@ export const RankingsTable: FC<{ pebblerRows: PebblerRowStats[], division: strin
         return (
             <Flex justify="space-between">
                 {recentResults.map((letter, i) => (
-                    <Badge key={i} color={colorMap[letter]} size="sm">{letter}</Badge>
+                    <Badge w={30} key={i} color={colorMap[letter]}>{letter}</Badge>
                 ))}
             </Flex>
         )
@@ -88,86 +89,89 @@ export const RankingsTable: FC<{ pebblerRows: PebblerRowStats[], division: strin
     {/* change stickyHeaderOffset when web header is made */ }
 
     return (
-        <ScrollArea>
-            <Table striped stickyHeader stickyHeaderOffset={0}>
-                <TableThead>
-                    <TableTr ta="center" fw={700}>
-                        <TableTd>Rank</TableTd>
-                        <TableTd ta="left">Pebbler</TableTd>
-                        <TableTd>Pebbles</TableTd>
-                        <TableTd className={classes.oneLine}>Quirk Pebbles</TableTd>
-                        <TableTd>Played</TableTd>
-                        <TableTd>Won</TableTd>
-                        <TableTd>Tied</TableTd>
-                        <TableTd>Lost</TableTd>
-                        <TableTd>PD</TableTd>
-                        <TableTd>PF</TableTd>
-                        <TableTd>PA</TableTd>
-                        {includeForm && <TableTd>Form</TableTd>}
-                        <TableTd>PPB</TableTd>
-                        <TableTd className={classes.oneLine}>Home PPB</TableTd>
-                        <TableTd className={classes.oneLine}>Away PPB</TableTd>
-                    </TableTr>
-                </TableThead>
-                <TableTbody>
-                    {pebblerRows.map((pebblerRow, i) => {
-                        const ppb: number | string = pebblerRow.played === 0 ?
-                            "N/A" : (pebblerRow.pebbles / pebblerRow.played).toFixed(2);
-                        const ppbHome: number | string = pebblerRow.home_played === 0 ?
-                            "N/A" : (pebblerRow.home_pebbles / pebblerRow.home_played).toFixed(2);
-                        const ppbAway: number | string = pebblerRow.away_played === 0 ?
-                            "N/A" : (pebblerRow.away_pebbles / pebblerRow.away_played).toFixed(2);
+        <>
+            {!includeRankChange && <Text>*Rankings will be updated when matchday concludes</Text>}
+            <ScrollArea>
+                <Table striped stickyHeader stickyHeaderOffset={0}>
+                    <TableThead>
+                        <TableTr ta="center" fw={700}>
+                            <TableTd>Rank</TableTd>
+                            <TableTd ta="left">Pebbler</TableTd>
+                            <TableTd>Pebbles</TableTd>
+                            <TableTd className={classes.oneLine}>Quirk Pebbles</TableTd>
+                            <TableTd>Played</TableTd>
+                            <TableTd>Won</TableTd>
+                            <TableTd>Tied</TableTd>
+                            <TableTd>Lost</TableTd>
+                            <TableTd>PD</TableTd>
+                            <TableTd>PF</TableTd>
+                            <TableTd>PA</TableTd>
+                            {includeForm && <TableTd>Form</TableTd>}
+                            <TableTd>PPB</TableTd>
+                            <TableTd className={classes.oneLine}>Home PPB</TableTd>
+                            <TableTd className={classes.oneLine}>Away PPB</TableTd>
+                        </TableTr>
+                    </TableThead>
+                    <TableTbody>
+                        {pebblerRows.map((pebblerRow, i) => {
+                            const ppb: number | string = pebblerRow.played === 0 ?
+                                "N/A" : (pebblerRow.pebbles / pebblerRow.played).toFixed(2);
+                            const ppbHome: number | string = pebblerRow.home_played === 0 ?
+                                "N/A" : (pebblerRow.home_pebbles / pebblerRow.home_played).toFixed(2);
+                            const ppbAway: number | string = pebblerRow.away_played === 0 ?
+                                "N/A" : (pebblerRow.away_pebbles / pebblerRow.away_played).toFixed(2);
 
-                        return (
-                            <TableTr
-                                key={i}
-                                ta="center"
-                                className={pebblerRow.rank <= PROMOTE_DEMOTE && division !== divisions[0] ? classes.promotion : (
-                                    pebblerRow.rank >= PEBBLERS_PER_DIVISION - PROMOTE_DEMOTE + 1 &&
-                                        division !== divisions[divisions.length - 1] ?
-                                        classes.demotion :
-                                        ""
-                                )}
-                            >
-                                <TableTd w={70}>
-                                    <Flex justify="space-evenly">
-                                        {pebblerRow.rank}
-                                        {includeRankChange && (
-                                            <RankingChangeWidget rank={pebblerRow.rank} oldRank={pebblerRow.previous_rank} />
-                                        )}
-                                    </Flex>
-                                </TableTd>
-                                <TableTd w={200}>
-                                    <Flex gap="md" align="center">
-                                        <Image
-                                            src={"/pebblers/" + toCamelCase(pebblerRow.pebbler) + ".png"}
-                                            alt={"Image of " + pebblerRow.pebbler + " the pebbler"}
-                                            h={25}
-                                            w={25}
-                                        />
-                                        <Anchor href={`/pebblers/${toCamelCase(pebblerRow.pebbler)}`} c="black" underline="hover" className={classes.oneLine}>
-                                            {pebblerRow.pebbler}
-                                        </Anchor>
-                                    </Flex>
-                                </TableTd>
-                                <TableTd>{pebblerRow.pebbles}</TableTd>
-                                <TableTd>{pebblerRow.qp}</TableTd>
-                                <TableTd>{pebblerRow.away_played + pebblerRow.home_played}</TableTd>
-                                <TableTd>{pebblerRow.wins}</TableTd>
-                                <TableTd>{pebblerRow.ties}</TableTd>
-                                <TableTd>{pebblerRow.losses}</TableTd>
-                                <TableTd>{pebblerRow.pd}</TableTd>
-                                <TableTd>{pebblerRow.pf}</TableTd>
-                                <TableTd>{pebblerRow.pa}</TableTd>
-                                {includeForm && <TableTd><FormWidget results={pebblerRow.form} /></TableTd>}
-                                <TableTd>{ppb}</TableTd>
-                                <TableTd>{ppbHome}</TableTd>
-                                <TableTd>{ppbAway}</TableTd>
-                            </TableTr>
-                        )
-                    })}
-                </TableTbody>
-            </Table>
-        </ScrollArea>
+                            return (
+                                <TableTr
+                                    key={i}
+                                    ta="center"
+                                    className={pebblerRow.rank <= PROMOTE_DEMOTE && division !== divisions[0] ? classes.promotion : (
+                                        pebblerRow.rank >= PEBBLERS_PER_DIVISION - PROMOTE_DEMOTE + 1 &&
+                                            division !== divisions[divisions.length - 1] ?
+                                            classes.demotion :
+                                            ""
+                                    )}
+                                >
+                                    <TableTd w={70}>
+                                        <Flex justify="space-evenly">
+                                            {pebblerRow.rank}
+                                            {includeRankChange && (
+                                                <RankingChangeWidget rank={pebblerRow.rank} oldRank={pebblerRow.previous_rank} />
+                                            )}
+                                        </Flex>
+                                    </TableTd>
+                                    <TableTd w={200}>
+                                        <Flex gap="md" align="center">
+                                            <Image
+                                                src={"/pebblers/" + toCamelCase(pebblerRow.pebbler) + ".png"}
+                                                alt={"Image of " + pebblerRow.pebbler + " the pebbler"}
+                                                h={25}
+                                                w={25}
+                                            />
+                                            <Anchor href={`/pebblers/${toCamelCase(pebblerRow.pebbler)}`} c="black" underline="hover" className={classes.oneLine}>
+                                                {pebblerRow.pebbler}
+                                            </Anchor>
+                                        </Flex>
+                                    </TableTd>
+                                    <TableTd>{pebblerRow.pebbles}</TableTd>
+                                    <TableTd>{pebblerRow.qp}</TableTd>
+                                    <TableTd>{pebblerRow.away_played + pebblerRow.home_played}</TableTd>
+                                    <TableTd>{pebblerRow.wins}</TableTd>
+                                    <TableTd>{pebblerRow.ties}</TableTd>
+                                    <TableTd>{pebblerRow.losses}</TableTd>
+                                    <TableTd>{pebblerRow.pd}</TableTd>
+                                    <TableTd>{pebblerRow.pf}</TableTd>
+                                    <TableTd>{pebblerRow.pa}</TableTd>
+                                    {includeForm && <TableTd><FormWidget results={pebblerRow.form} /></TableTd>}
+                                    <TableTd>{ppb}</TableTd>
+                                    <TableTd>{ppbHome}</TableTd>
+                                    <TableTd>{ppbAway}</TableTd>
+                                </TableTr>
+                            )
+                        })}
+                    </TableTbody>
+                </Table>
+            </ScrollArea>
+        </>
     )
 }

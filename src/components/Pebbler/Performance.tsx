@@ -41,6 +41,8 @@ export const Performance: FC<{ pebblerName: string }> = async ({ pebblerName }) 
                             data={data}
                             dataKey="date"
                             xAxisProps={{ angle: -45 }}
+                            xAxisLabel="Date"
+                            yAxisLabel="Pebbles"
                             series={[
                                 { name: 'Pebbles', color: "orange" },
                                 { name: 'Rank', color: "transparent" },

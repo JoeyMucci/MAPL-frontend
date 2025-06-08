@@ -1,4 +1,5 @@
 import { createTheme } from '@mantine/core';
+import { MonthPicker } from '@mantine/dates';
 
 export const theme = createTheme({
     colors: {
