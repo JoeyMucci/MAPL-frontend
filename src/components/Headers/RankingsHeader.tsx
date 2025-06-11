@@ -23,18 +23,22 @@ export const RankingsHeader: FC<{
         return (
             <Container fluid className={classes.header}>
                 <Stack align="center">
-                    <Title order={1}>
-                        Rankings
+                    <Title order={6}>
+                        Rankings Archive
                     </Title>
                     <MonthPicker
                         classNames={{
-                            monthsListControl: classes.ghostButton,
+                            monthsListControl: classes.ghostButtonOrange,
                         }}
+                        style={{ color: "orange" }}
                         maxLevel="year"
                         value={`${year}-${month}-01`}
                         defaultDate={`${year}-${month}-01`}
-                        onChange={(value) => window.location.href = `/rankings/${value.split('-')[0]}/${value.split('-')[1]}`}
+                        onChange={(value) => window.location.href = `/rankings/${value.split('-')[1]}/${value.split('-')[0]}`}
                     />
+                    <Title ta="center" order={1}>
+                        {new Date(year, month - 1).toLocaleString("en-US", { month: "short" })}{" "}{year}{" Rankings"}
+                    </Title>
                     <HeaderButtons
                         options={divisions}
                         selected={divisionSelected}

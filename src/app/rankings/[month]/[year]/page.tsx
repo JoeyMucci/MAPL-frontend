@@ -1,5 +1,4 @@
 import { Rankings } from "@/components/Rankings/Rankings";
-import { MonthPicker } from "@mantine/dates";
 import axios from "axios";
 
 export default async function RankingsPage({
@@ -21,7 +20,8 @@ export default async function RankingsPage({
 
     const { month, year } = await params
 
-    const rankings = await fetchRankings(month, year)
+    const data = await fetchRankings(month, year)
+    const rankings = data.rankings
 
     if (!rankings || Object.keys(rankings).length === 0) {
         return <div>Error: Rankings not found</div>

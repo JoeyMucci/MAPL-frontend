@@ -86,13 +86,11 @@ export const RankingsTable: FC<{ pebblerRows: PebblerRowStats[], division: strin
 
     const includeRankChange: boolean = totalPlayed % (2 * MATCHES_PER_ROUND) == 0
 
-    {/* change stickyHeaderOffset when web header is made */ }
-
     return (
         <>
             {!includeRankChange && <Text>*Rankings will be updated when matchday concludes</Text>}
             <ScrollArea>
-                <Table striped stickyHeader stickyHeaderOffset={0}>
+                <Table striped>
                     <TableThead>
                         <TableTr ta="center" fw={700}>
                             <TableTd>Rank</TableTd>

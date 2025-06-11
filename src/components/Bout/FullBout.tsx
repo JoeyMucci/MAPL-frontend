@@ -185,8 +185,8 @@ export const FullBout: FC<{ bout: ComplicatedBout }> = ({ bout }) => {
                         </Anchor>
                     </Flex>
                     <Flex gap="lg">
-                        <Title order={4} c={colorMap[bout.division]}>{bout.division}</Title>
-                        <Title ta="center" order={4}>
+                        <Title ta="right" w={200} order={4} c={colorMap[bout.division]}>{bout.division}</Title>
+                        <Title ta="left" w={200} order={4}>
                             {"     "}{bout.month.toString().padStart(2, "0")}/{bout.day.toString().padStart(2, "0")}/{bout.year}
                         </Title>
                     </Flex>

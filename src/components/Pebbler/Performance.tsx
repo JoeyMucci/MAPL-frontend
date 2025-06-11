@@ -10,7 +10,7 @@ export const Performance: FC<{ pebblerName: string }> = async ({ pebblerName }) 
     async function fetchHistory() {
         try {
             console.log("Fetching pebbler performance information...");
-            const response = await axios.get(`http://127.0.0.1:8000/api/history/${pebblerName}`);
+            const response = await axios.get(`http://127.0.0.1:8000/api/pebblers/history/${pebblerName}`);
             return response.data;
         } catch (error) {
             console.error("Error fetching data:", error);

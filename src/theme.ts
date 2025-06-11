@@ -68,6 +68,19 @@ export const theme = createTheme({
             "#b07100"
         ],
 
+        cyan: [
+            "#dffbff",
+            "#caf2ff",
+            "#99e2ff",
+            "#64d2ff",
+            "#3cc4fe",
+            "#23bcfe",
+            "#00b5ff",
+            "#00a1e4",
+            "#008fcd",
+            "#007cb6"
+        ],
+
         purple: [
             "#f7ecff",
             "#e7d6fb",

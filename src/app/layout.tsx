@@ -7,6 +7,7 @@ import {
   MantineProvider,
   mantineHtmlProps,
 } from "@mantine/core";
+import { WebHeader } from "@/components/Headers/WebHeader";
 import { theme } from "@/theme";
 import type { Metadata } from "next";
 
@@ -30,7 +31,7 @@ export default function RootLayout({
         <ColorSchemeScript />
       </head>
       <body>
-        <MantineProvider theme={theme}>{children}</MantineProvider>
+        <MantineProvider theme={theme}><WebHeader />{children}</MantineProvider>
       </body>
     </html>
   );

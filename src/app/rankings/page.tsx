@@ -1,12 +1,11 @@
 import { Rankings } from "@/components/Rankings/Rankings";
-import { MonthPicker } from "@mantine/dates";
 import axios from "axios";
 
 export default async function RankingsPage() {
-    async function fetchRankings(month: number, year: number) {
+    async function fetchRankings() {
         try {
             console.log("Fetching rankings...")
-            const response = await axios.get(`http://127.0.0.1:8000/api/rankings/${month}/${year}`)
+            const response = await axios.get(`http://127.0.0.1:8000/api/rankings/now`)
             return response.data
         }
         catch (error) {
@@ -15,11 +14,10 @@ export default async function RankingsPage() {
         }
     }
 
-
-    const date = new Date();
-    const month = date.getMonth() + 1; // Months are 0-indexed in JavaScript
-    const year = date.getFullYear();
-    const rankings = await fetchRankings(month, year)
+    const data = await fetchRankings()
+    const rankings = data.rankings
+    const month = data.month
+    const year = data.year
 
     if (!rankings || Object.keys(rankings).length === 0) {
         return <div>Error: Rankings not found</div>
