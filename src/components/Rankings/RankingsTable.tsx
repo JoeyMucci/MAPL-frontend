@@ -15,7 +15,7 @@ import {
     ScrollArea,
     UnstyledButton
 } from "@mantine/core"
-import { toCamelCase } from "@/functions/pebblers";
+import { toCamelCase } from "@/functions";
 import { divisions } from "@/vars";
 import { theme } from "@/theme"
 import {

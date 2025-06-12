@@ -1,41 +1,51 @@
 import { FC } from "react";
-import { Container, Title, Stack } from "@mantine/core";
+import { Card, Container, Title, Stack } from "@mantine/core";
 import { MonthPicker } from "@mantine/dates";
 import { HeaderButtons } from "./HeaderButtons";
-import { divisions } from "@/vars";
+import { divisions, leagueStart } from "@/vars";
 import classes from "./Header.module.css";
 
 export const RankingsHeader: FC<{
     divisionSelected: string,
+    maxMonth: number,
+    maxYear: number,
     month: number,
     year: number,
     largeScreen: boolean,
-    toggler: (a: string) => void
+    toggleDivision: (a: string) => void
+    toggleDate: (a: string) => void
 }> =
     ({
         divisionSelected,
+        maxMonth,
+        maxYear,
         month,
         year,
         largeScreen,
-        toggler,
+        toggleDivision,
+        toggleDate,
     }) => {
 
         return (
             <Container fluid className={classes.header}>
                 <Stack align="center">
-                    <Title order={6}>
-                        Rankings Archive
-                    </Title>
-                    <MonthPicker
-                        classNames={{
-                            monthsListControl: classes.ghostButtonOrange,
-                        }}
-                        style={{ color: "orange" }}
-                        maxLevel="year"
-                        value={`${year}-${month}-01`}
-                        defaultDate={`${year}-${month}-01`}
-                        onChange={(value) => window.location.href = `/rankings/${value.split('-')[1]}/${value.split('-')[0]}`}
-                    />
+                    <Card mt="sm" radius="lg" bg="black">
+                        <Title ta="center" c="white" mb="md" order={6}>
+                            Rankings Archive
+                        </Title>
+                        <MonthPicker
+                            classNames={{
+                                monthsListControl: classes.ghostButtonOrange,
+                            }}
+                            style={{ color: "orange" }}
+                            maxLevel="year"
+                            value={`${year}-${month}-1`}
+                            defaultDate={`${year}-${month}-1`}
+                            minDate={leagueStart}
+                            maxDate={`${maxYear}-${maxMonth}-1`}
+                            onChange={toggleDate}
+                        />
+                    </Card>
                     <Title ta="center" order={1}>
                         {new Date(year, month - 1).toLocaleString("en-US", { month: "short" })}{" "}{year}{" Rankings"}
                     </Title>
@@ -43,9 +53,9 @@ export const RankingsHeader: FC<{
                         options={divisions}
                         selected={divisionSelected}
                         largeScreen={largeScreen}
-                        toggler={toggler}
+                        toggler={toggleDivision}
                     />
                 </Stack>
-            </Container>
+            </Container >
         )
     }

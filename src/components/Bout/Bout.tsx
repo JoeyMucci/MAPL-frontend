@@ -6,7 +6,7 @@ import { SimpleBout } from "@/types/bouts";
 import { SimplePebbler } from "@/types/pebblers";
 import { SimplePebblerStats } from "@/types/stats";
 import { colorMap } from "@/vars";
-import { toCamelCase } from "@/functions/pebblers";
+import { toCamelCase } from "@/functions";
 
 interface BoutLineProps {
     pebbler: SimplePebbler;

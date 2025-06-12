@@ -3,7 +3,7 @@
 import { FC } from "react"
 import { ComplicatedBout } from "@/types/bouts"
 import { Anchor, Card, Center, Flex, Image, rem, Stack, Text, Title, Tooltip } from "@mantine/core"
-import { toCamelCase } from "@/functions/pebblers"
+import { toCamelCase } from "@/functions"
 import { abilityActionMap, abilityDescMap, abilityMap, colorMap, quirkDescMap, quirkMap, quirkMultMap, traitDescMap, traitMap } from "@/vars"
 import classes from "./Bout.module.css";
 
@@ -48,18 +48,22 @@ export const FullBout: FC<{ bout: ComplicatedBout }> = ({ bout }) => {
         <Stack w={550} gap="xs">
             <Flex justify="flex-start" gap={rem(4)}>
                 <Text span>{awayPebbler.name} rolls a {bout.away_roll} with</Text>
-                <Flex gap={rem(4)}>
-                    <AwayTraitIcon color={colorMap[awayPebbler.trait]} />
-                    {awayPebbler.trait}
-                </Flex>
+                <Tooltip label={traitDescMap[awayPebbler.trait]} color={colorMap[awayPebbler.trait]}>
+                    <Flex gap={rem(4)}>
+                        <AwayTraitIcon color={colorMap[awayPebbler.trait]} />
+                        {awayPebbler.trait}
+                    </Flex>
+                </Tooltip>
             </Flex>
 
             <Flex justify="flex-end" gap={rem(4)}>
                 <Text span>{homePebbler.name} rolls a {bout.home_roll} with</Text>
-                <Flex gap={rem(4)}>
-                    <HomeTraitIcon color={colorMap[homePebbler.trait]} />
-                    {homePebbler.trait}
-                </Flex>
+                <Tooltip label={traitDescMap[homePebbler.trait]} color={colorMap[homePebbler.trait]}>
+                    <Flex gap={rem(4)}>
+                        <HomeTraitIcon color={colorMap[homePebbler.trait]} />
+                        {homePebbler.trait}
+                    </Flex>
+                </Tooltip>
             </Flex>
 
             <Text ta="center" size="xl">{bout.away_roll}-{bout.home_roll}</Text>
@@ -67,20 +71,24 @@ export const FullBout: FC<{ bout: ComplicatedBout }> = ({ bout }) => {
             {bout.away_quirk &&
                 <Flex justify="flex-start" gap={rem(4)}>
                     <Text span>{awayPebbler.name} gains {quirkPebbles} pebble{quirkPebbles !== 1 ? "s " : " "} with</Text>
-                    <Flex gap={rem(4)}>
-                        <AwayQuirkIcon color="purple" />
-                        {awayPebbler.quirk}
-                    </Flex>
+                    <Tooltip label={quirkDescMap[awayPebbler.quirk]} color="purple">
+                        <Flex gap={rem(4)}>
+                            <AwayQuirkIcon color="purple" />
+                            {awayPebbler.quirk}
+                        </Flex>
+                    </Tooltip>
                 </Flex>
             }
 
             {bout.home_quirk &&
                 <Flex justify="flex-end" gap={rem(4)}>
                     <Text span>{homePebbler.name} gains {quirkPebbles} pebble{quirkPebbles !== 1 ? "s " : " "} with</Text>
-                    <Flex gap={rem(4)}>
-                        <HomeQuirkIcon color="purple" />
-                        {homePebbler.quirk}
-                    </Flex>
+                    <Tooltip label={quirkDescMap[homePebbler.quirk]} color="purple">
+                        <Flex gap={rem(4)}>
+                            <HomeQuirkIcon color="purple" />
+                            {homePebbler.quirk}
+                        </Flex>
+                    </Tooltip>
                 </Flex>
             }
 
@@ -88,10 +96,12 @@ export const FullBout: FC<{ bout: ComplicatedBout }> = ({ bout }) => {
                 <>
                     <Flex justify="flex-start" gap={rem(4)}>
                         <Text span>{awayPebbler.name} {abilityActionMap[awayPebbler.ability]} with</Text>
-                        <Flex gap={rem(4)}>
-                            <AwayAbilityIcon color="pink" />
-                            {awayPebbler.ability}
-                        </Flex>
+                        <Tooltip label={abilityDescMap[awayPebbler.ability]} color="pink">
+                            <Flex gap={rem(4)}>
+                                <AwayAbilityIcon color="pink" />
+                                {awayPebbler.ability}
+                            </Flex>
+                        </Tooltip>
                     </Flex>
                     {/* Generosity does not change rolls so do not display them again */}
                     {awayPebbler.ability !== "Generosity" && <Text ta="center" size="xl">{bout.away_roll_half}-{bout.home_roll_half}</Text>}
@@ -102,10 +112,12 @@ export const FullBout: FC<{ bout: ComplicatedBout }> = ({ bout }) => {
                 <>
                     <Flex justify="flex-end" gap={rem(4)}>
                         <Text span>{homePebbler.name} {abilityActionMap[homePebbler.ability]} with</Text>
-                        <Flex gap={rem(4)}>
-                            <HomeAbilityIcon color="pink" />
-                            {homePebbler.ability}
-                        </Flex>
+                        <Tooltip label={abilityDescMap[homePebbler.ability]} color="pink">
+                            <Flex gap={rem(4)}>
+                                <HomeAbilityIcon color="pink" />
+                                {homePebbler.ability}
+                            </Flex>
+                        </Tooltip>
                     </Flex>
                     {/* Generosity does not change rolls so do not display them again */}
                     {homePebbler.ability !== "Generosity" && <Text ta="center" size="xl">{bout.away_roll_final}-{bout.home_roll_final}</Text>}
@@ -120,11 +132,6 @@ export const FullBout: FC<{ bout: ComplicatedBout }> = ({ bout }) => {
 
     const PreviewBlock = () => (
         <Stack w={550} gap="xl">
-            <Flex justify="space-between">
-                <Text span size="xl" >{awayPebbler.name}</Text>
-                <Text span size="xl">vs.</Text>
-                <Text span size="xl" >{homePebbler.name}</Text>
-            </Flex>
             <Flex justify="space-between">
                 <Tooltip label={traitDescMap[awayPebbler.trait]} color={colorMap[awayPebbler.trait]}>
                     <Flex gap={rem(4)}>

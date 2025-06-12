@@ -2,7 +2,7 @@ import { FC } from "react"
 import { MediumPebbler } from "@/types/pebblers"
 import { Center, Container, Flex, Image, Stack, Text, Title } from "@mantine/core"
 import { tabs, colorMap } from "@/vars"
-import { toCamelCase } from "@/functions/pebblers"
+import { toCamelCase } from "@/functions"
 import { HeaderButtons } from "./HeaderButtons"
 import classes from "./Header.module.css"
 

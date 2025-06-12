@@ -15,6 +15,8 @@ import {
     IconScale,
 } from "@tabler/icons-react";
 
+export const leagueStart: string = "2023-01-01"
+
 export const divisions: string[] = ["Master", "All-Star", "Professional", "Learner"]
 
 export const tabs: string[] = ["Meet the Pebbler", "Activity Log", "Performance History", "Look Deeper"]
@@ -71,8 +73,8 @@ export const traitDescMap: { [key: string]: string } = {
 export const quirkDescMap: { [key: string]: string } = {
     "Pity Pebble": "If trailing by more than one, gain pebble instantly",
     "Proud Pebble": "If leading by more than one, gain pebble instantly",
-    "Oddball": "If roll parity differs from round parity and opponent roll parity, gain pebble instantly",
-    "Even Temper": "If roll parity matches round parity and opponent roll parity, gain pebble instantly",
+    "Oddball": "If roll parity differs from day parity and opponent roll parity, gain pebble instantly",
+    "Even Temper": "If roll parity matches day parity and opponent roll parity, gain pebble instantly",
     "Untouchable": "If opponent roll is one, gain pebble instantly",
 }
 

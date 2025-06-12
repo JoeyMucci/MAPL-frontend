@@ -5,7 +5,7 @@ export default async function RankingsPage() {
     async function fetchRankings() {
         try {
             console.log("Fetching rankings...")
-            const response = await axios.get(`http://127.0.0.1:8000/api/rankings/now`)
+            const response = await axios.get(`http://127.0.0.1:8000/api/rankings`)
             return response.data
         }
         catch (error) {
@@ -25,7 +25,7 @@ export default async function RankingsPage() {
 
     return (
         <>
-            <Rankings rankings={rankings} month={month} year={year} />
+            <Rankings rankings={rankings} maxMonth={month} maxYear={year} />
         </>
     )
 }

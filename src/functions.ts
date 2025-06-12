@@ -6,3 +6,8 @@ export function toCamelCase(name: string): string {
         words.slice(1).map(word => word.charAt(0).toUpperCase() + word.slice(1)).join("")
     );
 }
+
+export function toggleDate(setMonth: (a: number) => void, setYear: (a: number) => void, newDate: string): void {
+    setMonth(parseInt(newDate.split('-')[1], 10))
+    setYear(parseInt(newDate.split('-')[0], 10))
+}

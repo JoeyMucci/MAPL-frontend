@@ -27,7 +27,8 @@ export interface PebblerRowStats {
 
 export interface History {
     distribution: DivisionCounts;
-    performances: PerformanceSummary[];
+    performances: { [year: string]: PerformanceSummary[] };
+    year: number;
 }
 
 export interface DivisionCounts {
