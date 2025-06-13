@@ -7,8 +7,6 @@ import classes from "./Header.module.css";
 
 export const RankingsHeader: FC<{
     divisionSelected: string,
-    maxMonth: number,
-    maxYear: number,
     month: number,
     year: number,
     largeScreen: boolean,
@@ -17,8 +15,6 @@ export const RankingsHeader: FC<{
 }> =
     ({
         divisionSelected,
-        maxMonth,
-        maxYear,
         month,
         year,
         largeScreen,
@@ -42,7 +38,7 @@ export const RankingsHeader: FC<{
                             value={`${year}-${month}-1`}
                             defaultDate={`${year}-${month}-1`}
                             minDate={leagueStart}
-                            maxDate={`${maxYear}-${maxMonth}-1`}
+                            maxDate={`${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`}
                             onChange={toggleDate}
                         />
                     </Card>

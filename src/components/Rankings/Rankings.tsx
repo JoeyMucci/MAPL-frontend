@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import { FC, useState } from "react";
 import { PebblerRowStats } from "@/types/stats";
@@ -10,19 +10,15 @@ import { RankingsFooter } from "./RankingsFooter";
 import { Space, Title } from "@mantine/core";
 import { toggleDate } from "@/functions";
 
-type RankingsDict = {
-    [year: number]: {
-        [month: number]: {
-            [division: string]: PebblerRowStats[]
-        }
-    }
-}
-
-export const Rankings: FC<{ rankings: RankingsDict, maxMonth: number, maxYear: number }> =
-    ({ rankings, maxMonth, maxYear }) => {
+export const Rankings: FC<{
+    rankings: { [division: string]: PebblerRowStats[] },
+    month: number,
+    year: number
+    setMonthAction: (month: number) => void,
+    setYearAction: (year: number) => void,
+}> =
+    ({ rankings, month, year, setMonthAction, setYearAction }) => {
         const [division, setDivision] = useState<string>(divisions[0])
-        const [month, setMonth] = useState<number>(maxMonth)
-        const [year, setYear] = useState<number>(maxYear)
         let largeScreen = useMediaQuery('(min-width: 56em)');
         largeScreen = largeScreen === undefined ? true : largeScreen;
 
@@ -34,16 +30,14 @@ export const Rankings: FC<{ rankings: RankingsDict, maxMonth: number, maxYear: n
             <>
                 <RankingsHeader
                     divisionSelected={division}
-                    maxMonth={maxMonth}
-                    maxYear={maxYear}
                     month={month}
                     year={year}
                     toggleDivision={toggleDivision}
-                    toggleDate={(value) => toggleDate(setMonth, setYear, value)}
+                    toggleDate={(value) => toggleDate(setMonthAction, setYearAction, value)}
                     largeScreen={largeScreen}
                 />
                 {!largeScreen && <Title ta="center" order={3}>{division} Division</Title>}
-                <RankingsTable pebblerRows={rankings[month][year][division]} division={division} />
+                <RankingsTable pebblerRows={rankings[division]} division={division} />
                 <Space h="lg" />
                 <RankingsFooter division={division} />
             </>

@@ -25,12 +25,6 @@ export interface PebblerRowStats {
     previous_rank: number;
 }
 
-export interface History {
-    distribution: DivisionCounts;
-    performances: { [year: string]: PerformanceSummary[] };
-    year: number;
-}
-
 export interface DivisionCounts {
     masters: number;
     all_stars: number;
