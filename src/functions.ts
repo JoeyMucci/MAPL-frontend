@@ -7,7 +7,8 @@ export function toCamelCase(name: string): string {
     );
 }
 
-export function toggleDate(setMonth: (a: number) => void, setYear: (a: number) => void, newDate: string): void {
-    setMonth(parseInt(newDate.split('-')[1], 10))
-    setYear(parseInt(newDate.split('-')[0], 10))
+// Can change to mock other scenarios, return format is D-M-Y
+export function getTime() {
+    // return '2023-10-01'
+    return `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`
 }

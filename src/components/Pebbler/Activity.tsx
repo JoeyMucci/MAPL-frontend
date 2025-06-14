@@ -3,10 +3,8 @@
 import { FC, useState, useEffect } from "react";
 import { ComplicatedBout } from "@/types/bouts";
 import { FullBout } from "@/components/Bout/FullBout";
-import { Card, Stack, Title } from "@mantine/core";
-import { MonthPicker } from "@mantine/dates";
-import { leagueStart } from "@/vars";
-import classes from "@/components/Headers/Header.module.css";
+import { Stack } from "@mantine/core";
+import { DatePicker } from "@/components/Headers/DatePicker";
 import axios from "axios";
 
 export const Activity: FC<{ pebblerName: string }> =
@@ -43,23 +41,12 @@ export const Activity: FC<{ pebblerName: string }> =
 
         return (
             <Stack align="center" mt="md" mb="md" >
-                <Card radius="lg" bg="black">
-                    <Title c="white" ta="center" mb="md" order={6}>
-                        {pebblerName}: Activity Archive
-                    </Title>
-                    <MonthPicker
-                        classNames={{
-                            monthsListControl: classes.ghostButtonOrange,
-                        }}
-                        style={{ color: "orange" }}
-                        maxLevel="year"
-                        value={`${year}-${month}-1`}
-                        defaultDate={`${year}-${month}-1`}
-                        minDate={leagueStart}
-                        maxDate={`${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`}
-                        onChange={toggleDate}
-                    />
-                </Card>
+                <DatePicker
+                    title={`${pebblerName}: Activity Archive`}
+                    curMonth={month}
+                    curYear={year}
+                    onChange={toggleDate}
+                />
                 {
                     bouts.map((bout, i) => (
                         <FullBout key={i} bout={bout} />

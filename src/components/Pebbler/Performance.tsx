@@ -2,14 +2,14 @@
 
 import { FC, useState, useEffect } from "react";
 import { DivisionCounts, PerformanceSummary } from "@/types/stats";
-import { Card, Title, Badge, Flex, Stack, Center, ScrollArea } from "@mantine/core";
-import { YearPicker } from "@mantine/dates";
+import { Badge, Flex, Stack, Center, ScrollArea, Title } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
+import { DatePicker } from "@/components/Headers/DatePicker";
+import { RankingSummary } from "@/components/Rankings/RankingSummary";
 import { LineChart, DonutChart } from "@mantine/charts";
 import { colorMap, divisions } from "@/vars";
-import { leagueStart } from "@/vars";
 import axios from "axios";
 import classes from "./Pebbler.module.css";
-import pickerClasses from "@/components/Headers/Header.module.css";
 
 export const Performance: FC<{ pebblerName: string }> =
     ({ pebblerName }) => {
@@ -26,7 +26,7 @@ export const Performance: FC<{ pebblerName: string }> =
 
         async function fetchHistory(year: number) {
             try {
-                console.log("Fetching pebbler division distribution...");
+                console.log("Fetching pebbler performance history...");
                 const response = await axios.get(`http://127.0.0.1:8000/api/pebblers/history/${pebblerName}/${year}`);
                 return response.data;
             } catch (error) {
@@ -34,6 +34,9 @@ export const Performance: FC<{ pebblerName: string }> =
                 return {};
             }
         }
+
+        let largeScreen = useMediaQuery('(min-width: 56em)');
+        largeScreen = largeScreen === undefined ? true : largeScreen;
 
         const colorClasses = [classes.master, classes.allstar, classes.professional, classes.learner]
         const curYear = new Date().getFullYear()
@@ -66,6 +69,14 @@ export const Performance: FC<{ pebblerName: string }> =
 
         const DonutBlock = () => (
             <Flex wrap="wrap" align="center" gap="xl">
+                <Stack>
+                    {divisions.map((division, i) => (
+                        <Badge key={i} className={colorClasses[i]} radius="xs" py="md" color="white" style={{ color: "black" }}>
+                            {division}
+                        </Badge>
+                    ))}
+                </Stack>
+
                 <DonutChart
                     size={300}
                     strokeWidth={2}
@@ -79,40 +90,21 @@ export const Performance: FC<{ pebblerName: string }> =
                     ]}
                     chartLabel="Division Distribution"
                 />
-
-                <Stack>
-                    {divisions.map((division, i) => (
-                        <Badge key={i} className={colorClasses[i]} radius="xs" py="md" color="white" style={{ color: "black" }}>
-                            {division}
-                        </Badge>
-                    ))}
-                </Stack>
             </Flex>
         )
 
         return (
             <Stack align="center" mt="md">
                 <DonutBlock />
+                <DatePicker
+                    title={`${pebblerName}: Performance Archive`}
+                    curYear={year}
+                    onChange={toggleDate}
+                />
 
-                <Card radius="lg" bg="black">
-                    <Title c="white" ta="center" mb="md" order={6}>
-                        {pebblerName}: Performance Archive
-                    </Title>
-                    <YearPicker
-                        classNames={{
-                            yearsListControl: pickerClasses.ghostButtonOrange,
-                        }}
-                        style={{ color: "orange" }}
-                        value={`${year}-1-1`}
-                        defaultDate={`${year}-1-1`}
-                        minDate={leagueStart}
-                        maxDate={`${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`}
-                        onChange={toggleDate}
-                    />
-                </Card>
-
+                <Title order={4} ta="center" mt="xl">Pebble Plot</Title>
                 <Center>
-                    <ScrollArea h={310}>
+                    <ScrollArea w={largeScreen ? 1000 : 300}>
                         <LineChart
                             h={300}
                             w={1000}
@@ -124,29 +116,20 @@ export const Performance: FC<{ pebblerName: string }> =
                             yAxisLabel="Pebbles"
                             series={[
                                 { name: 'Pebbles', color: "orange" },
-                                { name: 'Rank', color: "transparent" },
-                                { name: 'Division', color: "transparent" },
                             ]}
                         />
                     </ScrollArea>
                 </Center>
 
-                <Stack w={1000} gap="xs">
-                    {performances.slice().map((perf, idx) => (
-                        <Card key={idx} radius="md" withBorder mb="xs" bg="gray.0">
-                            <Flex justify="space-between" align="center">
-                                <Title order={6}>
-                                    {new Date(year, perf.month - 1, 1).toLocaleString('default', { month: 'short', year: 'numeric' })}
-                                </Title>
-                                <Badge className={colorClasses[divisions.indexOf(perf.division)]} radius="xs" color="white" style={{ color: "black" }}>
-                                    {perf.division}
-                                </Badge>
-                            </Flex>
-                            <Flex gap="md" mt="xs">
-                                <Badge color="orange" variant="light">Pebbles: {perf.pebbles}</Badge>
-                                <Badge color="blue" variant="light">Rank: {perf.rank}</Badge>
-                            </Flex>
-                        </Card>
+                <Title order={4} ta="center" mt="xl">Promotion/Demotion Record</Title>
+                <Stack gap="sm" mb="sm">
+                    {performances.slice().map((perf, i) => (
+                        <RankingSummary
+                            key={i}
+                            division={perf.division}
+                            rank={perf.rank}
+                            dateString={new Date(year, perf.month - 1, 1).toLocaleString('default', { month: 'short', year: 'numeric' })}
+                        />
                     ))}
                 </Stack>
             </Stack>

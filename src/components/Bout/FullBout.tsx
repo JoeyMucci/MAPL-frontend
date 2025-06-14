@@ -2,7 +2,7 @@
 
 import { FC } from "react"
 import { ComplicatedBout } from "@/types/bouts"
-import { Anchor, Card, Center, Flex, Image, rem, Stack, Text, Title, Tooltip } from "@mantine/core"
+import { Anchor, Badge, Card, Center, Flex, Image, rem, Stack, Text, Title, Tooltip } from "@mantine/core"
 import { toCamelCase } from "@/functions"
 import { abilityActionMap, abilityDescMap, abilityMap, colorMap, quirkDescMap, quirkMap, quirkMultMap, traitDescMap, traitMap } from "@/vars"
 import classes from "./Bout.module.css";
@@ -191,12 +191,10 @@ export const FullBout: FC<{ bout: ComplicatedBout }> = ({ bout }) => {
                             <Title order={2} w={200} ta="left">{homePebbler.name}</Title>
                         </Anchor>
                     </Flex>
-                    <Flex gap="lg">
-                        <Title ta="right" w={200} order={4} c={colorMap[bout.division]}>{bout.division}</Title>
-                        <Title ta="left" w={200} order={4}>
-                            {"     "}{bout.month.toString().padStart(2, "0")}/{bout.day.toString().padStart(2, "0")}/{bout.year}
-                        </Title>
-                    </Flex>
+                    <Badge w={125} color={colorMap[bout.division]}>{bout.division}</Badge>
+                    <Title ta="left" order={4}>
+                        {bout.month.toString().padStart(2, "0")}/{bout.day.toString().padStart(2, "0")}/{bout.year}
+                    </Title>
                 </Stack>
             </Center>
             <Flex align="center" justify="space-between" style={{ minHeight: 300 }}>

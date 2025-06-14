@@ -1,10 +1,11 @@
-import axios from "axios";
 import { MediumPebbler } from "@/types/pebblers";
 import { Pebbler } from "@/components/Pebbler/Pebbler";
 import { Meet } from "@/components/Pebbler/Meet";
 import { Activity } from "@/components/Pebbler/Activity";
 import { Performance } from "@/components/Pebbler/Performance";
 import { Look } from "@/components/Pebbler/Look";
+import axios from "axios";
+
 
 export default async function PebblerPage({
     params,

@@ -8,7 +8,6 @@ import { useMediaQuery } from "@mantine/hooks";
 import { RankingsTable } from "./RankingsTable";
 import { RankingsFooter } from "./RankingsFooter";
 import { Space, Title } from "@mantine/core";
-import { toggleDate } from "@/functions";
 
 export const Rankings: FC<{
     rankings: { [division: string]: PebblerRowStats[] },
@@ -21,6 +20,11 @@ export const Rankings: FC<{
         const [division, setDivision] = useState<string>(divisions[0])
         let largeScreen = useMediaQuery('(min-width: 56em)');
         largeScreen = largeScreen === undefined ? true : largeScreen;
+
+        function toggleDate(setMonth: (a: number) => void, setYear: (a: number) => void, newDate: string): void {
+            setMonth(parseInt(newDate.split('-')[1], 10))
+            setYear(parseInt(newDate.split('-')[0], 10))
+        }
 
         const toggleDivision = (newDivision: string) => {
             setDivision(newDivision)

@@ -1,8 +1,8 @@
 import { FC } from "react";
-import { Card, Container, Title, Stack } from "@mantine/core";
-import { MonthPicker } from "@mantine/dates";
+import { Container, Title, Stack } from "@mantine/core";
 import { HeaderButtons } from "./HeaderButtons";
-import { divisions, leagueStart } from "@/vars";
+import { DatePicker } from "./DatePicker";
+import { divisions } from "@/vars";
 import classes from "./Header.module.css";
 
 export const RankingsHeader: FC<{
@@ -25,24 +25,13 @@ export const RankingsHeader: FC<{
         return (
             <Container fluid className={classes.header}>
                 <Stack align="center">
-                    <Card mt="sm" radius="lg" bg="black">
-                        <Title ta="center" c="white" mb="md" order={6}>
-                            Rankings Archive
-                        </Title>
-                        <MonthPicker
-                            classNames={{
-                                monthsListControl: classes.ghostButtonOrange,
-                            }}
-                            style={{ color: "orange" }}
-                            maxLevel="year"
-                            value={`${year}-${month}-1`}
-                            defaultDate={`${year}-${month}-1`}
-                            minDate={leagueStart}
-                            maxDate={`${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`}
-                            onChange={toggleDate}
-                        />
-                    </Card>
-                    <Title ta="center" order={1}>
+                    <DatePicker
+                        title="Rankings Archive"
+                        curMonth={month}
+                        curYear={year}
+                        onChange={toggleDate}
+                    />
+                    <Title ta="center" order={1} mt="xl">
                         {new Date(year, month - 1).toLocaleString("en-US", { month: "short" })}{" "}{year}{" Rankings"}
                     </Title>
                     <HeaderButtons

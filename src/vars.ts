@@ -17,6 +17,11 @@ import {
 
 export const leagueStart: string = "2023-01-01"
 
+export const MATCHES_PER_ROUND = 12
+export const FORM_THRESHOLD = 5
+export const PROMOTE_DEMOTE = 5
+export const PEBBLERS_PER_DIVISION = 25
+
 export const divisions: string[] = ["Master", "All-Star", "Professional", "Learner"]
 
 export const tabs: string[] = ["Meet the Pebbler", "Activity Log", "Performance History", "Look Deeper"]
@@ -37,8 +42,7 @@ export const colorMap: { [key: string]: string } = {
     "W": "goodGreen",
     "L": "alarmRed",
     "T": "midBlue",
-    "D": "midBlue", // Remove when db is fixed from D->T
-};
+}
 
 export const traitMap: { [key: string]: typeof IconFeatherFilled } = {
     "Grace": IconFeatherFilled,

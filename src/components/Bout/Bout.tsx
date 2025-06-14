@@ -80,6 +80,7 @@ export const Bout: FC<{ bout: SimpleBout }> = ({ bout }) => {
     return (
         <Card
             w={250}
+            radius="lg"
             onClick={() => window.location.href = `/bouts/${bout.id}`}
             withBorder
         >

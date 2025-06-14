@@ -25,13 +25,8 @@ import {
     IconArrowDown,
     IconArrowsRightLeft
 } from "@tabler/icons-react";
-import { colorMap } from "@/vars";
+import { colorMap, MATCHES_PER_ROUND, FORM_THRESHOLD, PROMOTE_DEMOTE, PEBBLERS_PER_DIVISION } from "@/vars";
 import classes from "./Rankings.module.css";
-
-const MATCHES_PER_ROUND = 12
-const FORM_THRESHOLD = 5
-const PROMOTE_DEMOTE = 5
-const PEBBLERS_PER_DIVISION = 25
 
 export const RankingsTable: FC<{ pebblerRows: PebblerRowStats[], division: string }> = ({ pebblerRows, division }) => {
     const RankingChangeWidget: FC<{ rank: number, oldRank: number }> = ({ rank, oldRank }) => {
