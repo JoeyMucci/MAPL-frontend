@@ -1,29 +1,16 @@
 "use client"
 
 import { FC, useState, useEffect } from "react";
-import { DivisionCounts, PerformanceSummary } from "@/types/stats";
-import { Badge, Flex, Stack, Center, ScrollArea, Title } from "@mantine/core";
+import { PerformanceSummary } from "@/types/stats";
+import { Stack, Center, ScrollArea, Title } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { DatePicker } from "@/components/Headers/DatePicker";
 import { RankingSummary } from "@/components/Rankings/RankingSummary";
-import { LineChart, DonutChart } from "@mantine/charts";
-import { colorMap, divisions } from "@/vars";
+import { LineChart } from "@mantine/charts";
 import axios from "axios";
-import classes from "./Pebbler.module.css";
 
 export const Performance: FC<{ pebblerName: string }> =
     ({ pebblerName }) => {
-        async function fetchDistribution() {
-            try {
-                console.log("Fetching pebbler division distribution...");
-                const response = await axios.get(`http://127.0.0.1:8000/api/pebblers/distribution/${pebblerName}`);
-                return response.data;
-            } catch (error) {
-                console.error("Error fetching data:", error);
-                return {};
-            }
-        }
-
         async function fetchHistory(year: number) {
             try {
                 console.log("Fetching pebbler performance history...");
@@ -38,10 +25,8 @@ export const Performance: FC<{ pebblerName: string }> =
         let largeScreen = useMediaQuery('(min-width: 56em)');
         largeScreen = largeScreen === undefined ? true : largeScreen;
 
-        const colorClasses = [classes.master, classes.allstar, classes.professional, classes.learner]
         const curYear = new Date().getFullYear()
         const [year, setYear] = useState<number>(curYear)
-        const [distribution, setDistribution] = useState<DivisionCounts>({ masters: 0, all_stars: 0, professionals: 0, learners: 0 });
         const [performances, setPerformances] = useState<PerformanceSummary[]>([]);
 
         const data = performances.slice().reverse().map((perf: PerformanceSummary) => ({
@@ -50,12 +35,6 @@ export const Performance: FC<{ pebblerName: string }> =
             Division: perf.division,
             Rank: perf.rank,
         }));
-
-        useEffect(() => {
-            fetchDistribution().then((data) => {
-                setDistribution(data.distribution);
-            });
-        }, []);
 
         useEffect(() => {
             fetchHistory(year).then((data) => {
@@ -67,35 +46,8 @@ export const Performance: FC<{ pebblerName: string }> =
             setYear(parseInt(newDate.split('-')[0], 10))
         }
 
-        const DonutBlock = () => (
-            <Flex wrap="wrap" align="center" gap="xl">
-                <Stack>
-                    {divisions.map((division, i) => (
-                        <Badge key={i} className={colorClasses[i]} radius="xs" py="md" color="white" style={{ color: "black" }}>
-                            {division}
-                        </Badge>
-                    ))}
-                </Stack>
-
-                <DonutChart
-                    size={300}
-                    strokeWidth={2}
-                    thickness={40}
-                    tooltipDataSource="segment"
-                    data={[
-                        { name: 'Master', value: distribution.masters, color: colorMap['Master'] },
-                        { name: 'All-Star', value: distribution.all_stars, color: colorMap['All-Star'] },
-                        { name: 'Professional', value: distribution.professionals, color: colorMap['Professional'] },
-                        { name: 'Learner', value: distribution.learners, color: colorMap['Learner'] },
-                    ]}
-                    chartLabel="Division Distribution"
-                />
-            </Flex>
-        )
-
         return (
             <Stack align="center" mt="md">
-                <DonutBlock />
                 <DatePicker
                     title={`${pebblerName}: Performance Archive`}
                     curYear={year}
@@ -104,7 +56,7 @@ export const Performance: FC<{ pebblerName: string }> =
 
                 <Title order={4} ta="center" mt="xl">Pebble Plot</Title>
                 <Center>
-                    <ScrollArea w={largeScreen ? 1000 : 300}>
+                    <ScrollArea type="auto" w={largeScreen ? 1000 : 300}>
                         <LineChart
                             h={300}
                             w={1000}

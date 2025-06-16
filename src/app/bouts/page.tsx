@@ -28,7 +28,7 @@ export default async function Home() {
       <Title ta="center" order={1}>Daily Bouts</Title>
       <Stack>
         {divisions.map((division, i) => (
-          <ScrollArea key={i}>
+          <ScrollArea type="auto" key={i}>
             <Flex my="md" align="center">
               {bouts[division].map((bout, j) => (
                 <div style={{ "flexShrink": 0 }} key={j}>

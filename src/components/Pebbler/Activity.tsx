@@ -3,7 +3,8 @@
 import { FC, useState, useEffect } from "react";
 import { ComplicatedBout } from "@/types/bouts";
 import { FullBout } from "@/components/Bout/FullBout";
-import { Stack } from "@mantine/core";
+import { ScrollArea, Stack } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
 import { DatePicker } from "@/components/Headers/DatePicker";
 import axios from "axios";
 
@@ -19,6 +20,10 @@ export const Activity: FC<{ pebblerName: string }> =
                 return {};
             }
         }
+
+        let largeScreen = useMediaQuery('(min-width: 56em)');
+        largeScreen = largeScreen === undefined ? true : largeScreen;
+
 
         const date = new Date()
         const curMonth = date.getMonth() + 1 // getMonth() returns 0-11, so we add 1
@@ -49,7 +54,9 @@ export const Activity: FC<{ pebblerName: string }> =
                 />
                 {
                     bouts.map((bout, i) => (
-                        <FullBout key={i} bout={bout} />
+                        <ScrollArea type="auto" w={largeScreen ? 1000 : 300} key={i}>
+                            <FullBout key={i} bout={bout} />
+                        </ScrollArea>
                     ))
                 }
             </Stack >

@@ -7,6 +7,10 @@ export interface MediumPebbler {
     away_pebbles: number;
     qp: number;
     at: number;
+    masters: number;
+    all_stars: number;
+    professionals: number;
+    learners: number;
 }
 
 export interface SimplePebbler {

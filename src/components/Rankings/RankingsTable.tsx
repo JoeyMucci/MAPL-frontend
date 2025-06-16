@@ -84,7 +84,7 @@ export const RankingsTable: FC<{ pebblerRows: PebblerRowStats[], division: strin
     return (
         <>
             {!includeRankChange && <Text>*Rankings will be updated when matchday concludes</Text>}
-            <ScrollArea>
+            <ScrollArea type="auto">
                 <Table striped>
                     <TableThead>
                         <TableTr ta="center" fw={700}>

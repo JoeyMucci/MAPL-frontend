@@ -53,8 +53,24 @@ export const WebHeader = () => {
                     </Flex>
                 </Flex>
             ) : (
-                <>
-                    {!modalOpened && (
+                <Flex align="center" justify="flex-start" style={{ width: '100%' }}>
+                    <IconMenu2
+                        size={40}
+                        color="brown"
+                        style={{ cursor: "pointer" }}
+                        onClick={() => modalHandlers.open()}
+                    />
+
+                    <Image
+                        src="/pebble.png"
+                        alt="The MAPL logo"
+                        h={40}
+                        w={40}
+                        m={10}
+                        onClick={() => router.push('/')}
+                        style={{ cursor: "pointer" }}
+                    />
+                    {/* {!modalOpened && (
                         <Flex align="center" justify="flex-start">
                             <IconMenu2
                                 size={40}
@@ -115,8 +131,8 @@ export const WebHeader = () => {
                                 </Button>
                             ))}
                         </Stack>
-                    </Modal>
-                </>
+                    </Modal> */}
+                </Flex>
             )}
         </header>
     )

@@ -53,7 +53,7 @@ export const Meet: FC<{ pebblerName: string }> = async ({ pebblerName }) => {
     return (
         <Flex wrap="wrap" align="center" justify="space-evenly" mt="md">
             <Text size="xl" ta="center" w={300}>{pebbler.description}</Text>
-            <Stack>
+            <Stack mt="md" mb="md">
                 {displayData.map((datum, i) => (
                     <Card key={i} radius="md" w={300} bg="orange" px="sm">
                         <Flex align="center" justify="space-between">

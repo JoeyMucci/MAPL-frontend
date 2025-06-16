@@ -5,7 +5,7 @@ import { Anchor, Badge, Card, CardSection, Flex, Radio, Text, Image, Tooltip } f
 import { SimpleBout } from "@/types/bouts";
 import { SimplePebbler } from "@/types/pebblers";
 import { SimplePebblerStats } from "@/types/stats";
-import { colorMap } from "@/vars";
+import { colorMap, divisions } from "@/vars";
 import { toCamelCase } from "@/functions";
 
 interface BoutLineProps {
@@ -41,7 +41,7 @@ export const Bout: FC<{ bout: SimpleBout }> = ({ bout }) => {
                         >
                             <Radio color="purple" iconColor="purple" size="xs" checked={stats.quirk_activated} readOnly />
                         </Tooltip>
-                        {bout.division !== "Learner" && (
+                        {bout.division !== divisions[divisions.length - 1] && (
                             <Tooltip
                                 label={stats.ability_triggered ? "Ability Triggered" : ""}
                                 color={stats.ability_triggered ? "pink" : "transparent"}
