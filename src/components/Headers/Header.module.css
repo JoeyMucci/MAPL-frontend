@@ -1,8 +1,42 @@
+/* headers */
+.webHeader {
+  height: 60px;
+  background-color: var(--mantine-color-cyan-6);
+  border-bottom: 1px solid black;
+  position: sticky; 
+  top: 0;
+  z-index: 1;
+}
+
 .header {
   background-color:  var(--mantine-color-purple-5); /* For browsers that do not support gradients */
   background-image: linear-gradient(225deg, var(--mantine-color-purple-5), var(--mantine-color-pink-5));
 }
 
+/* whButton */
+.whButtonSelected {
+  color: var(--mantine-color-orange-5);
+  background-color: var(--mantine-color-transparent);
+  font-weight: bold;
+}
+
+.whButtonSelected:hover {
+  color: var(--mantine-color-orange-5);
+  background-color: var(--mantine-color-transparent);
+  font-weight: bold;
+}
+
+.whButton {
+  color: "white";
+  background-color: var(--mantine-color-transparent);
+}
+
+.whButton:hover {
+  color: var(--mantine-color-orange-5);
+  background-color: var(--mantine-color-transparent);
+}
+
+/* ghostButton */
 .ghostButton {
   background-color: var(--mantine-color-transparent);
 }
@@ -12,6 +46,18 @@
   border-bottom: 5px solid black;
 }
 
+/* ghostButtonOrange */
+.ghostButtonOrange {
+  background-color: var(--mantine-color-transparent);
+  color: var(--mantine-color-orange-5)
+}
+
+.ghostButtonOrange:hover {
+  background-color: var(--mantine-color-white);
+  color: var(--mantine-color-orange-5);
+}
+
+/* ghostButtonSelected */
 .ghostButtonSelected {
   background-color: var(--mantine-color-transparent);
   border-bottom: 5px solid black;

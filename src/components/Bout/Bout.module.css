@@ -1,0 +1,3 @@
+.flipY {
+    transform: scaleX(-1);
+}

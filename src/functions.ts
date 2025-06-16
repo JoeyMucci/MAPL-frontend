@@ -6,3 +6,9 @@ export function toCamelCase(name: string): string {
         words.slice(1).map(word => word.charAt(0).toUpperCase() + word.slice(1)).join("")
     );
 }
+
+// Can change to mock other scenarios, return format is D-M-Y
+export function getTime() {
+    // return '2023-10-01'
+    return `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`
+}

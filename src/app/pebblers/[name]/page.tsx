@@ -1,6 +1,11 @@
+import { MediumPebbler } from "@/types/pebblers";
+import { Pebbler } from "@/components/Pebbler/Pebbler";
+import { Meet } from "@/components/Pebbler/Meet";
+import { Activity } from "@/components/Pebbler/Activity";
+import { Performance } from "@/components/Pebbler/Performance";
+import { Look } from "@/components/Pebbler/Look";
 import axios from "axios";
-import { FullPebbler } from "@/types/pebblers";
-import { PebblerHeader } from "@/components/Headers/PebblerHeader";
+
 
 export default async function PebblerPage({
     params,
@@ -10,7 +15,7 @@ export default async function PebblerPage({
     async function fetchPebbler(pebblerName: string) {
         try {
             console.log("Fetching pebbler...");
-            const response = await axios.get(`http://127.0.0.1:8000/api/pebbler/${pebblerName}`);
+            const response = await axios.get(`http://127.0.0.1:8000/api/pebblers/basic/${pebblerName}`);
             return response.data;
         }
         catch (error) {
@@ -21,14 +26,19 @@ export default async function PebblerPage({
 
 
     const { name } = await params
-    const pebbler: FullPebbler = await fetchPebbler(name)
+    const pebbler: MediumPebbler = await fetchPebbler(name)
 
     if (!pebbler || Object.keys(pebbler).length === 0) {
         return <div>Error: Pebbler not found</div>;
     }
 
     return (
-        <PebblerHeader pebbler={pebbler} />
+        <Pebbler pebbler={pebbler}>
+            <Meet key="M" pebblerName={pebbler.name} />
+            <Activity key="A" pebblerName={pebbler.name} />
+            <Performance key="P" pebblerName={pebbler.name} />
+            <Look key="L" pebblerName={pebbler.name} />
+        </Pebbler>
     )
 }
 
