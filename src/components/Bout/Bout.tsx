@@ -38,6 +38,7 @@ export const Bout: FC<{ bout: SimpleBout }> = ({ bout }) => {
                             label={stats.quirk_activated ? "Quirk Activated" : ""}
                             color={stats.quirk_activated ? "purple" : "transparent"}
                             position={bottom ? "bottom" : "top"}
+                            transitionProps={bottom ? { transition: 'fade-down', duration: 300 } : { transition: 'fade-up', duration: 300 }}
                         >
                             <Radio color="purple" iconColor="purple" size="xs" checked={stats.quirk_activated} readOnly />
                         </Tooltip>
@@ -46,6 +47,7 @@ export const Bout: FC<{ bout: SimpleBout }> = ({ bout }) => {
                                 label={stats.ability_triggered ? "Ability Triggered" : ""}
                                 color={stats.ability_triggered ? "pink" : "transparent"}
                                 position={bottom ? "bottom" : "top"}
+                                transitionProps={bottom ? { transition: 'fade-down', duration: 300 } : { transition: 'fade-up', duration: 300 }}
                             >
                                 <Radio color="pink" iconColor="pink" size="xs" checked={stats.ability_triggered} readOnly />
                             </Tooltip>

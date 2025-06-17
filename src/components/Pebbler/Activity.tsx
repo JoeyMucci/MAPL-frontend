@@ -21,8 +21,8 @@ export const Activity: FC<{ pebblerName: string }> =
             }
         }
 
-        let largeScreen = useMediaQuery('(min-width: 56em)');
-        largeScreen = largeScreen === undefined ? true : largeScreen;
+        let largeScreen = useMediaQuery('(min-width: 56em)')
+        largeScreen = largeScreen === undefined ? true : largeScreen
 
 
         const date = new Date()

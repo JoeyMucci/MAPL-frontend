@@ -58,7 +58,11 @@ export const Meet: FC<{ pebblerName: string }> = async ({ pebblerName }) => {
                     <Card key={i} radius="md" w={300} bg="orange" px="sm">
                         <Flex align="center" justify="space-between">
                             <Text span>{datum.attribute}:</Text>
-                            <Tooltip label={datum.label} color={datum.iconColor}>
+                            <Tooltip
+                                label={datum.label}
+                                color={datum.iconColor}
+                                transitionProps={{ transition: 'fade-up', duration: 300 }}
+                            >
                                 <Flex align="center" gap="xs">
                                     <datum.Icon size={32} color={datum.iconColor} />
                                     <Title order={3}>{datum.value}</Title>

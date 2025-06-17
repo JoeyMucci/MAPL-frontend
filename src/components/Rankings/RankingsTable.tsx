@@ -96,13 +96,67 @@ export const RankingsTable: FC<{ pebblerRows: PebblerRowStats[], division: strin
                             <TableTd>Won</TableTd>
                             <TableTd>Tied</TableTd>
                             <TableTd>Lost</TableTd>
-                            <TableTd>PD</TableTd>
-                            <TableTd>PF</TableTd>
-                            <TableTd>PA</TableTd>
+                            <Tooltip
+                                label="Pip Difference"
+                                color="orange"
+                                transitionProps={{
+                                    transition: "fade-up",
+                                    duration: 300,
+                                }}
+                            >
+                                <TableTd>PD</TableTd>
+                            </Tooltip>
+                            <Tooltip
+                                label="Pips For"
+                                color="orange"
+                                transitionProps={{
+                                    transition: "fade-up",
+                                    duration: 300,
+                                }}
+                            >
+                                <TableTd>PF</TableTd>
+                            </Tooltip>
+                            <Tooltip
+                                label="Pips Against"
+                                color="orange"
+                                transitionProps={{
+                                    transition: "fade-up",
+                                    duration: 300,
+                                }}
+                            >
+                                <TableTd>PA</TableTd>
+                            </Tooltip>
                             {includeForm && <TableTd>Form</TableTd>}
-                            <TableTd>PPB</TableTd>
-                            <TableTd className={classes.oneLine}>Home PPB</TableTd>
-                            <TableTd className={classes.oneLine}>Away PPB</TableTd>
+                            <Tooltip
+                                label="Pebbles Per Bout"
+                                color="orange"
+                                transitionProps={{
+                                    transition: "fade-up",
+                                    duration: 300,
+                                }}
+                            >
+                                <TableTd>PPB</TableTd>
+                            </Tooltip>
+                            <Tooltip
+                                label="Home Pebbles Per Bout"
+                                color="orange"
+                                transitionProps={{
+                                    transition: "fade-up",
+                                    duration: 300,
+                                }}
+                            >
+                                <TableTd className={classes.oneLine}>Home PPB</TableTd>
+                            </Tooltip>
+                            <Tooltip
+                                label="Away Pebbles Per Bout"
+                                color="orange"
+                                transitionProps={{
+                                    transition: "fade-up",
+                                    duration: 300,
+                                }}
+                            >
+                                <TableTd className={classes.oneLine}>Away PPB</TableTd>
+                            </Tooltip>
                         </TableTr>
                     </TableThead>
                     <TableTbody>

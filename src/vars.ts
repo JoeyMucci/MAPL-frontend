@@ -75,8 +75,8 @@ export const traitDescMap: { [key: string]: string } = {
 }
 
 export const quirkDescMap: { [key: string]: string } = {
-    "Pity Pebble": "If trailing by more than one, gain pebble instantly",
-    "Proud Pebble": "If leading by more than one, gain pebble instantly",
+    "Pity Pebble": "If trailing by two or more, gain pebble instantly",
+    "Proud Pebble": "If leading by two or more, gain pebble instantly",
     "Oddball": "If roll parity differs from day parity and opponent roll parity, gain pebble instantly",
     "Even Temper": "If roll parity matches day parity and opponent roll parity, gain pebble instantly",
     "Untouchable": "If opponent roll is one, gain pebble instantly",
@@ -103,4 +103,11 @@ export const quirkMultMap: { [key: string]: number } = {
     "All-Star": 2,
     "Professional": 1,
     "Learner": 1,
+}
+
+export const abilityMultMap: { [key: string]: number } = {
+    "Master": 2,
+    "All-Star": 1,
+    "Professional": 1,
+    "Learner": 0,
 }
