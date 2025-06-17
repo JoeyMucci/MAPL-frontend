@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Text, Table, TableThead, TableTr, TableTd, TableTbody } from '@mantine/core';
+import { Text, Table, TableThead, TableTr, TableTd, TableTbody, Tooltip } from '@mantine/core';
 import { CareerSummary } from '@/types/stats';
 import { divisions } from '@/vars';
 
@@ -42,32 +42,97 @@ export const CareerTable: FC<{ careerSummaryEntry: CareerSummary }> = ({ careerS
                         <TableTd>{careerSummaryEntry.worst_losses}</TableTd>
                     </TableTr>
                     <TableTr>
-                        <TableTd>PF</TableTd>
+                        <TableTd>
+                            <Tooltip
+                                color="orange"
+                                position="left"
+                                transitionProps={{
+                                    transition: 'fade-left',
+                                    duration: 300,
+                                }}
+                                label="Pips For"
+                                withArrow
+                            >
+                                <span>PF</span>
+                            </Tooltip>
+                        </TableTd>
                         <TableTd>{careerSummaryEntry.best_pf}</TableTd>
                         <TableTd>{careerSummaryEntry.avg_pf.toFixed(2)}</TableTd>
                         <TableTd>{careerSummaryEntry.worst_pf}</TableTd>
                     </TableTr>
                     <TableTr>
-                        <TableTd>PA</TableTd>
+                        <TableTd>
+                            <Tooltip
+                                color="orange"
+                                position="left"
+                                transitionProps={{
+                                    transition: 'fade-left',
+                                    duration: 300,
+                                }}
+                                label="Pips Against"
+                                withArrow
+                            >
+                                <span>PA</span>
+                            </Tooltip>
+                        </TableTd>
                         <TableTd>{careerSummaryEntry.best_pa}</TableTd>
                         <TableTd>{careerSummaryEntry.avg_pa.toFixed(2)}</TableTd>
                         <TableTd>{careerSummaryEntry.worst_pa}</TableTd>
                     </TableTr>
                     <TableTr>
-                        <TableTd>PD</TableTd>
+                        <TableTd>
+                            <Tooltip
+                                color="orange"
+                                position="left"
+                                transitionProps={{
+                                    transition: 'fade-left',
+                                    duration: 300,
+                                }}
+                                label="Pip Difference"
+                                withArrow
+                            >
+                                <span>PD</span>
+                            </Tooltip>
+                        </TableTd>
                         <TableTd>{careerSummaryEntry.best_pd}</TableTd>
                         <TableTd>{careerSummaryEntry.avg_pd.toFixed(2)}</TableTd>
                         <TableTd>{careerSummaryEntry.worst_pd}</TableTd>
                     </TableTr>
                     <TableTr>
-                        <TableTd>QP</TableTd>
+                        <TableTd>
+                            <Tooltip
+                                color="orange"
+                                position="left"
+                                transitionProps={{
+                                    transition: 'fade-left',
+                                    duration: 300,
+                                }}
+                                label="Quirk Pebbles"
+                                withArrow
+                            >
+                                <span>QP</span>
+                            </Tooltip>
+                        </TableTd>
                         <TableTd>{careerSummaryEntry.best_qp}</TableTd>
                         <TableTd>{careerSummaryEntry.avg_qp.toFixed(2)}</TableTd>
                         <TableTd>{careerSummaryEntry.worst_qp}</TableTd>
                     </TableTr>
                     {careerSummaryEntry.division !== divisions[divisions.length - 1] && (
                         <TableTr>
-                            <TableTd>AT</TableTd>
+                            <TableTd>
+                                <Tooltip
+                                    color="orange"
+                                    position="left"
+                                    transitionProps={{
+                                        transition: 'fade-left',
+                                        duration: 300,
+                                    }}
+                                    label="Ability Triggers"
+                                    withArrow
+                                >
+                                    <span>AT</span>
+                                </Tooltip>
+                            </TableTd>
                             <TableTd>{careerSummaryEntry.best_at}</TableTd>
                             <TableTd>{careerSummaryEntry.avg_at.toFixed(2)}</TableTd>
                             <TableTd>{careerSummaryEntry.worst_at}</TableTd>

@@ -48,7 +48,11 @@ export const FullBout: FC<{ bout: ComplicatedBout }> = ({ bout }) => {
         <Stack w={550} gap="xs">
             <Flex justify="flex-start" gap={rem(4)}>
                 <Text span>{awayPebbler.name} rolls a {bout.away_roll} with</Text>
-                <Tooltip label={traitDescMap[awayPebbler.trait]} color={colorMap[awayPebbler.trait]}>
+                <Tooltip
+                    label={traitDescMap[awayPebbler.trait]}
+                    color={colorMap[awayPebbler.trait]}
+                    transitionProps={{ transition: 'fade-up', duration: 300 }}
+                >
                     <Flex gap={rem(4)}>
                         <AwayTraitIcon color={colorMap[awayPebbler.trait]} />
                         {awayPebbler.trait}
@@ -58,7 +62,11 @@ export const FullBout: FC<{ bout: ComplicatedBout }> = ({ bout }) => {
 
             <Flex justify="flex-end" gap={rem(4)}>
                 <Text span>{homePebbler.name} rolls a {bout.home_roll} with</Text>
-                <Tooltip label={traitDescMap[homePebbler.trait]} color={colorMap[homePebbler.trait]}>
+                <Tooltip
+                    label={traitDescMap[homePebbler.trait]}
+                    color={colorMap[homePebbler.trait]}
+                    transitionProps={{ transition: 'fade-up', duration: 300 }}
+                >
                     <Flex gap={rem(4)}>
                         <HomeTraitIcon color={colorMap[homePebbler.trait]} />
                         {homePebbler.trait}
@@ -71,7 +79,12 @@ export const FullBout: FC<{ bout: ComplicatedBout }> = ({ bout }) => {
             {bout.away_quirk &&
                 <Flex justify="flex-start" gap={rem(4)}>
                     <Text span>{awayPebbler.name} gains {quirkPebbles} pebble{quirkPebbles !== 1 ? "s " : " "} with</Text>
-                    <Tooltip label={quirkDescMap[awayPebbler.quirk]} color="purple">
+                    <Tooltip
+                        label={quirkDescMap[awayPebbler.quirk]}
+                        color="purple"
+                        transitionProps={{ transition: 'fade-up', duration: 300 }}
+
+                    >
                         <Flex gap={rem(4)}>
                             <AwayQuirkIcon color="purple" />
                             {awayPebbler.quirk}
@@ -83,7 +96,11 @@ export const FullBout: FC<{ bout: ComplicatedBout }> = ({ bout }) => {
             {bout.home_quirk &&
                 <Flex justify="flex-end" gap={rem(4)}>
                     <Text span>{homePebbler.name} gains {quirkPebbles} pebble{quirkPebbles !== 1 ? "s " : " "} with</Text>
-                    <Tooltip label={quirkDescMap[homePebbler.quirk]} color="purple">
+                    <Tooltip
+                        label={quirkDescMap[homePebbler.quirk]}
+                        color="purple"
+                        transitionProps={{ transition: 'fade-up', duration: 300 }}
+                    >
                         <Flex gap={rem(4)}>
                             <HomeQuirkIcon color="purple" />
                             {homePebbler.quirk}
@@ -96,7 +113,11 @@ export const FullBout: FC<{ bout: ComplicatedBout }> = ({ bout }) => {
                 <>
                     <Flex justify="flex-start" gap={rem(4)}>
                         <Text span>{awayPebbler.name} {abilityActionMap[awayPebbler.ability]} with</Text>
-                        <Tooltip label={abilityDescMap[awayPebbler.ability]} color="pink">
+                        <Tooltip
+                            label={abilityDescMap[awayPebbler.ability]}
+                            color="pink"
+                            transitionProps={{ transition: 'fade-up', duration: 300 }}
+                        >
                             <Flex gap={rem(4)}>
                                 <AwayAbilityIcon color="pink" />
                                 {awayPebbler.ability}
@@ -112,7 +133,11 @@ export const FullBout: FC<{ bout: ComplicatedBout }> = ({ bout }) => {
                 <>
                     <Flex justify="flex-end" gap={rem(4)}>
                         <Text span>{homePebbler.name} {abilityActionMap[homePebbler.ability]} with</Text>
-                        <Tooltip label={abilityDescMap[homePebbler.ability]} color="pink">
+                        <Tooltip
+                            label={abilityDescMap[homePebbler.ability]}
+                            color="pink"
+                            transitionProps={{ transition: 'fade-up', duration: 300 }}
+                        >
                             <Flex gap={rem(4)}>
                                 <HomeAbilityIcon color="pink" />
                                 {homePebbler.ability}
@@ -133,13 +158,21 @@ export const FullBout: FC<{ bout: ComplicatedBout }> = ({ bout }) => {
     const PreviewBlock = () => (
         <Stack w={550} gap="xl">
             <Flex justify="space-between">
-                <Tooltip label={traitDescMap[awayPebbler.trait]} color={colorMap[awayPebbler.trait]}>
+                <Tooltip
+                    label={traitDescMap[awayPebbler.trait]}
+                    color={colorMap[awayPebbler.trait]}
+                    transitionProps={{ transition: 'fade-up', duration: 300 }}
+                >
                     <Flex gap={rem(4)}>
                         <AwayTraitIcon color={colorMap[awayPebbler.trait]} />
                         {awayPebbler.trait}
                     </Flex>
                 </Tooltip>
-                <Tooltip label={traitDescMap[homePebbler.trait]} color={colorMap[homePebbler.trait]}>
+                <Tooltip
+                    label={traitDescMap[homePebbler.trait]}
+                    color={colorMap[homePebbler.trait]}
+                    transitionProps={{ transition: 'fade-up', duration: 300 }}
+                >
                     <Flex gap={rem(4)}>
                         <HomeTraitIcon color={colorMap[homePebbler.trait]} />
                         {homePebbler.trait}
@@ -148,13 +181,21 @@ export const FullBout: FC<{ bout: ComplicatedBout }> = ({ bout }) => {
 
             </Flex>
             <Flex justify="space-between">
-                <Tooltip label={quirkDescMap[awayPebbler.quirk]} color="purple">
+                <Tooltip
+                    label={quirkDescMap[awayPebbler.quirk]}
+                    color="purple"
+                    transitionProps={{ transition: 'fade-up', duration: 300 }}
+                >
                     <Flex gap={rem(4)}>
                         <AwayQuirkIcon color="purple" />
                         {awayPebbler.quirk}
                     </Flex>
                 </Tooltip>
-                <Tooltip label={quirkDescMap[homePebbler.quirk]} color="purple">
+                <Tooltip
+                    label={quirkDescMap[homePebbler.quirk]}
+                    color="purple"
+                    transitionProps={{ transition: 'fade-up', duration: 300 }}
+                >
                     <Flex gap={rem(4)}>
                         <HomeQuirkIcon color="purple" />
                         {homePebbler.quirk}
@@ -162,13 +203,21 @@ export const FullBout: FC<{ bout: ComplicatedBout }> = ({ bout }) => {
                 </Tooltip>
             </Flex>
             <Flex justify="space-between">
-                <Tooltip label={abilityDescMap[awayPebbler.ability]} color="pink">
+                <Tooltip
+                    label={abilityDescMap[awayPebbler.ability]}
+                    color="pink"
+                    transitionProps={{ transition: 'fade-up', duration: 300 }}
+                >
                     <Flex gap={rem(4)}>
                         <AwayAbilityIcon color="pink" />
                         {awayPebbler.ability}
                     </Flex>
                 </Tooltip>
-                <Tooltip label={abilityDescMap[homePebbler.ability]} color="pink">
+                <Tooltip
+                    label={abilityDescMap[homePebbler.ability]}
+                    color="pink"
+                    transitionProps={{ transition: 'fade-up', duration: 300 }}
+                >
                     <Flex gap={rem(4)}>
                         <HomeAbilityIcon color="pink" />
                         {homePebbler.ability}

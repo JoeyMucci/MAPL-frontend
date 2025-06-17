@@ -22,8 +22,8 @@ export const Performance: FC<{ pebblerName: string }> =
             }
         }
 
-        let largeScreen = useMediaQuery('(min-width: 56em)');
-        largeScreen = largeScreen === undefined ? true : largeScreen;
+        let largeScreen = useMediaQuery('(min-width: 56em)')
+        largeScreen = largeScreen === undefined ? true : largeScreen
 
         const curYear = new Date().getFullYear()
         const [year, setYear] = useState<number>(curYear)
