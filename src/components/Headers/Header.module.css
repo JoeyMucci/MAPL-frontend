@@ -1,3 +1,7 @@
+.flipY {
+    transform: scaleX(-1);
+}
+
 /* headers */
 .webHeader {
   height: 60px;
@@ -66,4 +70,24 @@
 .ghostButtonSelected:hover {
   background-color: var(--mantine-color-transparent);
   border-bottom: 5px solid black;
+}
+
+/* orangeSelected */
+.orangeSelected:hover {
+  background-color: var(--mantine-color-transparent);
+}
+
+.orangeSelected {
+  &[data-combobox-selected] {
+    background-color: var(--mantine-color-orange-5);
+  }
+}
+
+/* misc */
+.leftBorder {
+  background-color: var(--mantine-color-goodGreen-5)
+}
+
+.rightBorder {
+  background-color: var(--mantine-color-alarmRed-5)
 }
