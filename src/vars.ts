@@ -111,3 +111,16 @@ export const abilityMultMap: { [key: string]: number } = {
     "Professional": 1,
     "Learner": 0,
 }
+
+export const pebblerNameList = [
+    'Ally', 'Ally Jr.', 'Almond', 'Aurora', 'Aversa', 'Baby', 'Bamboo', 'Banji', 'Barry', 'Beefcake',
+    'Berry', 'Bert', 'Bload', 'Bloshi', 'Bloshi Jr.', 'Bonez', 'Brad', 'Bumper', 'Buzz', 'Cammy',
+    'Carrotz', 'Casey', 'Chad', 'Chalk', 'Chaucer', 'Cream', 'Croc', 'Cuddlez', 'Daffy', 'Dave',
+    'Dominic Bluey', 'Doug', 'Duke', 'Duncan', 'Edward', 'Ethan', 'Felix', 'Flapper', 'Flippo', 'Frederick',
+    'Glad', 'Gnaf', 'Gregory', 'Grumps', 'Hayley', 'Hugz', 'Ignatius', 'Ima Reddy', 'Jiggy', 'Jolly',
+    'Jonathan', 'Juan', 'Julie B.', 'Leo', 'Liam', 'Logan', 'Luke', 'Marcel', 'Marvin', 'Matthew',
+    'Mertz', 'Monet', 'Moshi', 'Ness', 'Nickelby', 'Nut', 'Osh', 'Owen', 'Pabu', 'Papa',
+    'Pete', 'Pigion', 'Pinky', 'Pip', 'Raito', 'Road', 'Ruby', 'Ruth', 'Shell', 'Shortstop',
+    'Simon', 'Sir Rocco', 'Snow', 'Spencer', 'Spot', 'Sprinkle', 'Stewart', 'Straw', 'Stretch', 'Stripe',
+    'Taro', 'Timmy', 'Toast', 'Tom', 'Tonkotsu', 'Tony', 'Waddles', 'Wasabi', 'Watson', 'Yoad',
+]

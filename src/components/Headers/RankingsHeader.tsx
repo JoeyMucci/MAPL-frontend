@@ -21,7 +21,6 @@ export const RankingsHeader: FC<{
         toggleDivision,
         toggleDate,
     }) => {
-
         return (
             <Container fluid className={classes.header}>
                 <Stack align="center">

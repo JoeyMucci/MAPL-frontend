@@ -64,3 +64,14 @@ export interface CareerSummary {
     worst_at: number;
     best_at: number;
 }
+
+export interface RivalryPebbles {
+    one_score: number;
+    two_score: number;
+}
+
+export interface RivalryResults {
+    one_wins: number;
+    two_wins: number;
+    ties: number;
+}
