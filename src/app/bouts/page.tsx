@@ -2,14 +2,13 @@ import { Bout } from "@/components/Bout/Bout";
 import { SimpleBout } from "@/types/bouts";
 import { Flex, ScrollArea, Stack, Title } from "@mantine/core";
 import { divisions } from "@/vars";
-import classes from "./page.module.css";
 import axios from "axios";
 
 export default async function Home() {
   async function fetchBouts() {
     try {
       console.log("Fetching next day of bouts...")
-      const response = await axios.get("http://127.0.0.1:8000/api/bouts/now")
+      const response = await axios.get("http://127.0.0.1:8000/api/bouts/6/18/2025")
       return response.data
     }
     catch (error) {
@@ -29,7 +28,7 @@ export default async function Home() {
       <Stack>
         {divisions.map((division, i) => (
           <ScrollArea type="auto" key={i}>
-            <Flex my="md" align="center">
+            <Flex my="md" align="center" gap="sm">
               {bouts[division].map((bout, j) => (
                 <div style={{ "flexShrink": 0 }} key={j}>
                   <Bout

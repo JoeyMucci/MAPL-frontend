@@ -1,9 +1,9 @@
 "use client"
 
 import { FC, useState, useEffect } from "react";
-import { ComplicatedBout } from "@/types/bouts";
-import { FullBout } from "@/components/Bout/FullBout";
-import { ScrollArea, Stack } from "@mantine/core";
+import { SimpleBout } from "@/types/bouts";
+import { Bout } from "@/components/Bout/Bout";
+import { Flex, Stack } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { DatePicker } from "@/components/Headers/DatePicker";
 import axios from "axios";
@@ -31,7 +31,7 @@ export const Activity: FC<{ pebblerName: string }> =
 
         const [month, setMonth] = useState<number>(curMonth)
         const [year, setYear] = useState<number>(curYear)
-        const [bouts, setBouts] = useState<ComplicatedBout[]>([]);
+        const [bouts, setBouts] = useState<SimpleBout[]>([]);
 
         useEffect(() => {
             fetchActivity(month, year).then((data) => {
@@ -52,13 +52,26 @@ export const Activity: FC<{ pebblerName: string }> =
                     curYear={year}
                     onChange={toggleDate}
                 />
-                {
-                    bouts.map((bout, i) => (
-                        <ScrollArea type="auto" w={largeScreen ? 1000 : 300} key={i}>
-                            <FullBout key={i} bout={bout} />
-                        </ScrollArea>
-                    ))
-                }
+                <Stack align="center">
+                    {
+                        bouts.length === 0 ? (
+                            <div>No bouts found.</div>
+                        ) :
+                            largeScreen ? (
+                                Array.from({ length: Math.ceil(bouts.length / 3) }).map((_, rowIdx) => (
+                                    <Flex key={rowIdx} gap="md">
+                                        {bouts.slice(rowIdx * 3, rowIdx * 3 + 3).map((bout, colIdx) => (
+                                            <Bout key={rowIdx * 3 + colIdx} bout={bout} showDate />
+                                        ))}
+                                    </Flex>
+                                ))
+                            ) : (
+                                bouts.map((bout, i) => (
+                                    <Bout key={i} bout={bout} showDate />
+                                ))
+                            )
+                    }
+                </Stack>
             </Stack >
         )
     }

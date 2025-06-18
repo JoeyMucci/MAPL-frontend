@@ -1,3 +1,7 @@
 .flipY {
     transform: scaleX(-1);
 }
+
+.cursorPointer:hover {
+    cursor: pointer;
+}

@@ -228,7 +228,7 @@ export const FullBout: FC<{ bout: ComplicatedBout }> = ({ bout }) => {
     )
 
     return (
-        <Card w={1000} radius="md" withBorder style={{ minHeight: 300 }} bg="orange">
+        <Card w={1000} radius="md" style={{ minHeight: 300 }} bg="orange">
             <Center>
                 <Stack align="center" gap={rem(4)} mb="lg">
                     <Flex gap="md">
