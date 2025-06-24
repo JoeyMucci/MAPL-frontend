@@ -48,22 +48,24 @@ export const RivalryHeader: FC<{
                                 <Title order={3}>-</Title>
                                 <Title order={3} c="alarmRed">{rp.two_score}</Title>
                             </Flex>
-                            <DonutChart
-                                startAngle={180}
-                                endAngle={0}
-                                size={150}
-                                strokeWidth={0}
-                                thickness={25}
-                                withTooltip={false}
-                                data={[
-                                    { name: pebblerOne, value: rp.one_score, color: "goodGreen" },
-                                    { name: pebblerTwo, value: rp.two_score, color: "alarmRed" },
-                                ]}
-                            />
+                            <Stack h={75}>
+                                <DonutChart
+                                    startAngle={180}
+                                    endAngle={0}
+                                    size={150}
+                                    strokeWidth={0}
+                                    thickness={25}
+                                    withTooltip={false}
+                                    data={[
+                                        { name: pebblerOne, value: rp.one_score, color: "goodGreen" },
+                                        { name: pebblerTwo, value: rp.two_score, color: "alarmRed" },
+                                    ]}
+                                />
+                            </Stack>
                         </Stack>
 
 
-                        <Stack align="center">
+                        <Stack align="center" mb="xl">
                             <Title order={1}>Result Breakdown</Title>
                             <Flex gap="md">
                                 <Title order={3} c="goodGreen">{rr.one_wins}</Title>
@@ -72,19 +74,21 @@ export const RivalryHeader: FC<{
                                 <Title order={3}>-</Title>
                                 <Title order={3} c="alarmRed">{rr.two_wins}</Title>
                             </Flex>
-                            <DonutChart
-                                startAngle={180}
-                                endAngle={0}
-                                size={150}
-                                strokeWidth={0}
-                                thickness={25}
-                                withTooltip={false}
-                                data={[
-                                    { name: pebblerOne, value: rr.one_wins, color: "goodGreen" },
-                                    { name: "ties", value: rr.ties, color: "midBlue" },
-                                    { name: pebblerTwo, value: rr.two_wins, color: "alarmRed" },
-                                ]}
-                            />
+                            <Stack h={75}>
+                                <DonutChart
+                                    startAngle={180}
+                                    endAngle={0}
+                                    size={150}
+                                    strokeWidth={0}
+                                    thickness={25}
+                                    withTooltip={false}
+                                    data={[
+                                        { name: pebblerOne, value: rr.one_wins, color: "goodGreen" },
+                                        { name: "ties", value: rr.ties, color: "midBlue" },
+                                        { name: pebblerTwo, value: rr.two_wins, color: "alarmRed" },
+                                    ]}
+                                />
+                            </Stack>
                         </Stack>
                     </Stack>
 
