@@ -3,6 +3,7 @@
 import { Rankings } from "@/components/Rankings/Rankings";
 import { useState, useEffect } from "react";
 import { PebblerRowStats } from "@/types/stats";
+import { getTime } from "@/functions"
 import axios from "axios";
 
 export default function RankingsPage() {
@@ -17,13 +18,12 @@ export default function RankingsPage() {
         }
     }
 
-    const date = new Date()
-    const curMonth = date.getMonth() + 1 // getMonth() returns 0-11, so we add 1
-    const curYear = date.getFullYear()
+    const curMonth = parseInt(getTime().split("-")[1])
+    const curYear = parseInt(getTime().split("-")[0])
 
     const [month, setMonth] = useState<number>(curMonth)
     const [year, setYear] = useState<number>(curYear)
-    const [rankings, setRankings] = useState<{ [division: string]: PebblerRowStats[] }>({});
+    const [rankings, setRankings] = useState<{ [division: string]: PebblerRowStats[] }>({})
 
     useEffect(() => {
         fetchRankings(month, year).then((data) => {

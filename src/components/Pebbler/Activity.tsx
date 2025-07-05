@@ -5,7 +5,7 @@ import { SimpleBout } from "@/types/bouts";
 import { Bout } from "@/components/Bout/Bout";
 import { Flex, Stack } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
-import { DatePicker } from "@/components/Headers/DatePicker";
+import { GeneralDatePicker } from "@/components/Headers/GeneralDatePicker";
 import axios from "axios";
 
 export const Activity: FC<{ pebblerName: string }> =
@@ -46,7 +46,7 @@ export const Activity: FC<{ pebblerName: string }> =
 
         return (
             <Stack align="center" mt="md" mb="md" >
-                <DatePicker
+                <GeneralDatePicker
                     title={`${pebblerName}: Activity Archive`}
                     curMonth={month}
                     curYear={year}

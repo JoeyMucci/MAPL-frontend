@@ -1,14 +1,20 @@
+"use client"
+
+import { useState, useEffect } from "react";
 import { Bout } from "@/components/Bout/Bout";
 import { SimpleBout } from "@/types/bouts";
-import { Flex, ScrollArea, Stack, Title } from "@mantine/core";
-import { divisions } from "@/vars";
+import { rem, Center, Badge, Title, Flex, ScrollArea, Stack } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
+import { colorMap, divisions } from "@/vars";
+import { getTime } from "@/functions";
+import { BoutsHeader } from "@/components/Headers/BoutsHeader";
 import axios from "axios";
 
-export default async function Home() {
-  async function fetchBouts() {
+export default function Home() {
+  async function fetchBouts(day: number, month: number, year: number) {
     try {
-      console.log("Fetching next day of bouts...")
-      const response = await axios.get("http://127.0.0.1:8000/api/bouts/6/24/2025")
+      console.log("Fetching bouts...")
+      const response = await axios.get(`http://127.0.0.1:8000/api/bouts/${month}/${day}/${year}`)
       return response.data
     }
     catch (error) {
@@ -17,29 +23,88 @@ export default async function Home() {
     }
   }
 
-  const data = await fetchBouts()
-  const day = data.day
-  const month = data.month
-  const bouts: { [key: string]: SimpleBout[] } = data.bout_info
+  let largeScreen = useMediaQuery('(min-width: 56em)')
+  largeScreen = largeScreen === undefined ? true : largeScreen
+
+  const curDay = parseInt(getTime().split("-")[2])
+  const curMonth = parseInt(getTime().split("-")[1])
+  const curYear = parseInt(getTime().split("-")[0])
+
+  const [division, setDivision] = useState<string>(divisions[0])
+  const [day, setDay] = useState<number>(curDay)
+  const [month, setMonth] = useState<number>(curMonth)
+  const [year, setYear] = useState<number>(curYear)
+  const [bouts, setBouts] = useState<{ [division: string]: SimpleBout[] }>({})
+
+  function toggleDate(
+    setDay: (a: number) => void,
+    setMonth: (a: number) => void,
+    setYear: (a: number) => void,
+    newDate: string
+  ): void {
+    setDay(parseInt(newDate.split('-')[2], 10))
+    setMonth(parseInt(newDate.split('-')[1], 10))
+    setYear(parseInt(newDate.split('-')[0], 10))
+  }
+
+  const toggleDivision = (newDivision: string) => {
+    setDivision(newDivision)
+  }
+
+  useEffect(() => {
+    fetchBouts(day, month, year).then((data) => {
+      setBouts(data.bout_info);
+    });
+  }, [day, month, year]);
+
+  if (!bouts) {
+    return <div>Error: Rankings not found</div>
+  }
+
+  if (Object.keys(bouts).length === 0) {
+    return <div>Loading...</div>
+  }
 
   return (
     <>
-      <Title ta="center" order={1}>Daily Bouts</Title>
-      <Stack>
-        {divisions.map((division, i) => (
-          <ScrollArea type="auto" key={i}>
-            <Flex my="md" align="center" gap="sm">
-              {bouts[division].map((bout, j) => (
-                <div style={{ "flexShrink": 0 }} key={j}>
-                  <Bout
-                    bout={bout}
-                  />
-                </div>
-              ))}
-            </Flex>
-          </ScrollArea>
-        ))}
+      <BoutsHeader
+        divisionSelected={division}
+        day={day}
+        month={month}
+        year={year}
+        toggleDivision={toggleDivision}
+        toggleDate={(value) => toggleDate(setDay, setMonth, setYear, value)}
+        largeScreen={largeScreen}
+      />
+
+      <Center>
+        {!largeScreen &&
+          <Flex align="center" gap={rem(10)}>
+            <Badge w={125} color={colorMap[division]}>{division}</Badge>
+            <Title order={3}>Division</Title>
+          </Flex>}
+      </Center>
+
+      <Stack align="center" mt={largeScreen ? "md" : ""} mb="md">
+        {
+          bouts[division].length === 0 ? (
+            <div>No bouts found.</div>
+          ) :
+            largeScreen ? (
+              Array.from({ length: Math.ceil(bouts[division].length / 3) }).map((_, rowIdx) => (
+                <Flex key={rowIdx} gap="md">
+                  {bouts[division].slice(rowIdx * 3, rowIdx * 3 + 3).map((bout, colIdx) => (
+                    <Bout key={rowIdx * 3 + colIdx} bout={bout} />
+                  ))}
+                </Flex>
+              ))
+            ) : (
+              bouts[division].map((bout, i) => (
+                <Bout key={i} bout={bout} />
+              ))
+            )
+        }
       </Stack>
     </>
-  );
+  )
 }

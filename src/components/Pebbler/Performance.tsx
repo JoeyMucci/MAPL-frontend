@@ -4,7 +4,7 @@ import { FC, useState, useEffect } from "react";
 import { PerformanceSummary } from "@/types/stats";
 import { Stack, Center, ScrollArea, Title } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
-import { DatePicker } from "@/components/Headers/DatePicker";
+import { GeneralDatePicker } from "@/components/Headers/GeneralDatePicker";
 import { RankingSummary } from "@/components/Rankings/RankingSummary";
 import { LineChart } from "@mantine/charts";
 import axios from "axios";
@@ -48,42 +48,50 @@ export const Performance: FC<{ pebblerName: string }> =
 
         return (
             <Stack align="center" mt="md">
-                <DatePicker
+                <GeneralDatePicker
                     title={`${pebblerName}: Performance Archive`}
                     curYear={year}
                     onChange={toggleDate}
                 />
 
                 <Title order={4} ta="center" mt="xl">Pebble Plot</Title>
-                <Center>
-                    <ScrollArea type="auto" w={largeScreen ? 1000 : 300}>
-                        <LineChart
-                            h={300}
-                            w={1000}
-                            p={10}
-                            data={data}
-                            dataKey="date"
-                            xAxisProps={{ angle: -45 }}
-                            xAxisLabel="Date"
-                            yAxisLabel="Pebbles"
-                            series={[
-                                { name: 'Pebbles', color: "orange" },
-                            ]}
-                        />
-                    </ScrollArea>
-                </Center>
 
-                <Title order={4} ta="center" mt="xl">Promotion/Demotion Record</Title>
-                <Stack gap="sm" mb="sm">
-                    {performances.slice().map((perf, i) => (
-                        <RankingSummary
-                            key={i}
-                            division={perf.division}
-                            rank={perf.rank}
-                            dateString={new Date(year, perf.month - 1, 1).toLocaleString('default', { month: 'short', year: 'numeric' })}
-                        />
-                    ))}
-                </Stack>
-            </Stack>
+                {performances.length == 0 ? (
+                    <div>No Data for {year}</div>
+                ) : (
+                    <>
+                        <Center>
+                            <ScrollArea type="auto" w={largeScreen ? 1000 : 300}>
+                                <LineChart
+                                    h={300}
+                                    w={1000}
+                                    p={10}
+                                    data={data}
+                                    dataKey="date"
+                                    xAxisProps={{ angle: -45 }}
+                                    xAxisLabel="Date"
+                                    yAxisLabel="Pebbles"
+                                    series={[
+                                        { name: 'Pebbles', color: "orange" },
+                                    ]}
+                                />
+                            </ScrollArea>
+                        </Center >
+
+                        <Title order={4} ta="center" mt="xl">Promotion/Demotion Record</Title>
+                        <Stack gap="sm" mb="sm">
+                            {performances.slice().map((perf, i) => (
+                                <RankingSummary
+                                    key={i}
+                                    division={perf.division}
+                                    rank={perf.rank}
+                                    dateString={new Date(year, perf.month - 1, 1).toLocaleString('default', { month: 'short', year: 'numeric' })}
+                                />
+                            ))}
+                        </Stack>
+                    </>
+                )}
+
+            </Stack >
         )
     }
