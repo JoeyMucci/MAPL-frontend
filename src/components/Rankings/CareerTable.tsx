@@ -117,27 +117,35 @@ export const CareerTable: FC<{ careerSummaryEntry: CareerSummary }> = ({ careerS
                         <TableTd>{careerSummaryEntry.avg_qp.toFixed(2)}</TableTd>
                         <TableTd>{careerSummaryEntry.worst_qp}</TableTd>
                     </TableTr>
-                    {careerSummaryEntry.division !== divisions[divisions.length - 1] && (
-                        <TableTr>
-                            <TableTd>
-                                <Tooltip
-                                    color="orange"
-                                    position="left"
-                                    transitionProps={{
-                                        transition: 'fade-left',
-                                        duration: 300,
-                                    }}
-                                    label="Ability Triggers"
-                                    withArrow
-                                >
-                                    <span>AT</span>
-                                </Tooltip>
-                            </TableTd>
-                            <TableTd>{careerSummaryEntry.best_at}</TableTd>
-                            <TableTd>{careerSummaryEntry.avg_at.toFixed(2)}</TableTd>
-                            <TableTd>{careerSummaryEntry.worst_at}</TableTd>
-                        </TableTr>
-                    )}
+                    <TableTr>
+                        <TableTd>
+                            <Tooltip
+                                color="orange"
+                                position="left"
+                                transitionProps={{
+                                    transition: 'fade-left',
+                                    duration: 300,
+                                }}
+                                label="Ability Triggers"
+                                withArrow
+                            >
+                                <span>AT</span>
+                            </Tooltip>
+                        </TableTd>
+                        {careerSummaryEntry.division !== divisions[divisions.length - 1] ? (
+                            <>
+                                <TableTd>{careerSummaryEntry.best_at}</TableTd>
+                                <TableTd>{careerSummaryEntry.avg_at.toFixed(2)}</TableTd>
+                                <TableTd>{careerSummaryEntry.worst_at}</TableTd>
+                            </>
+                        ) : (
+                            <>
+                                <TableTd>N/A</TableTd>
+                                <TableTd>N/A</TableTd>
+                                <TableTd>N/A</TableTd>
+                            </>
+                        )}
+                    </TableTr>
                 </TableTbody>
             </Table>
         </>

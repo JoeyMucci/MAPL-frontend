@@ -5,8 +5,9 @@ import { GeneralDatePicker } from "./GeneralDatePicker";
 import { divisions } from "@/vars";
 import classes from "./Header.module.css";
 
-export const RankingsHeader: FC<{
+export const BoutsHeader: FC<{
     divisionSelected: string,
+    day: number
     month: number,
     year: number,
     largeScreen: boolean,
@@ -15,6 +16,7 @@ export const RankingsHeader: FC<{
 }> =
     ({
         divisionSelected,
+        day,
         month,
         year,
         largeScreen,
@@ -25,13 +27,14 @@ export const RankingsHeader: FC<{
             <Container fluid className={classes.header}>
                 <Stack align="center">
                     <GeneralDatePicker
-                        title="Rankings Archive"
+                        title="Bouts Archive"
+                        curDay={day}
                         curMonth={month}
                         curYear={year}
                         onChange={toggleDate}
                     />
                     <Title ta="center" order={1} mt="xl">
-                        {new Date(year, month - 1).toLocaleString("en-US", { month: "short" })}{" "}{year}{" Rankings"}
+                        {new Date(year, month - 1).toLocaleString("en-US", { month: "short" })}{" "}{day}{" "}{year}{" Bouts"}
                     </Title>
                     <HeaderButtons
                         options={divisions}
