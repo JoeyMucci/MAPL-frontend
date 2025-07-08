@@ -20,7 +20,6 @@ export interface MediumPebbler {
 
 export interface SimplePebbler {
     name: string;
-    current_rank: number;
 }
 
 export interface PersonalPebbler {
