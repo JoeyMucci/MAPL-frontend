@@ -15,15 +15,5 @@ export function getTime() {
     let month = new Date().getMonth() + 1
     let day = new Date().getDate()
 
-    if (day <= 25) {
-        return `${year}-${month}-${day}`
-    }
-    else {
-        month += 1
-        if (month === 13) {
-            month = 1
-            year += 1
-        }
-        return `${year}-${month}-${day}`
-    }
+    return `${year}-${month}-${day}`
 }
