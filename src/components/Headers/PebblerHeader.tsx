@@ -34,7 +34,6 @@ export const PebblerHeader: FC<{ pebbler: MediumPebbler, tabSelected: string, la
 
                 <Stack ta="center" align="center" mt="sm">
                     <Flex align="center" gap="xs">
-                        <Text size="lg" fw={700} span>Division:</Text>
                         <Badge w={125} color={colorMap[pebbler.current_division]}>{pebbler.current_division}</Badge>
                         <Text size="lg" fw={700} span>|</Text>
                         <Text size="lg" fw={700} span>Rank:</Text>

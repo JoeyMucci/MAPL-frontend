@@ -93,10 +93,10 @@ export const SearchableSelect: FC<{ defaultValue: string, disabledName: string, 
                         combobox.closeDropdown()
                         setSearch(value || '')
                     }}
-                    placeholder="Pick Pebbler"
+                    placeholder={defaultValue === "" ? "Search Pebbler" : "Pick Pebbler"}
                     rightSectionPointerEvents="none"
                     classNames={{
-                        input: flip ? classes.rightBorder : classes.leftBorder
+                        input: defaultValue === "" ? classes.midBorder : flip ? classes.rightBorder : classes.leftBorder
                     }}
                 />
             </ComboboxTarget>
