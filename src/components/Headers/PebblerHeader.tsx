@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { MediumPebbler } from "@/types/pebblers";
-import { Center, Container, Flex, Image, Stack, Text, Title } from "@mantine/core";
+import { Center, Container, Flex, Image, Stack, Text, Title, Badge } from "@mantine/core";
 import { DonutChart } from "@mantine/charts";
 import { tabs, colorMap } from "@/vars";
 import { toCamelCase } from "@/functions";
@@ -33,9 +33,8 @@ export const PebblerHeader: FC<{ pebbler: MediumPebbler, tabSelected: string, la
                 </Stack>
 
                 <Stack ta="center" align="center" mt="sm">
-                    <Flex gap="xs">
-                        <Text size="lg" fw={700} span>Division:</Text>
-                        <Text size="lg" fw={700} c={colorMap[pebbler.current_division]} span>{pebbler.current_division}</Text>
+                    <Flex align="center" gap="xs">
+                        <Badge w={125} color={colorMap[pebbler.current_division]}>{pebbler.current_division}</Badge>
                         <Text size="lg" fw={700} span>|</Text>
                         <Text size="lg" fw={700} span>Rank:</Text>
                         <Text size="lg" fw={700} c="orange" span>{pebbler.current_rank}</Text>

@@ -9,7 +9,7 @@
   border-bottom: 1px solid black;
   position: sticky; 
   top: 0;
-  z-index: 1;
+  z-index: 100;
 }
 
 .header {
@@ -86,6 +86,10 @@
 /* misc */
 .leftBorder {
   background-color: var(--mantine-color-goodGreen-5)
+}
+
+.midBorder {
+  background-color: var(--mantine-color-midBlue-5)
 }
 
 .rightBorder {

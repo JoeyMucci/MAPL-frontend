@@ -1,0 +1,21 @@
+.cursorPointer:hover {
+    cursor: pointer;
+}
+
+.banner {
+  background-color:  var(--mantine-color-purple-5); /* For browsers that do not support gradients */
+  background-image: linear-gradient(225deg, var(--mantine-color-purple-5), var(--mantine-color-pink-5));
+}
+
+.carousel {
+  @mixin hover {
+    .carouselControls {
+      opacity: 1;
+    }
+  }
+}
+
+.carouselControls {
+  transition: opacity 150ms ease;
+  opacity: 0;
+}

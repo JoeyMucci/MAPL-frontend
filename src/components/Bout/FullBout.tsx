@@ -249,7 +249,6 @@ export const FullBout: FC<{ bout: ComplicatedBout }> = ({ bout }) => {
             <Flex align="center" justify="space-between" style={{ minHeight: 300 }}>
                 <Stack align="center">
                     <Image
-                        onClick={() => window.location.href = `/pebblers/${toCamelCase(awayPebbler.name)}`}
                         src={"/pebblers/" + toCamelCase(awayPebbler.name) + ".png"}
                         alt={"Image of " + awayPebbler.name + " the pebbler"}
                         h={200}
@@ -260,7 +259,6 @@ export const FullBout: FC<{ bout: ComplicatedBout }> = ({ bout }) => {
                 <Stack align="center">
                     <Image
                         className={classes.flipY}
-                        onClick={() => window.location.href = `/pebblers/${toCamelCase(homePebbler.name)}`}
                         src={"/pebblers/" + toCamelCase(homePebbler.name) + ".png"}
                         alt={"Image of " + homePebbler.name + " the pebbler"}
                         h={200}
