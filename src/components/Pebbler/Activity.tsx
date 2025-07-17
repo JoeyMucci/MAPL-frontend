@@ -2,7 +2,7 @@
 
 import { FC, useState, useEffect } from "react";
 import { SimpleBout } from "@/types/bouts";
-import { Bout } from "@/components/Bout/Bout";
+import { Bout } from "@/components/Bout/SmallBout";
 import { Flex, Stack } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { GeneralDatePicker } from "@/components/Headers/GeneralDatePicker";

@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Flex, Stack } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { RivalryHeader } from "@/components/Headers/RivalryHeader";
-import { Bout } from "@/components/Bout/Bout";
+import { Bout } from "@/components/Bout/SmallBout";
 import { SimpleBout } from "@/types/bouts";
 import { RivalryPebbles, RivalryResults } from "@/types/stats";
 import { pebblerNameList } from "@/vars";

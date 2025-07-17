@@ -122,5 +122,5 @@ export const Bout: FC<{ bout: SimpleBout, showDate?: boolean }> = ({ bout, showD
             </CardSection>
             <CardSection h={3} />
         </Card>
-    );
-};
+    )
+}

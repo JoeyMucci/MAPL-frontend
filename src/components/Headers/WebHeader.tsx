@@ -11,6 +11,7 @@ const links = [
     { link: '/pebblers', label: 'Pebblers' },
     { link: '/bouts', label: 'Bouts' },
     { link: '/rankings', label: 'Rankings' },
+    { link: '/reports', label: 'Reports' },
     { link: '/rivalry', label: 'Rivalry' },
     { link: '/format', label: 'Format' },
     { link: '/glossary', label: 'Glossary' },
