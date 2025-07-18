@@ -1,5 +1,5 @@
+import { AuthorHeader } from "@/components/Headers/AuthorHeader";
 import axios from "axios";
-
 
 export default async function PebblerPage({
     params,
@@ -18,16 +18,15 @@ export default async function PebblerPage({
         }
     }
 
-
     const { name } = await params
-    const authorDescription: { [key: string]: string } = await fetchReporter(name)
+    const authorStats: { [key: string]: string } = await fetchReporter(name)
 
-    if (!authorDescription || Object.keys(authorDescription).length === 0) {
+    if (!authorStats || Object.keys(authorStats).length === 0) {
         return <div>Error: Reporter not found</div>;
     }
 
     return (
-        <p>{authorDescription.description}</p>
+        <AuthorHeader author={authorStats.name} description={authorStats.description} />
     )
 }
 

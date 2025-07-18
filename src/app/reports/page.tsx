@@ -39,7 +39,7 @@ export default function ReportsPage() {
 
 
     return (
-        <Stack align="center" mt={largeScreen ? "md" : ""} mb="md">
+        <Stack align="center" mt="md" mb="md">
             {
                 reports.length === 0 ? (
                     <div>No reports found.</div>
