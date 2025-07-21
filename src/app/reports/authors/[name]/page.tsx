@@ -1,4 +1,5 @@
-import { AuthorHeader } from "@/components/Headers/AuthorHeader";
+import { BasicHeader } from "@/components/Headers/BasicHeader";
+import { Text, Center } from "@mantine/core";
 import axios from "axios";
 
 export default async function PebblerPage({
@@ -26,7 +27,12 @@ export default async function PebblerPage({
     }
 
     return (
-        <AuthorHeader author={authorStats.name} description={authorStats.description} />
+        <>
+            <BasicHeader identifier={authorStats.name} dir="authors" />
+            <Center>
+                <Text mt="md" mb="md" ta="center" size="xl" w={300}>{authorStats.description}</Text>
+            </Center>
+        </>
     )
 }
 

@@ -248,22 +248,26 @@ export const FullBout: FC<{ bout: ComplicatedBout }> = ({ bout }) => {
             </Center>
             <Flex align="center" justify="space-between" style={{ minHeight: 300 }}>
                 <Stack align="center">
-                    <Image
-                        src={"/pebblers/" + toCamelCase(awayPebbler.name) + ".png"}
-                        alt={"Image of " + awayPebbler.name + " the pebbler"}
-                        h={200}
-                        w={200}
-                    />
+                    <Anchor href={`/pebblers/${toCamelCase(awayPebbler.name)}`}>
+                        <Image
+                            src={"/pebblers/" + toCamelCase(awayPebbler.name) + ".png"}
+                            alt={"Image of " + awayPebbler.name + " the pebbler"}
+                            h={200}
+                            w={200}
+                        />
+                    </Anchor>
                 </Stack>
                 {finished ? <DoneBlock /> : <PreviewBlock />}
                 <Stack align="center">
-                    <Image
-                        className={classes.flipY}
-                        src={"/pebblers/" + toCamelCase(homePebbler.name) + ".png"}
-                        alt={"Image of " + homePebbler.name + " the pebbler"}
-                        h={200}
-                        w={200}
-                    />
+                    <Anchor href={`/pebblers/${toCamelCase(homePebbler.name)}`}>
+                        <Image
+                            className={classes.flipY}
+                            src={"/pebblers/" + toCamelCase(homePebbler.name) + ".png"}
+                            alt={"Image of " + homePebbler.name + " the pebbler"}
+                            h={200}
+                            w={200}
+                        />
+                    </Anchor>
                 </Stack>
             </Flex>
         </Card>

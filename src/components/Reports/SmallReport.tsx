@@ -26,12 +26,14 @@ export const SmallReport: FC<{ article: Report }> = ({ article }) => {
                     <Anchor href={`/reports/authors/${toCamelCase(article.author)}`} c="black" underline="hover">
                         <Text>{article.author}</Text>
                     </Anchor>
-                    <Image
-                        src={"/authors/" + toCamelCase(article.author) + ".png"}
-                        alt={"Image of " + article.author + " the author"}
-                        h={35}
-                        w={35}
-                    />
+                    <Anchor href={`/reports/authors/${toCamelCase(article.author)}`}>
+                        <Image
+                            src={"/authors/" + toCamelCase(article.author) + ".png"}
+                            alt={"Image of " + article.author + " the author"}
+                            h={35}
+                            w={35}
+                        />
+                    </Anchor>
                 </Flex>
                 <Stack h={180} justify="center">
                     <Title
