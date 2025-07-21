@@ -6,7 +6,6 @@ import { Performance } from "@/components/Pebbler/Performance";
 import { Look } from "@/components/Pebbler/Look";
 import axios from "axios";
 
-
 export default async function PebblerPage({
     params,
 }: {

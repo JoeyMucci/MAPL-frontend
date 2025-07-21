@@ -21,13 +21,15 @@ export const Bout: FC<{ bout: SimpleBout, showDate?: boolean }> = ({ bout, showD
         return (
             <Flex justify="space-between">
                 <Flex gap="xs" align="center">
-                    <Image
-                        ml={12}
-                        src={"/pebblers/" + toCamelCase(pebbler.name) + ".png"}
-                        alt={"Image of " + pebbler.name + " the pebbler"}
-                        h={25}
-                        w={25}
-                    />
+                    <Anchor href={`/pebblers/${toCamelCase(pebbler.name)}`}>
+                        <Image
+                            ml={12}
+                            src={"/pebblers/" + toCamelCase(pebbler.name) + ".png"}
+                            alt={"Image of " + pebbler.name + " the pebbler"}
+                            h={25}
+                            w={25}
+                        />
+                    </Anchor>
                     <Anchor href={`/pebblers/${toCamelCase(pebbler.name)}`} c="black" underline="hover">
                         <Text span size="sm" >{pebbler.name}</Text>
                     </Anchor>
@@ -122,5 +124,5 @@ export const Bout: FC<{ bout: SimpleBout, showDate?: boolean }> = ({ bout, showD
             </CardSection>
             <CardSection h={3} />
         </Card>
-    );
-};
+    )
+}

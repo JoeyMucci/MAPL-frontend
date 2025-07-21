@@ -48,9 +48,15 @@ export const Rankings: FC<{
                             <Title order={3}>Division</Title>
                         </Flex>}
                 </Center>
-                <RankingsTable pebblerRows={rankings[division]} division={division} />
-                <Space h="lg" />
-                <RankingsFooter division={division} />
+                {rankings[division].length > 0 ? (
+                    <>
+                        <RankingsTable pebblerRows={rankings[division]} division={division} />
+                        <Space h="lg" />
+                        <RankingsFooter division={division} />
+                    </>) : (
+                    <div>No rankings found</div>
+                )
+                }
             </>
         )
     }

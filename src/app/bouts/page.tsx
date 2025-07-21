@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react";
-import { Bout } from "@/components/Bout/Bout";
+import { Bout } from "@/components/Bout/SmallBout";
 import { SimpleBout } from "@/types/bouts";
 import { rem, Center, Badge, Title, Flex, ScrollArea, Stack } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
@@ -10,7 +10,7 @@ import { getTime } from "@/functions";
 import { BoutsHeader } from "@/components/Headers/BoutsHeader";
 import axios from "axios";
 
-export default function Home() {
+export default function BoutsPage() {
   async function fetchBouts(day: number, month: number, year: number) {
     try {
       console.log("Fetching bouts...")
