@@ -10,7 +10,9 @@ import classes from "./Report.module.css";
 
 export const FullReport: FC<{ article: Report }> = ({ article }) => {
     const router = useRouter()
-    const content = article.content.replace(/(\*[^*]+\*)/g, "")
+    article.content = article.content.replace(/(\*+)/g, "*")
+    article.content = article.content.replace(/(\*[^*]+\*)/g, "")
+    article.content = article.content.replace(/^\s+/, "");
 
     let largeScreen = useMediaQuery('(min-width: 56em)')
     largeScreen = largeScreen === undefined ? true : largeScreen
@@ -24,8 +26,6 @@ export const FullReport: FC<{ article: Report }> = ({ article }) => {
                     className={classes.cursorPointer}
                     align="center"
                 >
-                    {/* <Text>Written By:</Text>
-                    <Space w={5} /> */}
                     <Image
                         src={"/authors/" + toCamelCase(article.author) + ".png"}
                         alt={"Image of " + article.author + " the author"}
@@ -40,12 +40,12 @@ export const FullReport: FC<{ article: Report }> = ({ article }) => {
             </Stack>
             <Text style={{ whiteSpace: "pre-wrap", wordWrap: "break-word" }}>
                 {
-                    content
+                    article.content
                         .split(/\n{2,}/)
                         .map((paragraph, idx) => (
                             <Fragment key={idx}>
                                 <span>{"         "}{paragraph.trim()}</span>
-                                {idx < content.split(/\n{2,}/).length - 1 && <><br /><br /></>}
+                                {idx < article.content.split(/\n{2,}/).length - 1 && <><br /><br /></>}
                             </Fragment>
                         ))
                 }
