@@ -64,7 +64,7 @@ export default function ReportsPage() {
                                 <Anchor href="/reports/authors/ari">
                                     <Image
                                         src={"/authors/" + toCamelCase("Ari") + ".png"}
-                                        alt={"Image of " + reporter + " the author"}
+                                        alt={"Image of " + "Ari" + " the reporter"}
                                         h={35}
                                         w={35}
                                     />
@@ -72,7 +72,7 @@ export default function ReportsPage() {
                                 <Anchor href="/reports/authors/patrick">
                                     <Image
                                         src={"/authors/" + toCamelCase("Patrick") + ".png"}
-                                        alt={"Image of " + reporter + " the author"}
+                                        alt={"Image of " + "Patrick" + " the reporter"}
                                         h={35}
                                         w={35}
                                     />
@@ -80,7 +80,7 @@ export default function ReportsPage() {
                                 <Anchor href="/reports/authors/lippo">
                                     <Image
                                         src={"/authors/" + toCamelCase("Lippo") + ".png"}
-                                        alt={"Image of " + reporter + " the author"}
+                                        alt={"Image of " + "Lippo" + " the reporter"}
                                         h={35}
                                         w={35}
                                     />
@@ -94,7 +94,7 @@ export default function ReportsPage() {
                                 <Anchor href={`/reports/authors/${toCamelCase(reporter)}`}>
                                     <Image
                                         src={"/authors/" + toCamelCase(reporter) + ".png"}
-                                        alt={"Image of " + reporter + " the author"}
+                                        alt={"Image of " + reporter + " the reporter"}
                                         h={35}
                                         w={35}
                                     />

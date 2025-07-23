@@ -89,7 +89,7 @@ export const quirkDescMap: { [key: string]: string } = {
 export const abilityDescMap: { [key: string]: string } = {
     "Miracle": "If trailing opponent, upgrade roll to opponent's roll (12% trigger rate)",
     "Lucky Seven": "If leading opponent, upgrade roll to 7 (12% trigger rate)",
-    "Generosity": "If tied with opponent, double draw bonus (36% trigger rate)",
+    "Generosity": "If tied with opponent, double tie bonus (36% trigger rate)",
     "Will to Win": "If tied with opponent, reroll and double win bonus (36% trigger rate)",
     "Tip the Scales": "If trailing by one, switch rolls with opponent (24% trigger rate)",
 }
@@ -97,7 +97,7 @@ export const abilityDescMap: { [key: string]: string } = {
 export const abilityActionMap: { [key: string]: string } = {
     "Miracle": "upgrades roll to opponent's roll",
     "Lucky Seven": "upgrades roll to 7",
-    "Generosity": "doubles draw bonus",
+    "Generosity": "doubles tie bonus",
     "Will to Win": "rerolls and doubles win bonus",
     "Tip the Scales": "switches roll with opponent",
 }

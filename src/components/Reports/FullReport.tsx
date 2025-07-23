@@ -28,7 +28,7 @@ export const FullReport: FC<{ article: Report }> = ({ article }) => {
                 >
                     <Image
                         src={"/authors/" + toCamelCase(article.author) + ".png"}
-                        alt={"Image of " + article.author + " the author"}
+                        alt={"Image of " + article.author + " the reporter"}
                         h={35}
                         w={35}
                     />

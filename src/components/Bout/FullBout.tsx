@@ -37,8 +37,8 @@ export const FullBout: FC<{ bout: ComplicatedBout }> = ({ bout }) => {
             homeResult = "winning"
         }
         else {
-            awayResult = "drawing"
-            homeResult = "drawing"
+            awayResult = "tying"
+            homeResult = "tying"
         }
     }
 
