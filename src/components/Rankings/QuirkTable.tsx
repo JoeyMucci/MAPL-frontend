@@ -13,6 +13,7 @@ import {
     quirkDescMap,
     quirkMap
 } from "@/vars";
+import { theme } from "@/theme";
 import classes from "./Rankings.module.css";
 
 export const QuirkTable = () => (
@@ -29,7 +30,7 @@ export const QuirkTable = () => (
                     <TableTd className={classes.oneLine}>
                         <Center>
                             <Flex align="center" gap={rem(4)}>
-                                {React.createElement(quirkMap[quirk], { color: "purple" })}
+                                {React.createElement(quirkMap[quirk], { color: theme.colors!.purple![6] })}
                                 {quirk}
                             </Flex>
                         </Center>

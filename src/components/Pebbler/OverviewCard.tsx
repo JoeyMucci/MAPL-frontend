@@ -5,6 +5,7 @@ import { PersonalPebbler } from "@/types/pebblers";
 import { Card, Stack, Image, Flex, Title, Text, Badge, Tooltip } from "@mantine/core";
 import { toCamelCase } from "@/functions";
 import { traitMap, quirkMap, abilityMap, colorMap, divisions } from "@/vars";
+import { theme } from "@/theme";
 import classes from "./Pebbler.module.css";
 
 export const OverviewCard: FC<{ pebbler: PersonalPebbler, hideText?: boolean }> = ({ pebbler, hideText }) => {
@@ -35,7 +36,7 @@ export const OverviewCard: FC<{ pebbler: PersonalPebbler, hideText?: boolean }> 
             <Card
                 w={180}
                 radius="md"
-                bg="transparent"
+                bg="orange"
                 withBorder
                 onClick={() => window.location.href = `/pebblers/${toCamelCase(pebbler.name)}`}
                 className={classes.cursorPointer}
@@ -60,17 +61,17 @@ export const OverviewCard: FC<{ pebbler: PersonalPebbler, hideText?: boolean }> 
                         </Tooltip>
                         <Tooltip
                             label={pebbler.quirk}
-                            color="purple"
+                            color={theme.colors!.purple![6]}
                             transitionProps={{ transition: 'fade-up', duration: 300 }}
                         >
-                            <QuirkIcon color="purple" />
+                            <QuirkIcon color={theme.colors!.purple![6]} />
                         </Tooltip>
                         <Tooltip
                             label={pebbler.ability}
-                            color="pink"
+                            color={theme.colors!.pink![6]}
                             transitionProps={{ transition: 'fade-up', duration: 300 }}
                         >
-                            <AbilityIcon color="pink" />
+                            <AbilityIcon color={theme.colors!.pink![6]} />
                         </Tooltip>
                     </Flex>
                 </Stack >

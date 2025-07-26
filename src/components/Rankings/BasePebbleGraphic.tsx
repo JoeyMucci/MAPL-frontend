@@ -39,10 +39,10 @@ export const BasePebbleGraphic = () => (
                     <Text c="midBlue">Tie</Text>
                     <Text>:</Text>
                     <Space w={5} />
-                    <Text c="pink">2</Text>
+                    <Text c={theme.colors!.pink![6]}>2</Text>
                     <Space w={5} />
                     <IconArrowLeft color={theme.colors!.pink![6]} size={12} />
-                    <Text c="pink" size="xs">Tie Bonus</Text>
+                    <Text c={theme.colors!.pink![6]} size="xs">Tie Bonus</Text>
                 </Flex>
             </Stack>
         </Card>

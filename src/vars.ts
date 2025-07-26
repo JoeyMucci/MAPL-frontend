@@ -15,6 +15,8 @@ import {
     IconScale,
 } from "@tabler/icons-react";
 
+import { theme } from "./theme";
+
 export const leagueStart: string = "2023-01-01"
 
 export const MATCHES_PER_ROUND = 12
@@ -27,25 +29,25 @@ export const divisions: string[] = ["Master", "All-Star", "Professional", "Learn
 export const tabs: string[] = ["Meet the Pebbler", "Activity Log", "Performance History", "Look Deeper"]
 
 export const colorMap: { [key: string]: string } = {
-    "Master": "red",
-    "All-Star": "blue",
-    "Professional": "gray",
-    "Learner": "yellow",
-    "Meet the Pebbler": "red",
-    "Activity Log": "blue",
-    "Performance History": "gray",
-    "Look Deeper": "yellow",
-    "Grace": "red",
-    "Skill": "blue",
-    "Power": "gray",
-    "Speed": "yellow",
-    "Merged": "red",
-    "Ari": "blue",
-    "Patrick": "gray",
-    "Lippo": "yellow",
-    "W": "goodGreen",
-    "L": "alarmRed",
-    "T": "midBlue",
+    "Master": theme.colors!.red![6],
+    "All-Star": theme.colors!.blue![6],
+    "Professional": theme.colors!.gray![6],
+    "Learner": theme.colors!.yellow![6],
+    "Meet the Pebbler": theme.colors!.red![6],
+    "Activity Log": theme.colors!.blue![6],
+    "Performance History": theme.colors!.gray![6],
+    "Look Deeper": theme.colors!.yellow![6],
+    "Grace": theme.colors!.red![6],
+    "Skill": theme.colors!.blue![6],
+    "Power": theme.colors!.gray![6],
+    "Speed": theme.colors!.yellow![6],
+    "Merged": theme.colors!.red![6],
+    "Ari": theme.colors!.blue![6],
+    "Patrick": theme.colors!.gray![6],
+    "Lippo": theme.colors!.yellow![6],
+    "W": theme.colors!.goodGreen![6],
+    "L": theme.colors!.alarmRed![6],
+    "T": theme.colors!.midBlue![6],
 }
 
 export const traitMap: { [key: string]: typeof IconFeatherFilled } = {

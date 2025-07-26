@@ -24,6 +24,8 @@ export default async function PebblerPage({
     const { id } = await params
     const bout: ComplicatedBout = await fetchBout(id)
 
+    console.log(bout)
+
     if (!bout || Object.keys(bout).length === 0) {
         return <div>Error: Bout not found</div>;
     }

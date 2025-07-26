@@ -7,6 +7,7 @@ import {
     Title,
     Card,
 } from "@mantine/core";
+import { theme } from "@/theme";
 
 export const FullPebbleGraphic = () => (
     <>
@@ -18,7 +19,7 @@ export const FullPebbleGraphic = () => (
                     <Space w={5} />
                     <Text>=</Text>
                     <Space w={5} />
-                    <Text ta="center" c="purple">Quirk Pebbles</Text>
+                    <Text ta="center" c={theme.colors!.purple![6]}>Quirk Pebbles</Text>
                     <Space w={5} />
                     <Text>+</Text>
                     <Space w={5} />

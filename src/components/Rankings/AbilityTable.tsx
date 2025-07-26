@@ -14,6 +14,7 @@ import {
     abilityDescMap,
     abilityMap
 } from "@/vars";
+import { theme } from "@/theme";
 import classes from "./Rankings.module.css";
 
 export const AbilityTable = () => (
@@ -43,7 +44,7 @@ export const AbilityTable = () => (
                         <TableTd className={classes.oneLine}>
                             <Center>
                                 <Flex align="center" gap={rem(4)}>
-                                    {React.createElement(abilityMap[ability], { color: "pink", size: 16 })}
+                                    {React.createElement(abilityMap[ability], { color: theme.colors!.pink![6], size: 16 })}
                                     <Text size="xs">{ability}</Text>
                                 </Flex>
                             </Center>

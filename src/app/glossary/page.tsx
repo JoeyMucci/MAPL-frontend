@@ -13,6 +13,7 @@ import { AbilityTable } from "@/components/Rankings/AbilityTable";
 import { TermTable } from "@/components/Rankings/TermTable";
 import { BasePebbleGraphic } from "@/components/Rankings/BasePebbleGraphic";
 import { FullPebbleGraphic } from "@/components/Rankings/FullPebbleGraphic";
+import { TiebreakTable } from "@/components/Rankings/TiebreakTable";
 
 export default function GlossaryPage() {
     let largeScreen = useMediaQuery('(min-width: 56em)')
@@ -23,10 +24,11 @@ export default function GlossaryPage() {
             <Stack w={largeScreen ? 500 : 300} gap="lg">
                 <BasePebbleGraphic />
                 <FullPebbleGraphic />
-                <DivisionTable />
                 <TraitTable />
                 <QuirkTable />
                 <AbilityTable />
+                <DivisionTable />
+                <TiebreakTable />
                 <TermTable />
             </Stack>
         </Center>

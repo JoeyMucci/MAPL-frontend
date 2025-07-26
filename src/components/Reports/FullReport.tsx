@@ -12,15 +12,21 @@ export const FullReport: FC<{ article: Report }> = ({ article }) => {
     const router = useRouter()
     article.content = article.content.replace(/(\*+)/g, "*")
     article.content = article.content.replace(/(\*[^*]+\*)/g, "")
-    article.content = article.content.replace(/^\s+/, "");
+    article.content = article.content.replace(/^\s+/, "")
+
+    article.title = article.title.replace(/\r?\n|\r/g, "")
+    article.title = article.title.replace(/^.*\*\*(.*)\*\*.*$/g, "$1")
+    article.title = article.title.replace(/^\*+|\*+$/g, "")
 
     let largeScreen = useMediaQuery('(min-width: 56em)')
     largeScreen = largeScreen === undefined ? true : largeScreen
 
+    article.title = article.title.replace(/^.*\*\*(.*)\*\*.*$/, "$1");
+
     return (
         <Stack w={largeScreen ? 1000 : 300} align="center" gap={0} mt="sm" mb="lg">
             <Stack gap={0} align="center">
-                <Title ta="center">{article.title.replace(/^\*+|\*+$/g, "")}</Title>
+                <Title ta="center">{article.title}</Title>
                 <Flex
                     onClick={() => router.push(`/reports/authors/${toCamelCase(article.author)}`)}
                     className={classes.cursorPointer}
