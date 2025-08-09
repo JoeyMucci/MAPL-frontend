@@ -10,32 +10,32 @@ import {
     rem,
 } from "@mantine/core";
 import {
-    quirkDescMap,
-    quirkMap
+    traitMap,
+    traitDescMap,
+    colorMap,
 } from "@/vars";
-import { theme } from "@/theme";
 import classes from "./Rankings.module.css";
 
-export const QuirkTable = () => (
+export const TraitTable = () => (
     <Table striped withTableBorder>
         <TableThead>
             <TableTr ta="center">
-                <TableTd>Quirk</TableTd>
+                <TableTd>Trait</TableTd>
                 <TableTd>Description</TableTd>
             </TableTr>
         </TableThead>
         <TableTbody>
-            {Object.keys(quirkDescMap).map((quirk, i) => (
+            {Object.keys(traitDescMap).map((trait, i) => (
                 <TableTr key={i} ta="center">
                     <TableTd className={classes.oneLine}>
                         <Center>
                             <Flex align="center" gap={rem(4)}>
-                                {React.createElement(quirkMap[quirk], { color: theme.colors!.purple![6] })}
-                                {quirk}
+                                {React.createElement(traitMap[trait], { color: colorMap[trait] })}
+                                {trait}
                             </Flex>
                         </Center>
                     </TableTd>
-                    <TableTd>{quirkDescMap[quirk]}</TableTd>
+                    <TableTd>{traitDescMap[trait]}</TableTd>
                 </TableTr>
             ))}
         </TableTbody>

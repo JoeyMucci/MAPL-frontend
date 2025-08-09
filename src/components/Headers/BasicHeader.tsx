@@ -16,7 +16,7 @@ export const BasicHeader: FC<{ identifier: string, dir: string }> = ({ identifie
                 </Title>
                 <Image
                     src={"/" + dir + "/" + imageName + ".png"}
-                    alt={"Image of " + identifier + " the author"}
+                    alt={"Image of " + identifier + " the reporter"}
                     w={300}
                     h={300}
                 />

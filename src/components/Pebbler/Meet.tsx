@@ -10,6 +10,7 @@ import {
     quirkDescMap,
     abilityDescMap
 } from "@/vars";
+import { theme } from "@/theme";
 import axios from "axios";
 
 export const Meet: FC<{ pebblerName: string }> = async ({ pebblerName }) => {
@@ -38,14 +39,14 @@ export const Meet: FC<{ pebblerName: string }> = async ({ pebblerName }) => {
             attribute: "Quirk",
             value: pebbler.quirk,
             Icon: quirkMap[pebbler.quirk],
-            iconColor: "purple",
+            iconColor: theme.colors!.purple![6],
             label: quirkDescMap[pebbler.quirk]
         },
         {
             attribute: "Ability",
             value: pebbler.ability,
             Icon: abilityMap[pebbler.ability],
-            iconColor: "pink",
+            iconColor: theme.colors!.pink![6],
             label: abilityDescMap[pebbler.ability]
         },
     ];

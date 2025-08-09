@@ -7,6 +7,7 @@ import { SimplePebbler } from "@/types/pebblers";
 import { SimplePebblerStats } from "@/types/stats";
 import { colorMap, divisions } from "@/vars";
 import { toCamelCase } from "@/functions";
+import { theme } from "@/theme";
 import classes from "./Bout.module.css";
 
 interface BoutLineProps {
@@ -39,20 +40,20 @@ export const Bout: FC<{ bout: SimpleBout, showDate?: boolean }> = ({ bout, showD
                     <Flex gap="xs" align="center">
                         <Tooltip
                             label={stats.quirk_activated ? "Quirk Activated" : ""}
-                            color={stats.quirk_activated ? "purple" : "transparent"}
+                            color={stats.quirk_activated ? theme.colors!.purple![6] : "transparent"}
                             position={bottom ? "bottom" : "top"}
                             transitionProps={bottom ? { transition: 'fade-down', duration: 300 } : { transition: 'fade-up', duration: 300 }}
                         >
-                            <Radio color="purple" iconColor="purple" size="xs" checked={stats.quirk_activated} readOnly />
+                            <Radio color={theme.colors!.purple![6]} iconColor={theme.colors!.purple![6]} size="xs" checked={stats.quirk_activated} readOnly />
                         </Tooltip>
                         {bout.division !== divisions[divisions.length - 1] && (
                             <Tooltip
                                 label={stats.ability_triggered ? "Ability Triggered" : ""}
-                                color={stats.ability_triggered ? "pink" : "transparent"}
+                                color={stats.ability_triggered ? theme.colors!.pink![6] : "transparent"}
                                 position={bottom ? "bottom" : "top"}
                                 transitionProps={bottom ? { transition: 'fade-down', duration: 300 } : { transition: 'fade-up', duration: 300 }}
                             >
-                                <Radio color="pink" iconColor="pink" size="xs" checked={stats.ability_triggered} readOnly />
+                                <Radio color={theme.colors!.pink![6]} iconColor={theme.colors!.pink![6]} size="xs" checked={stats.ability_triggered} readOnly />
                             </Tooltip>
                         )}
                         <Text w={5} span size="sm">{stats.roll_final}</Text>
@@ -82,13 +83,11 @@ export const Bout: FC<{ bout: SimpleBout, showDate?: boolean }> = ({ bout, showD
     let timeDisplay: string = ""
     timeDisplay = hasTimePassed ? (hasBoutOccurred ? "FINAL" : "LIVE 🔴") :
         new Date(bout.time).toLocaleTimeString([], {
-            hour: "2-digit", minute: "2-digit",
+            hour: "numeric", minute: "2-digit",
         })
 
     if (showDate) {
-        timeDisplay = new Date(bout.time).toLocaleDateString([], {
-            month: "2-digit", day: "2-digit", year: "2-digit",
-        })
+        timeDisplay = new Date(bout.time).toLocaleDateString([], {})
     }
 
     return (
@@ -96,8 +95,7 @@ export const Bout: FC<{ bout: SimpleBout, showDate?: boolean }> = ({ bout, showD
             w={250}
             radius="lg"
             onClick={() => window.location.href = `/bouts/${bout.id}`}
-            className={classes.cursorPointer}
-            bg="orange"
+            className={`${classes.cursorPointer} ${classes.orangeHover}`}
         >
             <CardSection>
                 <Flex justify={"space-between"} align="center">

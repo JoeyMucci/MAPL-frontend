@@ -1,15 +1,11 @@
-.flipY {
-    transform: scaleX(-1);
-}
-
-.cursorPointer:hover {
-    cursor: pointer;
-}
-
 .orangeHover:hover {
     background-color: var(--mantine-color-orange-4);
 }
 
 .orangeHover {
     background-color: var(--mantine-color-orange-6);
+}
+
+.cursorPointer:hover {
+    cursor: pointer;
 }

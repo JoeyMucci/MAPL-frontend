@@ -5,6 +5,10 @@ import { toCamelCase } from "@/functions";
 import classes from "./Report.module.css";
 
 export const SmallReport: FC<{ article: Report }> = ({ article }) => {
+    article.title = article.title.replace(/\r?\n|\r/g, "")
+    article.title = article.title.replace(/^.*\*\*(.*)\*\*.*$/g, "$1")
+    article.title = article.title.replace(/^\*+|\*+$/g, "")
+
     return (
         <Card
             onClick={() => window.location.href = `/reports/${article.id}`}
@@ -29,7 +33,7 @@ export const SmallReport: FC<{ article: Report }> = ({ article }) => {
                     <Anchor href={`/reports/authors/${toCamelCase(article.author)}`}>
                         <Image
                             src={"/authors/" + toCamelCase(article.author) + ".png"}
-                            alt={"Image of " + article.author + " the author"}
+                            alt={"Image of " + article.author + " the reporter"}
                             h={35}
                             w={35}
                         />
@@ -40,7 +44,7 @@ export const SmallReport: FC<{ article: Report }> = ({ article }) => {
                         ta="center"
                         order={5}
                     >
-                        {article.title.replace(/^\*+|\*+$/g, "")}
+                        {article.title}
                     </Title>
                 </Stack>
             </Stack>

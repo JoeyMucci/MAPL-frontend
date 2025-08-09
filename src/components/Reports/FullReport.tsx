@@ -10,25 +10,31 @@ import classes from "./Report.module.css";
 
 export const FullReport: FC<{ article: Report }> = ({ article }) => {
     const router = useRouter()
-    const content = article.content.replace(/(\*[^*]+\*)/g, "")
+    article.content = article.content.replace(/(\*+)/g, "*")
+    article.content = article.content.replace(/(\*[^*]+\*)/g, "")
+    article.content = article.content.replace(/^\s+/, "")
+
+    article.title = article.title.replace(/\r?\n|\r/g, "")
+    article.title = article.title.replace(/^.*\*\*(.*)\*\*.*$/g, "$1")
+    article.title = article.title.replace(/^\*+|\*+$/g, "")
 
     let largeScreen = useMediaQuery('(min-width: 56em)')
     largeScreen = largeScreen === undefined ? true : largeScreen
 
+    article.title = article.title.replace(/^.*\*\*(.*)\*\*.*$/, "$1");
+
     return (
         <Stack w={largeScreen ? 1000 : 300} align="center" gap={0} mt="sm" mb="lg">
             <Stack gap={0} align="center">
-                <Title ta="center">{article.title.replace(/^\*+|\*+$/g, "")}</Title>
+                <Title ta="center">{article.title}</Title>
                 <Flex
                     onClick={() => router.push(`/reports/authors/${toCamelCase(article.author)}`)}
                     className={classes.cursorPointer}
                     align="center"
                 >
-                    {/* <Text>Written By:</Text>
-                    <Space w={5} /> */}
                     <Image
                         src={"/authors/" + toCamelCase(article.author) + ".png"}
-                        alt={"Image of " + article.author + " the author"}
+                        alt={"Image of " + article.author + " the reporter"}
                         h={35}
                         w={35}
                     />
@@ -40,12 +46,12 @@ export const FullReport: FC<{ article: Report }> = ({ article }) => {
             </Stack>
             <Text style={{ whiteSpace: "pre-wrap", wordWrap: "break-word" }}>
                 {
-                    content
+                    article.content
                         .split(/\n{2,}/)
                         .map((paragraph, idx) => (
                             <Fragment key={idx}>
                                 <span>{"         "}{paragraph.trim()}</span>
-                                {idx < content.split(/\n{2,}/).length - 1 && <><br /><br /></>}
+                                {idx < article.content.split(/\n{2,}/).length - 1 && <><br /><br /></>}
                             </Fragment>
                         ))
                 }

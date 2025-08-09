@@ -15,6 +15,8 @@ import {
     IconScale,
 } from "@tabler/icons-react";
 
+import { theme } from "./theme";
+
 export const leagueStart: string = "2023-01-01"
 
 export const MATCHES_PER_ROUND = 12
@@ -27,25 +29,25 @@ export const divisions: string[] = ["Master", "All-Star", "Professional", "Learn
 export const tabs: string[] = ["Meet the Pebbler", "Activity Log", "Performance History", "Look Deeper"]
 
 export const colorMap: { [key: string]: string } = {
-    "Master": "red",
-    "All-Star": "blue",
-    "Professional": "gray",
-    "Learner": "yellow",
-    "Meet the Pebbler": "red",
-    "Activity Log": "blue",
-    "Performance History": "gray",
-    "Look Deeper": "yellow",
-    "Grace": "red",
-    "Skill": "blue",
-    "Power": "gray",
-    "Speed": "yellow",
-    "Merged": "red",
-    "Ari": "blue",
-    "Patrick": "gray",
-    "Lippo": "yellow",
-    "W": "goodGreen",
-    "L": "alarmRed",
-    "T": "midBlue",
+    "Master": theme.colors!.red![6],
+    "All-Star": theme.colors!.blue![6],
+    "Professional": theme.colors!.gray![6],
+    "Learner": theme.colors!.yellow![6],
+    "Meet the Pebbler": theme.colors!.red![6],
+    "Activity Log": theme.colors!.blue![6],
+    "Performance History": theme.colors!.gray![6],
+    "Look Deeper": theme.colors!.yellow![6],
+    "Grace": theme.colors!.red![6],
+    "Skill": theme.colors!.blue![6],
+    "Power": theme.colors!.gray![6],
+    "Speed": theme.colors!.yellow![6],
+    "Merged": theme.colors!.red![6],
+    "Ari": theme.colors!.blue![6],
+    "Patrick": theme.colors!.gray![6],
+    "Lippo": theme.colors!.yellow![6],
+    "W": theme.colors!.goodGreen![6],
+    "L": theme.colors!.alarmRed![6],
+    "T": theme.colors!.midBlue![6],
 }
 
 export const traitMap: { [key: string]: typeof IconFeatherFilled } = {
@@ -89,7 +91,7 @@ export const quirkDescMap: { [key: string]: string } = {
 export const abilityDescMap: { [key: string]: string } = {
     "Miracle": "If trailing opponent, upgrade roll to opponent's roll (12% trigger rate)",
     "Lucky Seven": "If leading opponent, upgrade roll to 7 (12% trigger rate)",
-    "Generosity": "If tied with opponent, double draw bonus (36% trigger rate)",
+    "Generosity": "If tied with opponent, double tie bonus (36% trigger rate)",
     "Will to Win": "If tied with opponent, reroll and double win bonus (36% trigger rate)",
     "Tip the Scales": "If trailing by one, switch rolls with opponent (24% trigger rate)",
 }
@@ -97,7 +99,7 @@ export const abilityDescMap: { [key: string]: string } = {
 export const abilityActionMap: { [key: string]: string } = {
     "Miracle": "upgrades roll to opponent's roll",
     "Lucky Seven": "upgrades roll to 7",
-    "Generosity": "doubles draw bonus",
+    "Generosity": "doubles tie bonus",
     "Will to Win": "rerolls and doubles win bonus",
     "Tip the Scales": "switches roll with opponent",
 }

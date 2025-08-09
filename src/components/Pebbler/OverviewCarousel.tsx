@@ -4,6 +4,7 @@ import { Card, Title, Stack, Center } from "@mantine/core";
 import { OverviewCard } from "./OverviewCard";
 import { Carousel } from "@mantine/carousel";
 import { IconArrowRight, IconArrowLeft } from "@tabler/icons-react";
+import { theme } from "@/theme";
 import classes from "./Pebbler.module.css";
 
 export const OverviewCarousel: FC<{ pebblers: PersonalPebbler[], largeScreen: boolean, label: string }> =
@@ -15,8 +16,8 @@ export const OverviewCarousel: FC<{ pebblers: PersonalPebbler[], largeScreen: bo
                 </Title>
                 <Center>
                     <Carousel
-                        nextControlIcon={<IconArrowRight color="purple" size={16} />}
-                        previousControlIcon={<IconArrowLeft color="pink" size={16} />}
+                        nextControlIcon={<IconArrowRight color={theme.colors!.purple![6]} size={16} />}
+                        previousControlIcon={<IconArrowLeft color={theme.colors!.pink![6]} size={16} />}
                         w={largeScreen ? 1000 : 180}
                         slideSize={180}
                         slideGap={25}

@@ -12,20 +12,37 @@
   z-index: 100;
 }
 
+.formatFooterBar {
+  position: sticky; 
+  bottom: 40;
+  z-index: 100;
+}
+
+.formatFooterMain {
+  height: 40px;
+  background-color: var(--mantine-color-pink-6);
+  background-color:  var(--mantine-color-purple-6); /* For browsers that do not support gradients */
+  background-image: linear-gradient(225deg, var(--mantine-color-purple-6), var(--mantine-color-pink-6));
+  border-top: 1px solid black;
+  position: sticky; 
+  bottom: 0;
+  z-index: 100;
+}
+
 .header {
-  background-color:  var(--mantine-color-purple-5); /* For browsers that do not support gradients */
-  background-image: linear-gradient(225deg, var(--mantine-color-purple-5), var(--mantine-color-pink-5));
+  background-color:  var(--mantine-color-purple-6); /* For browsers that do not support gradients */
+  background-image: linear-gradient(225deg, var(--mantine-color-purple-6), var(--mantine-color-pink-6));
 }
 
 /* whButton */
 .whButtonSelected {
-  color: var(--mantine-color-orange-5);
+  color: var(--mantine-color-orange-6);
   background-color: var(--mantine-color-transparent);
   font-weight: bold;
 }
 
 .whButtonSelected:hover {
-  color: var(--mantine-color-orange-5);
+  color: var(--mantine-color-orange-6);
   background-color: var(--mantine-color-transparent);
   font-weight: bold;
 }
@@ -36,7 +53,7 @@
 }
 
 .whButton:hover {
-  color: var(--mantine-color-orange-5);
+  color: var(--mantine-color-orange-6);
   background-color: var(--mantine-color-transparent);
 }
 
@@ -53,12 +70,12 @@
 /* ghostButtonOrange */
 .ghostButtonOrange {
   background-color: var(--mantine-color-transparent);
-  color: var(--mantine-color-orange-5)
+  color: var(--mantine-color-orange-6)
 }
 
 .ghostButtonOrange:hover {
   background-color: var(--mantine-color-white);
-  color: var(--mantine-color-orange-5);
+  color: var(--mantine-color-orange-6);
 }
 
 /* ghostButtonSelected */
@@ -79,19 +96,19 @@
 
 .orangeSelected {
   &[data-combobox-selected] {
-    background-color: var(--mantine-color-orange-5);
+    background-color: var(--mantine-color-orange-6);
   }
 }
 
 /* misc */
 .leftBorder {
-  background-color: var(--mantine-color-goodGreen-5)
+  background-color: var(--mantine-color-goodGreen-6)
 }
 
 .midBorder {
-  background-color: var(--mantine-color-midBlue-5)
+  background-color: var(--mantine-color-midBlue-6)
 }
 
 .rightBorder {
-  background-color: var(--mantine-color-alarmRed-5)
+  background-color: var(--mantine-color-alarmRed-6)
 }

@@ -5,6 +5,7 @@ import { ComplicatedBout } from "@/types/bouts"
 import { Anchor, Badge, Card, Center, Flex, Image, rem, Stack, Text, Title, Tooltip } from "@mantine/core"
 import { toCamelCase } from "@/functions"
 import { abilityActionMap, abilityDescMap, abilityMap, colorMap, quirkDescMap, quirkMap, quirkMultMap, traitDescMap, traitMap } from "@/vars"
+import { theme } from "@/theme"
 import classes from "./Bout.module.css";
 
 export const FullBout: FC<{ bout: ComplicatedBout }> = ({ bout }) => {
@@ -37,8 +38,8 @@ export const FullBout: FC<{ bout: ComplicatedBout }> = ({ bout }) => {
             homeResult = "winning"
         }
         else {
-            awayResult = "drawing"
-            homeResult = "drawing"
+            awayResult = "tying"
+            homeResult = "tying"
         }
     }
 
@@ -81,12 +82,12 @@ export const FullBout: FC<{ bout: ComplicatedBout }> = ({ bout }) => {
                     <Text span>{awayPebbler.name} gains {quirkPebbles} pebble{quirkPebbles !== 1 ? "s " : " "} with</Text>
                     <Tooltip
                         label={quirkDescMap[awayPebbler.quirk]}
-                        color="purple"
+                        color={theme.colors!.purple![6]}
                         transitionProps={{ transition: 'fade-up', duration: 300 }}
 
                     >
                         <Flex gap={rem(4)}>
-                            <AwayQuirkIcon color="purple" />
+                            <AwayQuirkIcon color={theme.colors!.purple![6]} />
                             {awayPebbler.quirk}
                         </Flex>
                     </Tooltip>
@@ -98,11 +99,11 @@ export const FullBout: FC<{ bout: ComplicatedBout }> = ({ bout }) => {
                     <Text span>{homePebbler.name} gains {quirkPebbles} pebble{quirkPebbles !== 1 ? "s " : " "} with</Text>
                     <Tooltip
                         label={quirkDescMap[homePebbler.quirk]}
-                        color="purple"
+                        color={theme.colors!.purple![6]}
                         transitionProps={{ transition: 'fade-up', duration: 300 }}
                     >
                         <Flex gap={rem(4)}>
-                            <HomeQuirkIcon color="purple" />
+                            <HomeQuirkIcon color={theme.colors!.purple![6]} />
                             {homePebbler.quirk}
                         </Flex>
                     </Tooltip>
@@ -115,11 +116,11 @@ export const FullBout: FC<{ bout: ComplicatedBout }> = ({ bout }) => {
                         <Text span>{awayPebbler.name} {abilityActionMap[awayPebbler.ability]} with</Text>
                         <Tooltip
                             label={abilityDescMap[awayPebbler.ability]}
-                            color="pink"
+                            color={theme.colors!.pink![6]}
                             transitionProps={{ transition: 'fade-up', duration: 300 }}
                         >
                             <Flex gap={rem(4)}>
-                                <AwayAbilityIcon color="pink" />
+                                <AwayAbilityIcon color={theme.colors!.pink![6]} />
                                 {awayPebbler.ability}
                             </Flex>
                         </Tooltip>
@@ -135,11 +136,11 @@ export const FullBout: FC<{ bout: ComplicatedBout }> = ({ bout }) => {
                         <Text span>{homePebbler.name} {abilityActionMap[homePebbler.ability]} with</Text>
                         <Tooltip
                             label={abilityDescMap[homePebbler.ability]}
-                            color="pink"
+                            color={theme.colors!.pink![6]}
                             transitionProps={{ transition: 'fade-up', duration: 300 }}
                         >
                             <Flex gap={rem(4)}>
-                                <HomeAbilityIcon color="pink" />
+                                <HomeAbilityIcon color={theme.colors!.pink![6]} />
                                 {homePebbler.ability}
                             </Flex>
                         </Tooltip>
@@ -183,21 +184,21 @@ export const FullBout: FC<{ bout: ComplicatedBout }> = ({ bout }) => {
             <Flex justify="space-between">
                 <Tooltip
                     label={quirkDescMap[awayPebbler.quirk]}
-                    color="purple"
+                    color={theme.colors!.purple![6]}
                     transitionProps={{ transition: 'fade-up', duration: 300 }}
                 >
                     <Flex gap={rem(4)}>
-                        <AwayQuirkIcon color="purple" />
+                        <AwayQuirkIcon color={theme.colors!.purple![6]} />
                         {awayPebbler.quirk}
                     </Flex>
                 </Tooltip>
                 <Tooltip
                     label={quirkDescMap[homePebbler.quirk]}
-                    color="purple"
+                    color={theme.colors!.purple![6]}
                     transitionProps={{ transition: 'fade-up', duration: 300 }}
                 >
                     <Flex gap={rem(4)}>
-                        <HomeQuirkIcon color="purple" />
+                        <HomeQuirkIcon color={theme.colors!.purple![6]} />
                         {homePebbler.quirk}
                     </Flex>
                 </Tooltip>
@@ -205,21 +206,21 @@ export const FullBout: FC<{ bout: ComplicatedBout }> = ({ bout }) => {
             <Flex justify="space-between">
                 <Tooltip
                     label={abilityDescMap[awayPebbler.ability]}
-                    color="pink"
+                    color={theme.colors!.pink![6]}
                     transitionProps={{ transition: 'fade-up', duration: 300 }}
                 >
                     <Flex gap={rem(4)}>
-                        <AwayAbilityIcon color="pink" />
+                        <AwayAbilityIcon color={theme.colors!.pink![6]} />
                         {awayPebbler.ability}
                     </Flex>
                 </Tooltip>
                 <Tooltip
                     label={abilityDescMap[homePebbler.ability]}
-                    color="pink"
+                    color={theme.colors!.pink![6]}
                     transitionProps={{ transition: 'fade-up', duration: 300 }}
                 >
                     <Flex gap={rem(4)}>
-                        <HomeAbilityIcon color="pink" />
+                        <HomeAbilityIcon color={theme.colors!.pink![6]} />
                         {homePebbler.ability}
                     </Flex>
                 </Tooltip>
@@ -242,7 +243,7 @@ export const FullBout: FC<{ bout: ComplicatedBout }> = ({ bout }) => {
                     </Flex>
                     <Badge w={125} color={colorMap[bout.division]}>{bout.division}</Badge>
                     <Title ta="left" order={4}>
-                        {bout.month.toString().padStart(2, "0")}/{bout.day.toString().padStart(2, "0")}/{bout.year}
+                        {bout.month.toString()}/{bout.day.toString()}/{bout.year}
                     </Title>
                 </Stack>
             </Center>

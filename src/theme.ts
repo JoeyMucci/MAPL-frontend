@@ -42,16 +42,16 @@ export const theme = createTheme({
         ],
 
         yellow: [
-            "#fdfce4",
-            "#f8f6d3",
-            "#f0ecaa",
-            "#e7e17c",
-            "#e0d856",
-            "#dbd33e",
-            "#d9d02f",
-            "#c0b820",
-            "#aaa317",
-            "#928d03"
+            "#fffce1",
+            "#fff8cb",
+            "#ffef9a",
+            "#ffe764",
+            "#ffdf38",
+            "#ffdb1c",
+            "#ffd700",
+            "#e3bf00",
+            "#caaa00",
+            "#ae9200"
         ],
 
         orange: [
