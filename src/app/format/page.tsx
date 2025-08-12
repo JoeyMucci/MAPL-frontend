@@ -54,7 +54,7 @@ function FormatPageHelper() {
                 ref={containerRef}
                 style={{
                     width: "1000",
-                    height: "calc(100vh - 111px)",
+                    height: "calc(100vh - 110px)",
                     overflowY: "scroll",
                     scrollSnapType: "y mandatory",
                 }}
@@ -63,7 +63,7 @@ function FormatPageHelper() {
                 <Center>
                     <Stack>
                         <Card style={{
-                            height: "calc(100vh - 111px)",
+                            height: "calc(100vh - 110px)",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "start",
@@ -93,7 +93,7 @@ function FormatPageHelper() {
                             </Flex>
                         </Card>
                         <Card style={{
-                            height: "calc(100vh - 111px)",
+                            height: "calc(100vh - 110px)",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "start",
@@ -118,7 +118,7 @@ function FormatPageHelper() {
                             </Flex>
                         </Card>
                         <Card style={{
-                            height: "calc(100vh - 111px)",
+                            height: "calc(100vh - 110px)",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "start",
@@ -157,7 +157,7 @@ function FormatPageHelper() {
                             </Flex>
                         </Card>
                         <Card style={{
-                            height: "calc(100vh - 111px)",
+                            height: "calc(100vh - 110px)",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "start",
@@ -189,7 +189,7 @@ function FormatPageHelper() {
                             </Flex>
                         </Card>
                         <Card style={{
-                            height: "calc(100vh - 111px)",
+                            height: "calc(100vh - 110px)",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "start",
@@ -224,7 +224,7 @@ function FormatPageHelper() {
                             </Flex>
                         </Card>
                         <Card style={{
-                            height: "calc(100vh - 111px)",
+                            height: "calc(100vh - 110px)",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "start",
@@ -256,7 +256,7 @@ function FormatPageHelper() {
                             </Flex>
                         </Card>
                         <Card style={{
-                            height: "calc(100vh - 111px)",
+                            height: "calc(100vh - 110px)",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "start",
@@ -281,7 +281,7 @@ function FormatPageHelper() {
                             </Flex>
                         </Card>
                         <Card style={{
-                            height: "calc(100vh - 111px)",
+                            height: "calc(100vh - 110px)",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "start",
@@ -310,7 +310,7 @@ function FormatPageHelper() {
                             </Flex>
                         </Card>
                         <Card style={{
-                            height: "calc(100vh - 111px)",
+                            height: "calc(100vh - 110px)",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "start",
@@ -340,7 +340,7 @@ function FormatPageHelper() {
                             </Flex>
                         </Card>
                         <Card style={{
-                            height: "calc(100vh - 111px)",
+                            height: "calc(100vh - 110px)",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "start",

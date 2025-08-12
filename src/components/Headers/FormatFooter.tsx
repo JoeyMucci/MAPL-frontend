@@ -37,7 +37,7 @@ export const FormatFooter: FC<{ cur: number, setPageAction: (a: number) => void 
             <Flex className={classes.formatFooterMain} justify="space-between" align="center">
                 {tabs.map((tab, i) => (
                     <Button
-                        h={39}
+                        h={40}
                         key={i}
                         className={i === cur ? classes.ghostButtonSelected : classes.ghostButton}
                         onClick={() => setPageAction(i)}
