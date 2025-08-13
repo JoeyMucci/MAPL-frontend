@@ -31,7 +31,7 @@ export const OverviewCarousel: FC<{ pebblers: PersonalPebbler[], largeScreen: bo
                             controls: { opacity: 0 }
                         } : {}}
                     >
-                        {(label === "Recent Winners" && pebblers.length === 16 && largeScreen) ?
+                        {(label === "Recent Champs" && pebblers.length === 16 && largeScreen) ?
                             pebblers.map((pebbler, i) => (
                                 i % 4 == 0 ? (
                                     <Fragment key={i}>
