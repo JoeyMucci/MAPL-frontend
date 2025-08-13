@@ -91,7 +91,7 @@ export default function PebblersPage() {
                 setParentAction={(value) => window.location.href = `/pebblers/${toCamelCase(value)}`}
             />
             {recentWinners.length > 0 &&
-                <OverviewCarousel label="Recent Winners" pebblers={recentWinners} largeScreen={largeScreen} />
+                <OverviewCarousel label="Recent Champs" pebblers={recentWinners} largeScreen={largeScreen} />
             }
             <OverviewCarousel label="Current Leaders" pebblers={currentLeaders} largeScreen={largeScreen} />
             <OverviewCarousel label="Current Trailers" pebblers={currentTrailers} largeScreen={largeScreen} />
