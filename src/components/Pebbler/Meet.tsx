@@ -17,7 +17,7 @@ export const Meet: FC<{ pebblerName: string }> = async ({ pebblerName }) => {
     async function fetchPebbler() {
         try {
             console.log("Fetching personal pebbler information...");
-            const response = await axios.get(`http://127.0.0.1:8000/api/pebblers/personal/${pebblerName}`);
+            const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/pebblers/personal/${pebblerName}`);
             return response.data;
         } catch (error) {
             console.error("Error fetching data:", error);

@@ -10,7 +10,7 @@ export default async function PebblerPage({
     async function fetchReporter(authorName: string) {
         try {
             console.log("Fetching reporter...");
-            const response = await axios.get(`http://127.0.0.1:8000/api/news/author/${authorName}`);
+            const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/news/author/${authorName}`);
             return response.data;
         }
         catch (error) {

@@ -17,6 +17,8 @@ export const FullReport: FC<{ article: Report }> = ({ article }) => {
     article.title = article.title.replace(/\r?\n|\r/g, "")
     article.title = article.title.replace(/^.*\*\*(.*)\*\*.*$/g, "$1")
     article.title = article.title.replace(/^\*+|\*+$/g, "")
+    article.title = article.title.replace(/^\"+|\"+$/g, "")
+    article.title = article.title.replace(/^\'+|\'+$/g, "")
 
     let largeScreen = useMediaQuery('(min-width: 56em)')
     largeScreen = largeScreen === undefined ? true : largeScreen

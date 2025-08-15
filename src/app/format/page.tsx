@@ -83,7 +83,7 @@ function FormatPageHelper() {
                                 <Text ta="center" w={300} size="sm">
                                     {"H-hi... I'm Shaun. I am going first because I wanted to get this over with. " +
                                         "Pebbling is a one-on-one dice rolling competition in which the goal is to accumulate as many pebbles as possible. The base " +
-                                        "formula to calculate pebbles depending on whether a pebbler wins (higher roll), loses (smaller roll), or ties (same roll) are as follows."}
+                                        "formula to calculate pebbles depending on whether a pebbler wins (higher roll), loses (lower roll), or ties (same roll) are as follows."}
                                 </Text>
                             </Flex>
                             <Flex w={1000} justify="center">

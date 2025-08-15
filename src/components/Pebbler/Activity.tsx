@@ -13,7 +13,7 @@ export const Activity: FC<{ pebblerName: string }> =
         async function fetchActivity(month: number, year: number) {
             try {
                 console.log("Fetching pebbler bout information...");
-                const response = await axios.get(`http://127.0.0.1:8000/api/bouts/${pebblerName}/${month}/${year}`);
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/bouts/${pebblerName}/${month}/${year}`);
                 return response.data;
             } catch (error) {
                 console.error("Error fetching data:", error);

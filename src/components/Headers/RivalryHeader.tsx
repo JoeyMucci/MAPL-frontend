@@ -1,7 +1,7 @@
 "use client"
 
 import { FC } from "react";
-import { Badge, Flex, Container, Stack, Image, Title, Text, rem } from "@mantine/core";
+import { Anchor, Badge, Flex, Container, Stack, Image, Title, rem } from "@mantine/core";
 import { DonutChart } from "@mantine/charts";
 import { SearchableSelect } from "./SearchableSelect";
 import { toCamelCase } from "@/functions"
@@ -161,13 +161,15 @@ export const RivalryHeader: FC<{
 
         const SearchBlock: FC<{ pebbler: string, opp: string, left: boolean }> = ({ pebbler, opp, left }) => (
             <Stack>
-                <Image
-                    src={"/pebblers/" + toCamelCase(pebbler) + ".png"}
-                    alt={"Image of " + toCamelCase(pebbler) + " the pebbler"}
-                    width={300}
-                    height={300}
-                    className={left ? "" : classes.flipY}
-                />
+                <Anchor href={`pebblers/${toCamelCase(pebbler)}`}>
+                    <Image
+                        src={"/pebblers/" + toCamelCase(pebbler) + ".png"}
+                        alt={"Image of " + toCamelCase(pebbler) + " the pebbler"}
+                        width={300}
+                        height={300}
+                        className={left ? "" : classes.flipY}
+                    />
+                </Anchor>
                 <SearchableSelect
                     defaultValue={pebbler}
                     disabledName={opp}

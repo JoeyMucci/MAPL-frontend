@@ -14,7 +14,7 @@ export default function BoutsPage() {
   async function fetchBouts(day: number, month: number, year: number) {
     try {
       console.log("Fetching bouts...")
-      const response = await axios.get(`http://127.0.0.1:8000/api/bouts/${month}/${day}/${year}`)
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/bouts/${month}/${day}/${year}`)
       return response.data
     }
     catch (error) {

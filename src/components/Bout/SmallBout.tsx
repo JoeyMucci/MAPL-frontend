@@ -94,6 +94,7 @@ export const Bout: FC<{ bout: SimpleBout, showDate?: boolean }> = ({ bout, showD
         <Card
             w={250}
             radius="lg"
+            withBorder
             onClick={() => window.location.href = `/bouts/${bout.id}`}
             className={`${classes.cursorPointer} ${classes.orangeHover}`}
         >

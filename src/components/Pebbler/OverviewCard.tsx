@@ -8,7 +8,7 @@ import { traitMap, quirkMap, abilityMap, colorMap, divisions } from "@/vars";
 import { theme } from "@/theme";
 import classes from "./Pebbler.module.css";
 
-export const OverviewCard: FC<{ pebbler: PersonalPebbler, hideText?: boolean }> = ({ pebbler, hideText }) => {
+export const OverviewCard: FC<{ pebbler: PersonalPebbler, hideText?: boolean, hideDescription?: boolean }> = ({ pebbler, hideText, hideDescription }) => {
     const TraitIcon = traitMap[pebbler.trait]
     const QuirkIcon = quirkMap[pebbler.quirk]
     const AbilityIcon = abilityMap[pebbler.ability]
@@ -32,14 +32,13 @@ export const OverviewCard: FC<{ pebbler: PersonalPebbler, hideText?: boolean }> 
     }
 
     return (
-        <Stack w={180} h={300} align="center">
+        <Stack w={180} h={hideDescription ? 250 : 300} align="center">
             <Card
                 w={180}
                 radius="md"
-                bg="orange"
                 withBorder
                 onClick={() => window.location.href = `/pebblers/${toCamelCase(pebbler.name)}`}
-                className={classes.cursorPointer}
+                className={`${classes.cursorPointer} ${classes.orangeHover}`}
             >
                 <Stack gap="xs" align="center" mb="xl">
                     <Title order={4}>
@@ -76,7 +75,7 @@ export const OverviewCard: FC<{ pebbler: PersonalPebbler, hideText?: boolean }> 
                     </Flex>
                 </Stack >
             </Card >
-            <DescriptionLine description={pebbler.description} />
+            {!hideDescription && <DescriptionLine description={pebbler.description} />}
         </Stack>
 
     )
