@@ -114,20 +114,20 @@ export default function HomePage() {
                 <Flex gap='md' align='center'>
                     <Text size='lg'>+{pebbleDifference} pebbles</Text>
                     <Flex gap={0} align='center'>
+                        <Text size='lg'>{newPebbles}</Text>
                         {pebbleDifference >= 20 && <IconArrowsUp color={colorMap['W']} />}
                         {pebbleDifference < 20 && pebbleDifference > 0 && <IconArrowUp color={colorMap['W']} />}
                         {pebbleDifference === 0 && <IconArrowsRightLeft color={colorMap['T']} />}
-                        <Text size='lg'>{newPebbles}</Text>
                     </Flex>
                 </Flex>
 
                 <Flex gap='md' align='center'>
                     <Text size='lg'>+{rankDifference} ranking</Text>
                     <Flex gap={0} align='center'>
+                        <Text size='lg'>{newRank}</Text>
                         {rankDifference >= 3 && <IconArrowsUp color={colorMap['W']} />}
                         {rankDifference < 3 && rankDifference > 0 && <IconArrowUp color={colorMap['W']} />}
                         {rankDifference === 0 && <IconArrowsRightLeft color={colorMap['T']} />}
-                        <Text size='lg'>{newRank}</Text>
                     </Flex>
                 </Flex>
             </Stack>

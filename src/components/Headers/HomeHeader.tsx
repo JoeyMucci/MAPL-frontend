@@ -1,11 +1,5 @@
 import { FC } from "react";
-import { MediumPebbler } from "@/types/pebblers";
-import { Center, Container, Flex, Image, Stack, Text, Title, Overlay, rem, Button } from "@mantine/core";
-import { DonutChart } from "@mantine/charts";
-import { tabs, colorMap } from "@/vars";
-import { toCamelCase } from "@/functions";
-import { HeaderButtons } from "./HeaderButtons";
-import { StatTable } from "@/components/Rankings/StatTable";
+import { Container, Flex, Stack, Text, rem, Button } from "@mantine/core";
 import Link from 'next/link'
 import classes from "./Header.module.css";
 
