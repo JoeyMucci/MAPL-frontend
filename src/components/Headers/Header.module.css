@@ -1,5 +1,5 @@
 .flipY {
-    transform: scaleX(-1);
+  transform: scaleX(-1);
 }
 
 /* headers */
@@ -7,13 +7,13 @@
   height: 60px;
   background-color: var(--mantine-color-cyan-6);
   border-bottom: 1px solid black;
-  position: sticky; 
+  position: sticky;
   top: 0;
   z-index: 100;
 }
 
 .formatFooterBar {
-  position: sticky; 
+  position: sticky;
   bottom: 40;
   z-index: 100;
 }
@@ -21,17 +21,25 @@
 .formatFooterMain {
   height: 40px;
   background-color: var(--mantine-color-pink-6);
-  background-color:  var(--mantine-color-purple-6); /* For browsers that do not support gradients */
+  background-color: var(--mantine-color-purple-6);
+  /* For browsers that do not support gradients */
   background-image: linear-gradient(225deg, var(--mantine-color-purple-6), var(--mantine-color-pink-6));
   border-top: 1px solid black;
-  position: sticky; 
+  position: sticky;
   bottom: 0;
   z-index: 100;
 }
 
 .header {
-  background-color:  var(--mantine-color-purple-6); /* For browsers that do not support gradients */
+  background-color: var(--mantine-color-purple-6);
+  /* For browsers that do not support gradients */
   background-image: linear-gradient(225deg, var(--mantine-color-purple-6), var(--mantine-color-pink-6));
+}
+
+.imageHeader {
+  background-image: url('../../../public/pebblers/bload.png');
+  background-size: cover;
+  background-position: center;
 }
 
 /* whButton */
@@ -98,6 +106,49 @@
   &[data-combobox-selected] {
     background-color: var(--mantine-color-orange-6);
   }
+}
+
+/* animation */
+@keyframes fadeInUp {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+.fadeInUpFirst {
+  animation-name: fadeInUp;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-in-out;
+}
+
+.fadeInUpSecond {
+  animation-name: fadeInUp;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+}
+
+.fadeInUpThird {
+  animation-name: fadeInUp;
+  animation-duration: 2.5s;
+  animation-timing-function: ease-in-out;
 }
 
 /* misc */

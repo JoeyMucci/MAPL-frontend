@@ -14,7 +14,7 @@ export default async function PebblerPage({
     async function fetchPebbler(pebblerName: string) {
         try {
             console.log("Fetching pebbler...");
-            const response = await axios.get(`http://127.0.0.1:8000/api/pebblers/basic/${pebblerName}`);
+            const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/pebblers/basic/${pebblerName}`);
             return response.data;
         }
         catch (error) {

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 import { Flex, Stack } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { RivalryHeader } from "@/components/Headers/RivalryHeader";
@@ -8,9 +8,14 @@ import { Bout } from "@/components/Bout/SmallBout";
 import { SimpleBout } from "@/types/bouts";
 import { RivalryPebbles, RivalryResults } from "@/types/stats";
 import { pebblerNameList } from "@/vars";
+import { fromCamelCase } from "@/functions";
 import axios from "axios";
 
-export default function RivalryPage() {
+export default function RivalryPage({
+    params,
+}: {
+    params: Promise<{ one: string, two: string }>
+}) {
     let largeScreen = useMediaQuery('(min-width: 56em)')
     largeScreen = largeScreen === undefined ? true : largeScreen
 
@@ -25,19 +30,11 @@ export default function RivalryPage() {
         }
     }
 
-    useEffect(() => {
-        let firstRandom = Math.floor(Math.random() * pebblerNameList.length)
-        let secondRandom = firstRandom
+    const unwrapped = use(params)
+    const { one, two } = unwrapped
 
-        while (firstRandom == secondRandom) {
-            secondRandom = Math.floor(Math.random() * pebblerNameList.length)
-        }
-        setPebblerOne(pebblerNameList[firstRandom])
-        setPebblerTwo(pebblerNameList[secondRandom])
-    }, [])
-
-    const [pebblerOne, setPebblerOne] = useState<string>("");
-    const [pebblerTwo, setPebblerTwo] = useState<string>("")
+    const [pebblerOne, setPebblerOne] = useState<string>(fromCamelCase(one))
+    const [pebblerTwo, setPebblerTwo] = useState<string>(fromCamelCase(two))
     const [pebbleBreakdown, setPebbleBreakdown] = useState<{ [division: string]: RivalryPebbles }>({})
     const [resultBreakdown, setResultBreakdown] = useState<{ [division: string]: RivalryResults }>({})
     const [bouts, setBouts] = useState<SimpleBout[]>([])

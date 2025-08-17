@@ -2,6 +2,10 @@
     cursor: pointer;
 }
 
+.flipY {
+    transform: scaleX(-1);
+}
+
 .orangeHover:hover {
     background-color: var(--mantine-color-orange-4);
 }

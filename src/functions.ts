@@ -7,6 +7,20 @@ export function toCamelCase(name: string): string {
     );
 }
 
+export function fromCamelCase(name: string): string {
+    let res: string = name.charAt(0).toUpperCase() + ""
+
+    for (let i = 1; i < name.length; i++) {
+        if (name[i] >= 'A' && name[i] <= 'Z') {
+            res += ' '
+        }
+
+        res += name[i]
+    }
+
+    return res
+}
+
 // Can change to mock other scenarios, return format is D-M-Y
 export function getTime() {
     // return '2023-10-01'

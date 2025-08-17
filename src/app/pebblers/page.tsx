@@ -16,7 +16,7 @@ export default function PebblersPage() {
     async function fetchRecentWinners(month: number, year: number) {
         try {
             console.log("Fetching recent winners...")
-            const response = await axios.get(`http://127.0.0.1:8000/api/rankings/winners/${month}/${year}`)
+            const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/rankings/winners/${month}/${year}`)
             return response.data
         }
         catch (error) {
@@ -28,7 +28,7 @@ export default function PebblersPage() {
     async function fetchCurrentBookends() {
         try {
             console.log("Fetching rankings bookends...")
-            const response = await axios.get(`http://127.0.0.1:8000/api/rankings/bookends`)
+            const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/rankings/bookends`)
             return response.data
         }
         catch (error) {
@@ -40,7 +40,7 @@ export default function PebblersPage() {
     async function fetchYTDStats() {
         try {
             console.log("Fetching year to date stats...")
-            const response = await axios.get(`http://127.0.0.1:8000/api/pebblers/ytd`)
+            const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/pebblers/ytd`)
             return response.data
         }
         catch (error) {
@@ -91,7 +91,7 @@ export default function PebblersPage() {
                 setParentAction={(value) => window.location.href = `/pebblers/${toCamelCase(value)}`}
             />
             {recentWinners.length > 0 &&
-                <OverviewCarousel label="Recent Winners" pebblers={recentWinners} largeScreen={largeScreen} />
+                <OverviewCarousel label="Recent Champs" pebblers={recentWinners} largeScreen={largeScreen} />
             }
             <OverviewCarousel label="Current Leaders" pebblers={currentLeaders} largeScreen={largeScreen} />
             <OverviewCarousel label="Current Trailers" pebblers={currentTrailers} largeScreen={largeScreen} />

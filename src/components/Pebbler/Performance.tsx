@@ -14,7 +14,7 @@ export const Performance: FC<{ pebblerName: string }> =
         async function fetchHistory(year: number) {
             try {
                 console.log("Fetching pebbler performance history...");
-                const response = await axios.get(`http://127.0.0.1:8000/api/pebblers/history/${pebblerName}/${year}`);
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/pebblers/history/${pebblerName}/${year}`);
                 return response.data;
             } catch (error) {
                 console.error("Error fetching data:", error);

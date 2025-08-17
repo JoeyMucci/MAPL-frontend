@@ -1,18 +1,20 @@
 import { FC } from "react";
 import { Stack, Title, Card, Flex, Text, Image, Anchor } from "@mantine/core";
-import { Report } from "@/types/reports";
+import { ReportPreview } from "@/types/reports";
 import { toCamelCase } from "@/functions";
 import classes from "./Report.module.css";
 
-export const SmallReport: FC<{ article: Report }> = ({ article }) => {
+export const SmallReport: FC<{ article: ReportPreview }> = ({ article }) => {
     article.title = article.title.replace(/\r?\n|\r/g, "")
     article.title = article.title.replace(/^.*\*\*(.*)\*\*.*$/g, "$1")
     article.title = article.title.replace(/^\*+|\*+$/g, "")
+    article.title = article.title.replace(/^\"+|\"+$/g, "")
+    article.title = article.title.replace(/^\'+|\'+$/g, "")
 
     return (
         <Card
             onClick={() => window.location.href = `/reports/${article.id}`}
-            className={classes.cursorPointer}
+            className={`${classes.cursorPointer} ${classes.orangeHover}`}
             w={300}
             h={250}
             px={20}

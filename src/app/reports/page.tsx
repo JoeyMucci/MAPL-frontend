@@ -13,7 +13,7 @@ export default function ReportsPage() {
     async function fetchReports(month: number, year: number) {
         try {
             console.log("Fetching reports...")
-            const response = await axios.get(`http://127.0.0.1:8000/api/news/${month}/${year}`)
+            const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/news/${month}/${year}`)
             return response.data
         }
         catch (error) {

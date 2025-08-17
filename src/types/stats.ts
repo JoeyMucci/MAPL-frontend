@@ -75,3 +75,14 @@ export interface RivalryResults {
     two_wins: number;
     ties: number;
 }
+
+export interface CombinedStats {
+    division_pebbles: { [division: string]: RivalryPebbles };
+    division_wtl: { [division: string]: RivalryResults };
+}
+
+export interface FullRivalryStats {
+    one: string;
+    two: string;
+    data: CombinedStats;
+}
