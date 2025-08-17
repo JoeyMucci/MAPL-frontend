@@ -214,7 +214,7 @@ export default function HomePage() {
 
             {
                 Object.keys(hotRivalries).length === 0 || hotRivalries.length === 0 ? (
-                    <div>No reports found.</div>
+                    <div>No rivalries found.</div>
                 ) :
 
                     largeScreen ? (

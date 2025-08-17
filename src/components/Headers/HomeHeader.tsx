@@ -1,13 +1,19 @@
 import { FC } from "react";
-import { Container, Flex, Stack, Text, rem, Button } from "@mantine/core";
+import { Container, Flex, Stack, Text, rem, Button, Image } from "@mantine/core";
 import Link from 'next/link'
 import classes from "./Header.module.css";
 
 
 export const HomeHeader: FC<{ largeScreen: boolean }> = ({ largeScreen }) => {
     return (
-        <Container h={500} fluid className={classes.imageHeader}>
-            <Stack h={500} align="center" justify="center">
+        <Container fluid className={classes.orangeHeader} pb='sm'>
+            <Stack align="center" justify="center">
+                <Image
+                    src={"PebbleEmblemFull" + ".jpg"}
+                    alt={"Pebble Banner"}
+                    h={340}
+                    w={200}
+                />
                 <Flex className={classes.fadeInUpFirst} gap="lg">
                     <Text size={rem(60)} fw={700} span>The</Text>
                     <Text size={rem(60)} fw={700} c='red' span>Mega</Text>
