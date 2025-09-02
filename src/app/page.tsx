@@ -101,10 +101,10 @@ export default function HomePage() {
 
     const CustomDescription: FC<{ description: string }> = ({ description }) => {
         const splits = description.split(' ')
-        const oldPebbles = parseInt(splits[0].split('->')[0])
-        const newPebbles = parseInt(splits[0].split('->')[1])
-        const oldRank = parseInt(splits[1].split('->')[0])
-        const newRank = parseInt(splits[1].split('->')[1])
+        const oldPebbles = parseInt(splits[0].split('UP')[0])
+        const newPebbles = parseInt(splits[0].split('UP')[1])
+        const oldRank = parseInt(splits[1].split('UP')[0])
+        const newRank = parseInt(splits[1].split('UP')[1])
 
         const pebbleDifference = newPebbles - oldPebbles
         const rankDifference = oldRank - newRank

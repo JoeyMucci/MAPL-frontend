@@ -13,7 +13,7 @@ import { theme } from "@/theme";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Mega Auto Pebble League",
+  title: "MAPL",
   description: "Official website for the Mega Automated Pebble League",
 };
 

@@ -161,7 +161,7 @@ export const RivalryHeader: FC<{
 
         const SearchBlock: FC<{ pebbler: string, opp: string, left: boolean }> = ({ pebbler, opp, left }) => (
             <Stack>
-                <Anchor href={`pebblers/${toCamelCase(pebbler)}`}>
+                <Anchor href={`/pebblers/${toCamelCase(pebbler)}`}>
                     <Image
                         src={"/pebblers/" + toCamelCase(pebbler) + ".png"}
                         alt={"Image of " + toCamelCase(pebbler) + " the pebbler"}

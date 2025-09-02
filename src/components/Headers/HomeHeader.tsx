@@ -21,7 +21,7 @@ export const HomeHeader: FC<{ largeScreen: boolean }> = ({ largeScreen }) => {
                     <Text size={rem(60)} fw={700} c='gray' span>Pebble</Text>
                     <Text size={rem(60)} fw={700} c='yellow' span>League</Text>
                 </Flex>
-                <Text className={classes.fadeInUpSecond} size="lg">A perpetual dice rolling tournament ecosystem for stuffed animals</Text>
+                <Text className={classes.fadeInUpSecond} size="lg">A perpetual dice rolling tournament ecosystem for stuffed animals and figures</Text>
                 <Flex className={classes.fadeInUpThird} gap="md">
                     <Link href='/format'>
                         <Button color='purple' radius='lg' w={150}>How it Works</Button>
