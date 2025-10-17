@@ -73,8 +73,8 @@ export default function HomePage() {
         }
     }
 
-    let month = parseInt(getTime().split("-")[1])
-    let year = parseInt(getTime().split("-")[0])
+    const month = parseInt(getTime().split("-")[1])
+    const year = parseInt(getTime().split("-")[0])
 
     const [hotPebblers, setHotPebblers] = useState<{ [division: string]: PersonalPebbler[] }>({})
     const [hotBouts, setHotBouts] = useState<SimpleBout[]>([])

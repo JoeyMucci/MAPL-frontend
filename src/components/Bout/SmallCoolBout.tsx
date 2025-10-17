@@ -8,15 +8,8 @@ import { toCamelCase } from "@/functions";
 import { theme } from "@/theme";
 import classes from "./Bout.module.css";
 
-interface BoutLineProps {
-    pebbler: SimplePebbler;
-    stats: SimplePebblerStats;
-    hasBoutOccurred: boolean;
-    bottom: boolean;
-}
-
 export const CoolBoutSmall = () => {
-    let timeDisplay: string = "6/5/2025"
+    const timeDisplay: string = "6/5/2025"
 
     return (
         <Card

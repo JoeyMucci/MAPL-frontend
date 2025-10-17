@@ -1,14 +1,10 @@
 import React from "react";
 import {
-    Center,
-    Flex,
     Table,
     TableThead,
     TableTr,
     TableTd,
     TableTbody,
-    Text,
-    rem,
 } from "@mantine/core";
 
 

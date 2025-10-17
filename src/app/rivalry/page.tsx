@@ -26,7 +26,7 @@ export default function RivalryPage() {
     }
 
     useEffect(() => {
-        let firstRandom = Math.floor(Math.random() * pebblerNameList.length)
+        const firstRandom = Math.floor(Math.random() * pebblerNameList.length)
         let secondRandom = firstRandom
 
         while (firstRandom == secondRandom) {

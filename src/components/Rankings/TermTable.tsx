@@ -1,13 +1,10 @@
 import React from "react";
 import {
-    Center,
-    Flex,
     Table,
     TableThead,
     TableTr,
     TableTd,
     TableTbody,
-    rem,
 } from "@mantine/core";
 
 export const TermTable = () => (

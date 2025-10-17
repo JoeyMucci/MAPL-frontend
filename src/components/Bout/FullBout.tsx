@@ -11,13 +11,6 @@ import classes from "./Bout.module.css";
 export const FullBout: FC<{ bout: ComplicatedBout }> = ({ bout }) => {
     const awayPebbler = bout.away
     const homePebbler = bout.home
-
-    const bullets = [
-        `${awayPebbler.name} rolled a ${bout.away_roll} with a ${awayPebbler.trait} die`,
-        `${homePebbler.name} rolled a ${bout.home_roll} with a ${homePebbler.trait} die`,
-        `${bout.away_roll} - ${bout.home_roll}`,
-    ]
-
     const quirkPebbles = quirkMultMap[bout.division]
     const AwayTraitIcon = traitMap[awayPebbler.trait]
     const HomeTraitIcon = traitMap[homePebbler.trait]

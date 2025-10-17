@@ -25,9 +25,9 @@ export function fromCamelCase(name: string): string {
 export function getTime() {
     // return '2023-10-01'
 
-    let year = new Date().getFullYear()
-    let month = new Date().getMonth() + 1
-    let day = new Date().getDate()
+    const year = new Date().getFullYear()
+    const month = new Date().getMonth() + 1
+    const day = new Date().getDate()
 
     return `${year}-${month}-${day}`
 }
