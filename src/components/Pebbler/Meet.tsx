@@ -1,4 +1,6 @@
-import { FC } from "react";
+"use client"
+
+import { FC, useState, useEffect } from "react";
 import { PersonalPebbler } from "@/types/pebblers";
 import { Flex, Text, Title, Stack, Card, Tooltip } from "@mantine/core";
 import {
@@ -13,7 +15,7 @@ import {
 import { theme } from "@/theme";
 import axios from "axios";
 
-export const Meet: FC<{ pebblerName: string }> = async ({ pebblerName }) => {
+export const Meet: FC<{ pebblerName: string }> = ({ pebblerName }) => {
     async function fetchPebbler() {
         try {
             console.log("Fetching personal pebbler information...");
@@ -25,7 +27,23 @@ export const Meet: FC<{ pebblerName: string }> = async ({ pebblerName }) => {
         }
     }
 
-    const pebbler: PersonalPebbler = await fetchPebbler();
+    const [pebbler, setPebbler] = useState<PersonalPebbler | null>(null)
+    const [isReady, setIsReady] = useState<boolean>(false)
+
+    useEffect(() => {
+        fetchPebbler().then((data) => {
+            setPebbler(data)
+            setIsReady(true)
+        })
+    }, [])
+
+    if(!isReady) {
+        return <></>
+    }
+
+    if(!pebbler) {
+        return <>error</>
+    }
 
     const displayData = [
         {
