@@ -54,12 +54,11 @@ export const Performance: FC<{ pebblerName: string }> =
                     onChange={toggleDate}
                 />
 
-                <Title order={4} ta="center" mt="xl">Pebble Plot</Title>
-
                 {performances.length == 0 ? (
                     <div>No Data for {year}</div>
                 ) : (
                     <>
+                        <Title order={4} ta="center" mt="xl">Pebble Plot</Title>
                         <Center>
                             <ScrollArea type="auto" w={largeScreen ? 1000 : 300}>
                                 <LineChart

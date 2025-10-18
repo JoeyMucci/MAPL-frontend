@@ -1,8 +1,10 @@
-import { FC } from "react";
+"use client"
+
+import { FC, useState, useEffect } from "react";
 import { LookClient } from "@/components/Pebbler/LookClient";
 import axios from "axios";
 
-export const Look: FC<{ pebblerName: string }> = async ({ pebblerName }) => {
+export const Look: FC<{ pebblerName: string }> = ({ pebblerName }) => {
     async function fetchSummary() {
         try {
             console.log("Fetching pebbler career summary...");
@@ -14,8 +16,20 @@ export const Look: FC<{ pebblerName: string }> = async ({ pebblerName }) => {
         }
     }
 
-    const data = await fetchSummary();
-
+    const [data, setData] = useState([])
+    const [isReady, setIsReady] = useState<boolean>(false)
+   
+    useEffect(() => {
+        fetchSummary().then((summaryData) => {
+            setData(summaryData)
+            setIsReady(true)
+        })
+    }, [])
+   
+    if(!isReady) {
+        return <></>
+    }
+   
     return (
         <LookClient careerSummary={data} />
     )
