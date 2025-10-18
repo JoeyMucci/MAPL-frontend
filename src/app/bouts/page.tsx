@@ -8,6 +8,7 @@ import { useMediaQuery } from "@mantine/hooks";
 import { colorMap, divisions } from "@/vars";
 import { getTime } from "@/functions";
 import { BoutsHeader } from "@/components/Headers/BoutsHeader";
+import Loading from "@/components/loading";
 import axios from "axios";
 
 export default function BoutsPage() {
@@ -62,7 +63,7 @@ export default function BoutsPage() {
   }
 
   if (Object.keys(bouts).length === 0) {
-    return <div>Loading...</div>
+    return <Loading />
   }
 
   return (

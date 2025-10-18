@@ -11,6 +11,7 @@ import { getTime } from '@/functions';
 import { PersonalPebbler } from '@/types/pebblers';
 import { SimpleBout } from '@/types/bouts';
 import { ReportPreview } from '@/types/reports';
+import { RivalryCard } from '@/components/Rivalry/RivalryCard';
 import { FullRivalryStats } from '@/types/stats';
 import { divisions, colorMap } from '@/vars';
 import {
@@ -19,7 +20,7 @@ import {
     IconArrowsRightLeft
 } from "@tabler/icons-react";
 import axios from "axios";
-import { RivalryCard } from '@/components/Rivalry/RivalryCard';
+import Loading from '@/components/loading';
 
 export default function HomePage() {
     let largeScreen = useMediaQuery('(min-width: 56em)')
@@ -80,22 +81,30 @@ export default function HomePage() {
     const [hotBouts, setHotBouts] = useState<SimpleBout[]>([])
     const [hotPress, setHotPress] = useState<ReportPreview[]>([])
     const [hotRivalries, setHotRivalries] = useState<FullRivalryStats[]>([])
+    const [pebblersFinished, setPebblersFinished] = useState<boolean>(false)
+    const [boutsFinished, setBoutsFinished] = useState<boolean>(false)
+    const [pressFinished, setPressFinished] = useState<boolean>(false)
+    const [rivalriesFinished, setRivalriesFinished] = useState<boolean>(false)
 
     useEffect(() => {
         fetchHotPebblers(month, year).then((data) => {
             setHotPebblers(data)
+            setPebblersFinished(true)
         })
 
         fetchHotBouts().then((data) => {
             setHotBouts(data)
+            setBoutsFinished(true)
         })
 
         fetchHotPress().then((data) => {
             setHotPress(data)
+            setPressFinished(true)
         })
 
         fetchHotRivalries().then((data) => {
             setHotRivalries(data)
+            setRivalriesFinished(true)
         })
     }, [])
 
@@ -234,17 +243,25 @@ export default function HomePage() {
         </>
     )
 
+    if(
+        !pebblersFinished ||
+        !boutsFinished ||
+        !pressFinished ||
+        !rivalriesFinished
+    ) {
+        return <Loading />
+    }
 
     return (
         <>
             <HomeHeader largeScreen={largeScreen} />
             <Stack align='center' mt='md' mb='md' gap='lg'>
                 <HotPebblers />
-                {Object.keys(hotPebblers).length > 0 && <Divider w={largeScreen ? 1000 : 300} />}
+                <Divider w={largeScreen ? 1000 : 300} />
                 <HotBouts />
-                {hotBouts.length > 0 && <Divider w={largeScreen ? 1000 : 300} />}
+                <Divider w={largeScreen ? 1000 : 300} />
                 <HotPress />
-                {hotPress.length > 0 && <Divider w={largeScreen ? 1000 : 300} />}
+                <Divider w={largeScreen ? 1000 : 300} />
                 <HotRivalries />
             </Stack>
         </>

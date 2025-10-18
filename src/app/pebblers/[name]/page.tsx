@@ -1,12 +1,16 @@
+"use client"
+
 import { MediumPebbler } from "@/types/pebblers";
 import { Pebbler } from "@/components/Pebbler/Pebbler";
 import { Meet } from "@/components/Pebbler/Meet";
 import { Activity } from "@/components/Pebbler/Activity";
 import { Performance } from "@/components/Pebbler/Performance";
 import { Look } from "@/components/Pebbler/Look";
+import {useEffect, useState, use } from "react";
 import axios from "axios";
+import Loading from "@/components/loading";
 
-export default async function PebblerPage({
+export default function PebblerPage({
     params,
 }: {
     params: Promise<{ name: string }>
@@ -24,8 +28,20 @@ export default async function PebblerPage({
     }
 
 
-    const { name } = await params
-    const pebbler: MediumPebbler = await fetchPebbler(name)
+    const { name } = use(params)
+    const [pebbler, setPebbler] = useState<MediumPebbler | null>(null)
+    const [isLoading, setIsLoading] = useState<boolean>(true)
+
+    useEffect(() => {
+        fetchPebbler(name).then((data) => {
+            setPebbler(data)
+            setIsLoading(false)
+        })
+    }, [])
+
+    if(isLoading) {
+        return <Loading />
+    }
 
     if (!pebbler || Object.keys(pebbler).length === 0) {
         return <div>Error: Pebbler not found</div>;

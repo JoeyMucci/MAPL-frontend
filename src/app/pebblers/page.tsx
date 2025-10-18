@@ -8,6 +8,7 @@ import { useMediaQuery } from "@mantine/hooks";
 import { getTime, toCamelCase } from "@/functions";
 import { SearchableSelect } from "@/components/Headers/SearchableSelect";
 import axios from "axios";
+import Loading from "@/components/loading";
 
 export default function PebblersPage() {
     let largeScreen = useMediaQuery('(min-width: 56em)')
@@ -65,23 +66,37 @@ export default function PebblersPage() {
     const [ytdPebbleLeaders, setYTDPebblesLeaders] = useState<PersonalPebbler[]>([])
     const [ytdQuirkLeaders, setYTDQuirkLeaders] = useState<PersonalPebbler[]>([])
     const [ytdAbilityLeaders, setYTDAbilityLeaders] = useState<PersonalPebbler[]>([])
+    const [winnersFinished, setWinnersFinished] = useState<boolean>(false)
+    const [bookendsFinished, setBookendsFinished] = useState<boolean>(false)
+    const [ytdFinished, setYTDFinished] = useState<boolean>(false)
 
     useEffect(() => {
         fetchRecentWinners(month, year).then((data) => {
             setRecentWinners(data)
+            setWinnersFinished(true)
         })
 
         fetchCurrentBookends().then((data) => {
             setCurrentLeaders(data.leaders)
             setCurrentTrailers(data.trailers)
+            setBookendsFinished(true)
         })
 
         fetchYTDStats().then((data) => {
             setYTDPebblesLeaders(data.pebbles)
             setYTDQuirkLeaders(data.quirks)
             setYTDAbilityLeaders(data.abilities)
+            setYTDFinished(true)
         })
     }, [])
+
+    if(
+        !winnersFinished ||
+        !bookendsFinished ||
+        !ytdFinished
+    ) {
+        return <Loading />
+    }
 
     return (
         <Stack align="center" mt="sm" mb="sm">

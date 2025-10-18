@@ -9,6 +9,7 @@ import { SimpleBout } from "@/types/bouts";
 import { RivalryPebbles, RivalryResults } from "@/types/stats";
 import { pebblerNameList } from "@/vars";
 import axios from "axios";
+import Loading from "@/components/loading";
 
 export default function RivalryPage() {
     let largeScreen = useMediaQuery('(min-width: 56em)')
@@ -68,7 +69,7 @@ export default function RivalryPage() {
 
                     <Stack align="center" mt="md" mb="md">
                         {Object.keys(pebbleBreakdown).length == 0 ? (
-                            <div>loading</div>
+                            <Loading />
                         ) : (
                             bouts.length === 0 ? (
                                 <div>No bouts found.</div>

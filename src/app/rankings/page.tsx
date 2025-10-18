@@ -3,7 +3,8 @@
 import { Rankings } from "@/components/Rankings/Rankings";
 import { useState, useEffect } from "react";
 import { PebblerRowStats } from "@/types/stats";
-import { getTime } from "@/functions"
+import { getTime } from "@/functions";
+import Loading from "@/components/loading";
 import axios from "axios";
 
 export default function RankingsPage() {
@@ -37,7 +38,7 @@ export default function RankingsPage() {
     }
 
     if (Object.keys(rankings).length === 0) {
-        return <div>Loading...</div>
+        return <Loading />
     }
 
     return (

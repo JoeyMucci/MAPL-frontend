@@ -13,8 +13,7 @@ import { theme } from "@/theme";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "MAPL",
-  description: "Official website for the Mega Automated Pebble League",
+  title: "MAPL"
 };
 
 export default function RootLayout({
