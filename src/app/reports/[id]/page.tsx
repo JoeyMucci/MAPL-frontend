@@ -2,8 +2,13 @@ import axios from "axios";
 import { Center } from "@mantine/core";
 import { Report } from "@/types/reports";
 import { FullReport } from "@/components/Reports/FullReport";
+import { Metadata } from "next";
 
-export default async function PebblerPage({
+export const metadata: Metadata = {
+  title: 'MAPL | Reports'
+};
+
+export default async function ReportPage({
     params,
 }: {
     params: Promise<{ id: number }>

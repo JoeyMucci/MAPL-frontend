@@ -1,8 +1,13 @@
 import { BasicHeader } from "@/components/Headers/BasicHeader";
 import { Text, Center } from "@mantine/core";
 import axios from "axios";
+import { Metadata } from "next";
 
-export default async function PebblerPage({
+export const metadata: Metadata = {
+  title: 'MAPL | Reports'
+};
+
+export default async function ReporterPage({
     params,
 }: {
     params: Promise<{ name: string }>
