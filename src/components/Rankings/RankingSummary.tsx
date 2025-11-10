@@ -18,6 +18,7 @@ export const RankingSummary: FC<{ division: string, rank: number, dateString: st
             w={300}
             radius="lg"
             withBorder
+            bg="orange"
         >
             <Stack gap="xl">
                 <Flex justify="space-between">
@@ -25,7 +26,7 @@ export const RankingSummary: FC<{ division: string, rank: number, dateString: st
                         {dateString}
                     </Text>
 
-                    <Text c="orange">
+                    <Text>
                         Rank: {rank}
                     </Text>
                 </Flex>

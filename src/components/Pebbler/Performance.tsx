@@ -2,7 +2,7 @@
 
 import { FC, useState, useEffect } from "react";
 import { PerformanceSummary } from "@/types/stats";
-import { Stack, Center, ScrollArea, Title } from "@mantine/core";
+import { Stack, Center, ScrollArea, Title, Flex } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { GeneralDatePicker } from "@/components/Headers/GeneralDatePicker";
 import { RankingSummary } from "@/components/Rankings/RankingSummary";
@@ -78,15 +78,39 @@ export const Performance: FC<{ pebblerName: string }> =
                         </Center >
 
                         <Title order={4} ta="center" mt="xl">Promotion/Demotion Record</Title>
-                        <Stack gap="sm" mb="sm">
-                            {performances.slice().map((perf, i) => (
+                        <Stack gap="sm" mb="sm" align="center">
+                            {largeScreen ? (
+                                Array.from({ length: Math.ceil(performances.length / 3) }).map((_, rowIdx) => (
+                                    <Flex key={rowIdx} gap="md">
+                                        {performances.slice(rowIdx * 3, rowIdx * 3 + 3).map((perf, colIdx) => (
+                                            <RankingSummary
+                                              key={rowIdx * 3 + colIdx} 
+                                              division={perf.division}
+                                              rank={perf.rank}
+                                              dateString={new Date(year, perf.month - 1, 1).toLocaleString('default', { month: 'short', year: 'numeric' })}
+                                            />
+                                        ))}
+                                    </Flex>
+                                ))
+                            ) : (
+                                performances.map((perf, i) => (
+                                    <RankingSummary
+                                        key={i}
+                                        division={perf.division}
+                                        rank={perf.rank}
+                                        dateString={new Date(year, perf.month - 1, 1).toLocaleString('default', { month: 'short', year: 'numeric' })}
+                                    />
+                                ))
+                            )}
+
+                            {/* {performances.slice().map((perf, i) => (
                                 <RankingSummary
                                     key={i}
                                     division={perf.division}
                                     rank={perf.rank}
                                     dateString={new Date(year, perf.month - 1, 1).toLocaleString('default', { month: 'short', year: 'numeric' })}
                                 />
-                            ))}
+                            ))} */}
                         </Stack>
                     </>
                 )}
