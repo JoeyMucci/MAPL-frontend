@@ -189,12 +189,14 @@ export const RankingsTable: FC<{ pebblerRows: PebblerRowStats[], division: strin
                                     </TableTd>
                                     <TableTd w={200}>
                                         <Flex gap="md" align="center">
-                                            <Image
-                                                src={"/pebblers/" + toCamelCase(pebblerRow.pebbler) + ".png"}
-                                                alt={"Image of " + pebblerRow.pebbler + " the pebbler"}
-                                                h={25}
-                                                w={25}
-                                            />
+                                            <Anchor href={`/pebblers/${toCamelCase(pebblerRow.pebbler)}`}>
+                                                <Image
+                                                    src={"/pebblers/" + toCamelCase(pebblerRow.pebbler) + ".png"}
+                                                    alt={"Image of " + pebblerRow.pebbler + " the pebbler"}
+                                                    h={25}
+                                                    w={25}
+                                                />
+                                            </Anchor>
                                             <Anchor href={`/pebblers/${toCamelCase(pebblerRow.pebbler)}`} c="black" underline="hover" className={classes.oneLine}>
                                                 {pebblerRow.pebbler}
                                             </Anchor>

@@ -37,7 +37,7 @@ export const PebblerHeader: FC<{ pebbler: MediumPebbler, tabSelected: string, la
                         <Badge w={125} color={colorMap[pebbler.current_division]}>{pebbler.current_division}</Badge>
                         <Text size="lg" fw={700} span>|</Text>
                         <Text size="lg" fw={700} span>Rank:</Text>
-                        <Text size="lg" fw={700} c="orange" span>{pebbler.current_rank}</Text>
+                        <Text size="lg" fw={700} span>{pebbler.current_rank}</Text>
                     </Flex>
 
                     <StatTable pebbler={pebbler} />
