@@ -8,6 +8,7 @@ import { IconMenu2, IconX } from "@tabler/icons-react";
 import classes from './Header.module.css';
 
 const links = [
+    { link: '/', label: 'Home' },
     { link: '/pebblers', label: 'Pebblers' },
     { link: '/bouts', label: 'Bouts' },
     { link: '/rankings', label: 'Rankings' },
@@ -55,23 +56,7 @@ export const WebHeader = () => {
                 </Flex>
             ) : (
                 <Flex align="center" justify="flex-start" style={{ width: '100%' }}>
-                    <IconMenu2
-                        size={40}
-                        color="brown"
-                        style={{ cursor: "pointer" }}
-                        onClick={() => modalHandlers.open()}
-                    />
-
-                    <Image
-                        src="/pebble.png"
-                        alt="The MAPL logo"
-                        h={40}
-                        w={40}
-                        m={10}
-                        onClick={() => router.push('/')}
-                        style={{ cursor: "pointer" }}
-                    />
-                    {/* {!modalOpened && (
+                    {!modalOpened && (
                         <Flex align="center" justify="flex-start">
                             <IconMenu2
                                 size={40}
@@ -95,14 +80,16 @@ export const WebHeader = () => {
                     <Modal
                         opened={modalOpened}
                         onClose={modalHandlers.close}
-                        fullScreen={true}
+                        fullScreen
                         transitionProps={{ transition: 'fade', duration: 200 }}
                         withCloseButton={false}
-                        style={{ minHeight: '100vh' }}
-                        p={0}
-                        m={0}
+                        styles={{
+                            body: {
+                                padding: 0,
+                            },
+                        }}
                     >
-                        <Stack justify="space-between" bg="cyan" style={{ height: '100%' }}>
+                        <Stack justify="space-between" style={{ height: '100vh', width: '100vw' }} bg="cyan">
                             <Flex align="center" justify="flex-start">
                                 <IconX
                                     size={40}
@@ -117,7 +104,7 @@ export const WebHeader = () => {
                                     h={40}
                                     w={40}
                                     m={10}
-                                    onClick={() => router.push('/')}
+                                    onClick={() => { modalHandlers.close(); router.push('/') }}
                                     style={{ cursor: "pointer" }}
                                 />
                             </Flex>
@@ -132,7 +119,7 @@ export const WebHeader = () => {
                                 </Button>
                             ))}
                         </Stack>
-                    </Modal> */}
+                    </Modal>
                 </Flex>
             )}
         </header>

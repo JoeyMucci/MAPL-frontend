@@ -64,7 +64,7 @@ export default function HomePage() {
 
     async function fetchHotRivalries() {
         try {
-            console.log("Fetching hot rilalries...")
+            console.log("Fetching hot rivalries...")
             const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/hot/rivalries`)
             return response.data
         }
