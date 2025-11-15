@@ -35,6 +35,9 @@ const eslintConfig = [
         { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
       ],
       "react/react-in-jsx-scope": "off",
+
+      '@next/next/no-page-custom-font': 'off',
+      '@typescript-eslint/no-explicit-any': 'off',
     },
   },
 ];

@@ -16,26 +16,28 @@ import { theme } from "@/theme";
 import axios from "axios";
 
 export const Meet: FC<{ pebblerName: string }> = ({ pebblerName }) => {
-    async function fetchPebbler() {
-        try {
-            console.log("Fetching personal pebbler information...");
-            const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/pebblers/personal/${pebblerName}`);
-            return response.data;
-        } catch (error) {
-            console.error("Error fetching data:", error);
-            return {};
-        }
-    }
+    
 
     const [pebbler, setPebbler] = useState<PersonalPebbler | null>(null)
     const [isReady, setIsReady] = useState<boolean>(false)
 
     useEffect(() => {
+        async function fetchPebbler() {
+            try {
+                console.log("Fetching personal pebbler information...");
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/pebblers/personal/${pebblerName}`);
+                return response.data;
+            } catch (error) {
+                console.error("Error fetching data:", error);
+                return {};
+            }
+        }
+
         fetchPebbler().then((data) => {
             setPebbler(data)
             setIsReady(true)
         })
-    }, [])
+    }, [pebblerName])
 
     if(!isReady) {
         return <></>

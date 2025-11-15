@@ -1,8 +1,6 @@
 "use client"
 
 import { Anchor, Badge, Card, CardSection, Flex, Radio, Stack, Text, Image, Tooltip } from "@mantine/core"
-import { SimplePebbler } from "@/types/pebblers";
-import { SimplePebblerStats } from "@/types/stats";
 import { colorMap, divisions } from "@/vars";
 import { toCamelCase } from "@/functions";
 import { theme } from "@/theme";

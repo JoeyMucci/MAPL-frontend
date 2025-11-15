@@ -88,7 +88,7 @@ export default function PebblersPage() {
             setYTDAbilityLeaders(data.abilities)
             setYTDFinished(true)
         })
-    }, [])
+    }, [month, year])
 
     if(
         !winnersFinished ||

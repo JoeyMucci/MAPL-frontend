@@ -10,20 +10,9 @@ import axios from "axios";
 
 export const Activity: FC<{ pebblerName: string }> =
     ({ pebblerName }) => {
-        async function fetchActivity(month: number, year: number) {
-            try {
-                console.log("Fetching pebbler bout information...");
-                const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/bouts/${pebblerName}/${month}/${year}`);
-                return response.data;
-            } catch (error) {
-                console.error("Error fetching data:", error);
-                return {};
-            }
-        }
 
         let largeScreen = useMediaQuery('(min-width: 56em)')
         largeScreen = largeScreen === undefined ? true : largeScreen
-
 
         const date = new Date()
         const curMonth = date.getMonth() + 1 // getMonth() returns 0-11, so we add 1
@@ -34,10 +23,21 @@ export const Activity: FC<{ pebblerName: string }> =
         const [bouts, setBouts] = useState<SimpleBout[]>([]);
 
         useEffect(() => {
+            async function fetchActivity(month: number, year: number) {
+                try {
+                    console.log("Fetching pebbler bout information...");
+                    const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/bouts/${pebblerName}/${month}/${year}`);
+                    return response.data;
+                } catch (error) {
+                    console.error("Error fetching data:", error);
+                    return {};
+                }
+            }
+
             fetchActivity(month, year).then((data) => {
                 setBouts(data.bouts);
             });
-        }, [month, year]);
+        }, [month, year, pebblerName]);
 
         const toggleDate = (newDate: string) => {
             setMonth(parseInt(newDate.split('-')[1], 10))

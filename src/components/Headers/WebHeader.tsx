@@ -21,7 +21,7 @@ const links = [
 export const WebHeader = () => {
     const router = useRouter()
     const pathname = usePathname()
-    const tab = '/' + pathname.split('/')[1]
+    const tab = '/' + pathname!.split('/')[1]
     let largeScreen = useMediaQuery('(min-width: 56em)')
     largeScreen = largeScreen === undefined ? true : largeScreen
 

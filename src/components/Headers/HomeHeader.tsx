@@ -1,10 +1,12 @@
-import { FC } from "react";
+// import { FC } from "react";
 import { Container, Flex, Stack, Text, rem, Button, Image } from "@mantine/core";
 import Link from 'next/link'
 import classes from "./Header.module.css";
 
+// TODO: IMPLEMENT MOBILE FRIENDLY
 
-export const HomeHeader: FC<{ largeScreen: boolean }> = ({ largeScreen }) => {
+// export const HomeHeader: FC<{ largeScreen: boolean }> = ({ largeScreen }) => {
+export const HomeHeader = () => {
     return (
         <Container fluid className={classes.orangeHeader} pb='sm'>
             <Stack align="center" justify="center">

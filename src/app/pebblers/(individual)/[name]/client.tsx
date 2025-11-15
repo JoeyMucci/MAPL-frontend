@@ -37,7 +37,7 @@ export default function PebblerPage({
             setPebbler(data)
             setIsLoading(false)
         })
-    }, [])
+    }, [name])
 
     if(isLoading) {
         return <Loading />

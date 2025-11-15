@@ -11,16 +11,6 @@ import axios from "axios";
 
 export const Performance: FC<{ pebblerName: string }> =
     ({ pebblerName }) => {
-        async function fetchHistory(year: number) {
-            try {
-                console.log("Fetching pebbler performance history...");
-                const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/pebblers/history/${pebblerName}/${year}`);
-                return response.data;
-            } catch (error) {
-                console.error("Error fetching data:", error);
-                return {};
-            }
-        }
 
         let largeScreen = useMediaQuery('(min-width: 56em)')
         largeScreen = largeScreen === undefined ? true : largeScreen
@@ -37,10 +27,21 @@ export const Performance: FC<{ pebblerName: string }> =
         }));
 
         useEffect(() => {
+            async function fetchHistory(year: number) {
+                try {
+                    console.log("Fetching pebbler performance history...");
+                    const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/pebblers/history/${pebblerName}/${year}`);
+                    return response.data;
+                } catch (error) {
+                    console.error("Error fetching data:", error);
+                    return {};
+                }
+            }
+
             fetchHistory(year).then((data) => {
                 setPerformances(data.performances);
             });
-        }, [year]);
+        }, [year, pebblerName]);
 
         const toggleDate = (newDate: string) => {
             setYear(parseInt(newDate.split('-')[0], 10))

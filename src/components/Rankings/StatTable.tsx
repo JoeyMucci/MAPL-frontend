@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Table, TableThead, TableTr, TableTd, TableTbody, Tooltip } from '@mantine/core';
+import { Table, TableThead, TableTr, TableTd, TableTbody } from '@mantine/core';
 import { MediumPebbler } from '@/types/pebblers';
 
 export const StatTable: FC<{ pebbler: MediumPebbler }> = ({ pebbler }) => {

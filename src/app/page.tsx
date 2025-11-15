@@ -106,7 +106,7 @@ export default function HomePage() {
             setHotRivalries(data)
             setRivalriesFinished(true)
         })
-    }, [])
+    }, [month, year])
 
     const CustomDescription: FC<{ description: string }> = ({ description }) => {
         const splits = description.split(' ')
@@ -254,7 +254,8 @@ export default function HomePage() {
 
     return (
         <>
-            <HomeHeader largeScreen={largeScreen} />
+            {/* <HomeHeader largeScreen={largeScreen} /> */}
+            <HomeHeader />
             <Stack align='center' mt='md' mb='md' gap='lg'>
                 <HotPebblers />
                 <Divider w={largeScreen ? 1000 : 300} />
