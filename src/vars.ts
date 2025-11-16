@@ -74,10 +74,10 @@ export const abilityMap: { [key: string]: typeof IconFeatherFilled } = {
 }
 
 export const traitDescMap: { [key: string]: string } = {
-    "Grace": "Roll a die with faces 1, 2, 4, 4, 5, 5",
-    "Skill": "Roll a die with faces 1, 3, 3, 4, 4, 6",
-    "Power": "Roll a die with faces 1, 1, 2, 5, 5, 6",
-    "Speed": "Roll a die with faces 1, 1, 3, 3, 6, 6",
+    "Grace": "1, 2, 4, 4, 5, 5",
+    "Skill": "1, 3, 3, 4, 4, 6",
+    "Power": "1, 1, 2, 5, 5, 6",
+    "Speed": "1, 1, 3, 3, 6, 6",
 }
 
 export const quirkDescMap: { [key: string]: string } = {

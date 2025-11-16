@@ -21,7 +21,7 @@ export const TraitTable = () => (
         <TableThead>
             <TableTr ta="center">
                 <TableTd>Trait</TableTd>
-                <TableTd>Description</TableTd>
+                <TableTd>Possible Rolls</TableTd>
             </TableTr>
         </TableThead>
         <TableTbody>

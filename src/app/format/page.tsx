@@ -462,12 +462,12 @@ function FormatPageHelper() {
                             p={0}
                             m={0}
                         >
-                            <Stack justify="center" align="center">
+                            <Stack justify="center" align="center" gap={0}>
                                 <Image
                                     src={"/authors/" + toCamelCase("Ari") + ".png"}
                                     alt={"Image of " + "Ari" + " the reporter"}
-                                    h={150}
-                                    w={150}
+                                    h={100}
+                                    w={100}
                                 />
                                 {BaseScoringText()}
                             </Stack>
@@ -477,23 +477,6 @@ function FormatPageHelper() {
                                 </Center>
                             </Flex>
                         </Card>
-                        {/* <Card style={{
-                            height: "calc(100vh - 110px)",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "start",
-                            scrollSnapAlign: "start",
-                        }}
-                            w={300}
-                            p={0}
-                            m={0}
-                        >
-                            <Flex w={300} justify="center">
-                                <Center mt="md" w={300}>
-                                    <BasePebbleGraphic />
-                                </Center>
-                            </Flex>
-                        </Card> */}
                         <Card style={{
                             height: "calc(100vh - 110px)",
                             display: "flex",
@@ -505,7 +488,7 @@ function FormatPageHelper() {
                             p={0}
                             m={0}
                         >
-                            <Stack justify="center" align="center">
+                            <Stack justify="center" align="center" gap={0}>
                                 <Image
                                     src={"/authors/" + toCamelCase("Ari") + ".png"}
                                     alt={"Image of " + "Ari" + " the reporter"}
@@ -526,7 +509,7 @@ function FormatPageHelper() {
                             p={0}
                             m={0}
                         >
-                            <Stack justify="center" align="center">
+                            <Stack justify="center" align="center" gap={0}>
                                 <Image
                                     src={"/authors/" + toCamelCase("Ari") + ".png"}
                                     alt={"Image of " + "Ari" + " the reporter"}
@@ -547,7 +530,7 @@ function FormatPageHelper() {
                             p={0}
                             m={0}
                         >
-                            <Stack justify="center" align="center">
+                            <Stack justify="center" align="center" gap={0}>
                                 <Image
                                     src={"/authors/" + toCamelCase("Ari") + ".png"}
                                     alt={"Image of " + "Ari" + " the reporter"}
@@ -562,23 +545,6 @@ function FormatPageHelper() {
                                 </Center>
                             </Flex>
                         </Card>
-                        {/* <Card style={{
-                            height: "calc(100vh - 110px)",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "start",
-                            scrollSnapAlign: "start",
-                        }}
-                            w={300}
-                            p={0}
-                            m={0}
-                        >
-                            <Flex w={300} justify="center">
-                                <Center mt="md" w={300}>
-                                    <TraitTable />
-                                </Center>
-                            </Flex>
-                        </Card> */}
                         <Card style={{
                             height: "calc(100vh - 110px)",
                             display: "flex",
@@ -590,7 +556,7 @@ function FormatPageHelper() {
                             p={0}
                             m={0}
                         >
-                            <Stack justify="center" align="center">
+                            <Stack justify="center" align="center" gap={0}>
                                 <Image
                                     src={"/authors/" + toCamelCase("Ari") + ".png"}
                                     alt={"Image of " + "Ari" + " the reporter"}
@@ -618,21 +584,6 @@ function FormatPageHelper() {
                                     <QuirkTable />
                                 </Center>
                             </Card>
-                            {/* <Card style={{
-                                height: "calc(100vh - 110px)",
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "start",
-                                scrollSnapAlign: "start",
-                            }}
-                                w={300}
-                                p={0}
-                                m={0}
-                            >
-                                <Center mt="md" w={300}>
-                                    <FullPebbleGraphic />
-                                </Center>
-                            </Card> */}
                         <Card style={{
                             height: "calc(100vh - 110px)",
                             display: "flex",
@@ -644,7 +595,7 @@ function FormatPageHelper() {
                             p={0}
                             m={0}
                         >
-                            <Stack justify="center" align="center">
+                            <Stack justify="center" align="center" gap={0}>
                                 <Image
                                     src={"/authors/" + toCamelCase("Ari") + ".png"}
                                     alt={"Image of " + "Ari" + " the reporter"}
@@ -680,7 +631,7 @@ function FormatPageHelper() {
                             p={0}
                             m={0}
                         >
-                            <Stack justify="center" align="center">
+                            <Stack justify="center" align="center" gap={0}>
                                 <Image
                                     src={"/authors/" + toCamelCase("Ari") + ".png"}
                                     alt={"Image of " + "Ari" + " the reporter"}
@@ -701,7 +652,7 @@ function FormatPageHelper() {
                             p={0}
                             m={0}
                         >
-                            <Stack justify="center" align="center">
+                            <Stack justify="center" align="center" gap={0}>
                                 <Image
                                     src={"/authors/" + toCamelCase("Ari") + ".png"}
                                     alt={"Image of " + "Ari" + " the reporter"}
@@ -714,21 +665,6 @@ function FormatPageHelper() {
                                 <DivisionTable />
                             </Center>
                         </Card>
-                        {/* <Card style={{
-                            height: "calc(100vh - 110px)",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "start",
-                            scrollSnapAlign: "start",
-                        }}
-                            w={300}
-                            p={0}
-                            m={0}
-                        >
-                            <Center mt="md" w={300}>
-                                <DivisionTable />
-                            </Center>
-                        </Card> */}
                         <Card style={{
                             height: "calc(100vh - 110px)",
                             display: "flex",
@@ -740,7 +676,7 @@ function FormatPageHelper() {
                             p={0}
                             m={0}
                         >
-                            <Stack justify="center" align="center">
+                            <Stack justify="center" align="center" gap={0}>
                                 <Image
                                     src={"/authors/" + toCamelCase("Ari") + ".png"}
                                     alt={"Image of " + "Ari" + " the reporter"}
@@ -764,7 +700,7 @@ function FormatPageHelper() {
                             p={0}
                             m={0}
                         >
-                            <Stack justify="center" align="center">
+                            <Stack justify="center" align="center" gap={0}>
                                 <Image
                                     src={"/authors/" + toCamelCase("Ari") + ".png"}
                                     alt={"Image of " + "Ari" + " the reporter"}
