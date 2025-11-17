@@ -133,7 +133,7 @@ function FormatPageHelper() {
 
     const PromotionDemotionText = () => (
         <Text ta="center" w={300} span size="sm">
-            {"Moving on to our final point, let's talking about moving up or down between divisions. Top 5 in terms of pebbles accumulated move up, bottom 5 move down. " +
+            {"Moving to our final point, let's talk about moving up or down between divisions. Top 5 in terms of pebbles accumulated move up, bottom 5 move down. " +
                 "Naturally if there's no further division to go to, it's all about pride. Of course, it's possible for pebblers to have the same amount of pebbles " +
                 "so there are tiebreakers in place."}
         </Text>
