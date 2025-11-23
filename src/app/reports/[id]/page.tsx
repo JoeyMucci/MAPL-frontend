@@ -3,6 +3,7 @@ import { Center } from "@mantine/core";
 import { Report } from "@/types/reports";
 import { FullReport } from "@/components/Reports/FullReport";
 import { Metadata } from "next";
+import { NoData } from "@/components/nodata";
 
 export const metadata: Metadata = {
   title: 'MAPL | Reports'
@@ -15,12 +16,12 @@ export default async function ReportPage({
 }) {
     async function fetchReport(id: number) {
         try {
-            console.log("Fetching report...");
+            // console.log("Fetching report...");
             const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/news/${id}`);
             return response.data;
         }
-        catch (error) {
-            console.error("Error fetching data:", error);
+         catch (error) { // eslint-disable-line @typescript-eslint/no-unused-vars
+            // console.error("Error fetching data:", error);
             return {};
         }
     }
@@ -30,7 +31,7 @@ export default async function ReportPage({
     const report: Report = await fetchReport(id)
 
     if (!report || Object.keys(report).length === 0) {
-        return <div>Error: Report not found</div>;
+        return <NoData />
     }
 
     return (

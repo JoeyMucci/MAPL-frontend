@@ -89,7 +89,7 @@ export const WebHeader = () => {
                             },
                         }}
                     >
-                        <Stack justify="space-between" style={{ height: '100vh', width: '100vw' }} bg="cyan">
+                        <Stack justify="space-between" pb={100} style={{ height: '100vh', width: '100vw' }} bg="cyan">
                             <Flex align="center" justify="flex-start">
                                 <IconX
                                     size={40}

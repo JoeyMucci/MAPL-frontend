@@ -8,6 +8,7 @@ import { Bout } from "@/components/Bout/SmallBout";
 import { SimpleBout } from "@/types/bouts";
 import { RivalryPebbles, RivalryResults } from "@/types/stats";
 import { pebblerNameList } from "@/vars";
+import { NoData } from "@/components/nodata"
 import axios from "axios";
 import Loading from "@/components/loading";
 
@@ -17,11 +18,11 @@ export default function RivalryPage() {
 
     async function fetchRivalry(pebblerOne: string, pebblerTwo: string) {
         try {
-            console.log("Fetching rivalry...")
+            // console.log("Fetching rivalry...")
             const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/rivalry/${pebblerOne}/${pebblerTwo}`)
             return response.data
-        } catch (error) {
-            console.error("Error fetching data:", error)
+        }  catch (error) { // eslint-disable-line @typescript-eslint/no-unused-vars
+            // console.error("Error fetching data:", error)
             return {}
         }
     }
@@ -53,6 +54,14 @@ export default function RivalryPage() {
         }
     }, [pebblerOne, pebblerTwo]);
 
+    if(pebbleBreakdown === undefined || resultBreakdown === undefined || bouts === undefined) {
+        return <NoData />
+    }
+
+    if(!pebbleBreakdown || !resultBreakdown || !bouts) {
+        return <NoData />
+    }
+
     return (
         <>
             {pebblerOne.length > 0 &&
@@ -72,7 +81,7 @@ export default function RivalryPage() {
                             <Loading />
                         ) : (
                             bouts.length === 0 ? (
-                                <div>No bouts found.</div>
+                                <NoData />
                             ) :
 
                                 largeScreen ? (

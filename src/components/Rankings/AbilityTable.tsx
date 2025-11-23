@@ -7,7 +7,6 @@ import {
     TableTr,
     TableTd,
     TableTbody,
-    Text,
     rem,
 } from "@mantine/core";
 import {

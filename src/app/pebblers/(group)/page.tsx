@@ -16,36 +16,36 @@ export default function PebblersPage() {
 
     async function fetchRecentWinners(month: number, year: number) {
         try {
-            console.log("Fetching recent winners...")
+            // console.log("Fetching recent winners...")
             const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/rankings/winners/${month}/${year}`)
             return response.data
         }
-        catch (error) {
-            console.error("Error fetching data:", error)
+         catch (error) { // eslint-disable-line @typescript-eslint/no-unused-vars
+            // console.error("Error fetching data:", error)
             return {}
         }
     }
 
     async function fetchCurrentBookends() {
         try {
-            console.log("Fetching rankings bookends...")
+            // console.log("Fetching rankings bookends...")
             const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/rankings/bookends`)
             return response.data
         }
-        catch (error) {
-            console.error("Error fetching data:", error)
+         catch (error) { // eslint-disable-line @typescript-eslint/no-unused-vars
+            // console.error("Error fetching data:", error)
             return {}
         }
     }
 
     async function fetchYTDStats() {
         try {
-            console.log("Fetching year to date stats...")
+            // console.log("Fetching year to date stats...")
             const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/pebblers/ytd`)
             return response.data
         }
-        catch (error) {
-            console.error("Error fetching data:", error)
+         catch (error) { // eslint-disable-line @typescript-eslint/no-unused-vars
+            // console.error("Error fetching data:", error)
             return {}
         }
     }
@@ -101,18 +101,16 @@ export default function PebblersPage() {
     return (
         <Stack align="center" mt="sm" mb="sm">
             <SearchableSelect
-                defaultValue=""
-                disabledName=""
-                setParentAction={(value) => window.location.href = `/pebblers/${toCamelCase(value)}`}
+            defaultValue=""
+            disabledName=""
+            setParentAction={(value) => window.location.href = `/pebblers/${toCamelCase(value)}`}
             />
-            {recentWinners.length > 0 &&
-                <OverviewCarousel label="Recent Champs" pebblers={recentWinners} largeScreen={largeScreen} />
-            }
-            <OverviewCarousel label="Current Leaders" pebblers={currentLeaders} largeScreen={largeScreen} />
-            <OverviewCarousel label="Current Trailers" pebblers={currentTrailers} largeScreen={largeScreen} />
-            <OverviewCarousel label="Year to Date Pebble Leaders" pebblers={ytdPebbleLeaders} largeScreen={largeScreen} />
-            <OverviewCarousel label="Year to Date Quirk Pebble Leaders" pebblers={ytdQuirkLeaders} largeScreen={largeScreen} />
-            <OverviewCarousel label="Year to Date Ability Trigger Leaders" pebblers={ytdAbilityLeaders} largeScreen={largeScreen} />
+            <OverviewCarousel label="Recent Champs" pebblers={recentWinners} largeScreen={largeScreen} hasData={recentWinners !== undefined && recentWinners.length > 0} />
+            <OverviewCarousel label="Current Leaders" pebblers={currentLeaders} largeScreen={largeScreen} hasData={currentLeaders !== undefined && currentLeaders.length > 0} />
+            <OverviewCarousel label="Current Trailers" pebblers={currentTrailers} largeScreen={largeScreen} hasData={currentTrailers !== undefined && currentTrailers.length > 0} />
+            <OverviewCarousel label="Year to Date Pebble Leaders" pebblers={ytdPebbleLeaders} largeScreen={largeScreen} hasData={ytdPebbleLeaders !== undefined && ytdPebbleLeaders.length > 0} />
+            <OverviewCarousel label="Year to Date Quirk Pebble Leaders" pebblers={ytdQuirkLeaders} largeScreen={largeScreen} hasData={ytdQuirkLeaders !== undefined && ytdQuirkLeaders.length > 0} />
+            <OverviewCarousel label="Year to Date Ability Trigger Leaders" pebblers={ytdAbilityLeaders} largeScreen={largeScreen} hasData={ytdAbilityLeaders !== undefined && ytdAbilityLeaders.length > 0} />
         </Stack>
     )
 }

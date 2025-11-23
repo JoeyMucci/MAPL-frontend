@@ -13,10 +13,11 @@ import {
     abilityDescMap
 } from "@/vars";
 import { theme } from "@/theme";
+import { NoData } from "../nodata";
 import axios from "axios";
 
 export const Meet: FC<{ pebblerName: string }> = ({ pebblerName }) => {
-    
+
 
     const [pebbler, setPebbler] = useState<PersonalPebbler | null>(null)
     const [isReady, setIsReady] = useState<boolean>(false)
@@ -24,12 +25,12 @@ export const Meet: FC<{ pebblerName: string }> = ({ pebblerName }) => {
     useEffect(() => {
         async function fetchPebbler() {
             try {
-                console.log("Fetching personal pebbler information...");
+                // console.log("Fetching personal pebbler information...");
                 const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/pebblers/personal/${pebblerName}`);
                 return response.data;
-            } catch (error) {
-                console.error("Error fetching data:", error);
-                return {};
+            }  catch (error) { // eslint-disable-line @typescript-eslint/no-unused-vars
+                // console.error("Error fetching data:", error);
+                return null;
             }
         }
 
@@ -39,12 +40,14 @@ export const Meet: FC<{ pebblerName: string }> = ({ pebblerName }) => {
         })
     }, [pebblerName])
 
-    if(!isReady) {
+    if (!isReady) {
         return <></>
     }
 
-    if(!pebbler) {
-        return <>error</>
+    if (pebbler === undefined || !pebbler) {
+        return (
+            <NoData />
+        )
     }
 
     const displayData = [

@@ -7,6 +7,7 @@ import { useMediaQuery } from "@mantine/hooks";
 import { GeneralDatePicker } from "@/components/Headers/GeneralDatePicker";
 import { RankingSummary } from "@/components/Rankings/RankingSummary";
 import { LineChart } from "@mantine/charts";
+import { NoData } from "@/components/nodata";
 import axios from "axios";
 
 export const Performance: FC<{ pebblerName: string }> =
@@ -17,7 +18,7 @@ export const Performance: FC<{ pebblerName: string }> =
 
         const curYear = new Date().getFullYear()
         const [year, setYear] = useState<number>(curYear)
-        const [performances, setPerformances] = useState<PerformanceSummary[]>([]);
+        const [performances, setPerformances] = useState<PerformanceSummary[]>([])
 
         const data = performances.slice().reverse().map((perf: PerformanceSummary) => ({
             date: new Date(year, perf.month - 1, 1).toLocaleString('default', { month: 'short', year: 'numeric' }),
@@ -29,12 +30,12 @@ export const Performance: FC<{ pebblerName: string }> =
         useEffect(() => {
             async function fetchHistory(year: number) {
                 try {
-                    console.log("Fetching pebbler performance history...");
+                    // console.log("Fetching pebbler performance history...");
                     const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/pebblers/history/${pebblerName}/${year}`);
                     return response.data;
-                } catch (error) {
-                    console.error("Error fetching data:", error);
-                    return {};
+                }  catch (error) { // eslint-disable-line @typescript-eslint/no-unused-vars
+                    // console.error("Error fetching data:", error);
+                    return null;
                 }
             }
 
@@ -55,8 +56,14 @@ export const Performance: FC<{ pebblerName: string }> =
                     onChange={toggleDate}
                 />
 
-                {performances.length == 0 ? (
-                    <div>No Data for {year}</div>
+
+                {performances === undefined || !performances || performances.length === 0 ? (
+                    <>
+                        <Title ta="center" order={1} mt="xl">
+                            {year}{" Performance"}
+                        </Title>
+                        <NoData />
+                    </>
                 ) : (
                     <>
                         <Title order={4} ta="center" mt="xl">Pebble Plot</Title>
@@ -103,15 +110,6 @@ export const Performance: FC<{ pebblerName: string }> =
                                     />
                                 ))
                             )}
-
-                            {/* {performances.slice().map((perf, i) => (
-                                <RankingSummary
-                                    key={i}
-                                    division={perf.division}
-                                    rank={perf.rank}
-                                    dateString={new Date(year, perf.month - 1, 1).toLocaleString('default', { month: 'short', year: 'numeric' })}
-                                />
-                            ))} */}
                         </Stack>
                     </>
                 )}

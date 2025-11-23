@@ -3,7 +3,7 @@
 import { FC, useState, useEffect } from 'react';
 import { Title, Stack, Flex, Badge, Text, Divider } from '@mantine/core';
 import { useMediaQuery } from "@mantine/hooks";
-import { HomeHeader } from "@/components/Headers/HomeHeader";
+import { HomeHeader, HomeHeaderMobile } from "@/components/Headers/HomeHeader";
 import { OverviewCard } from '@/components/Pebbler/OverviewCard';
 import { Bout } from '@/components/Bout/SmallBout';
 import { SmallReport } from '@/components/Reports/SmallReport';
@@ -19,6 +19,7 @@ import {
     IconArrowUp,
     IconArrowsRightLeft
 } from "@tabler/icons-react";
+import { NoData } from '@/components/nodata';
 import axios from "axios";
 import Loading from '@/components/loading';
 
@@ -28,48 +29,48 @@ export default function HomePage() {
 
     async function fetchHotPebblers(month: number, year: number) {
         try {
-            console.log("Fetching hot pebblers...")
+            // console.log("Fetching hot pebblers...")
             const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/hot/pebblers/${month}/${year}`)
             return response.data
         }
-        catch (error) {
-            console.error("Error fetching data:", error)
+         catch (error) { // eslint-disable-line @typescript-eslint/no-unused-vars
+            // console.error("Error fetching data:", error)
             return {}
         }
     }
 
     async function fetchHotBouts() {
         try {
-            console.log("Fetching hot bouts...")
+            // console.log("Fetching hot bouts...")
             const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/hot/bouts`)
             return response.data
         }
-        catch (error) {
-            console.error("Error fetching data:", error)
+         catch (error) { // eslint-disable-line @typescript-eslint/no-unused-vars
+            // console.error("Error fetching data:", error)
             return {}
         }
     }
 
     async function fetchHotPress() {
         try {
-            console.log("Fetching hot press...")
+            // console.log("Fetching hot press...")
             const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/hot/news`)
             return response.data
         }
-        catch (error) {
-            console.error("Error fetching data:", error)
+         catch (error) { // eslint-disable-line @typescript-eslint/no-unused-vars
+            // console.error("Error fetching data:", error)
             return {}
         }
     }
 
     async function fetchHotRivalries() {
         try {
-            console.log("Fetching hot rivalries...")
+            // console.log("Fetching hot rivalries...")
             const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/hot/rivalries`)
             return response.data
         }
-        catch (error) {
-            console.error("Error fetching data:", error)
+         catch (error) { // eslint-disable-line @typescript-eslint/no-unused-vars
+            // console.error("Error fetching data:", error)
             return {}
         }
     }
@@ -121,7 +122,7 @@ export default function HomePage() {
         return (
             <Stack gap={0} align='center'>
                 <Flex gap='md' align='center'>
-                    <Text size='lg'>+{pebbleDifference} pebbles</Text>
+                    <Text size='lg'>+{pebbleDifference} pebble{pebbleDifference === 1 ? "" : "s"} </Text>
                     <Flex gap={0} align='center'>
                         <Text size='lg'>{newPebbles}</Text>
                         {pebbleDifference >= 20 && <IconArrowsUp color={colorMap['W']} />}
@@ -145,33 +146,56 @@ export default function HomePage() {
 
     const HotPebblers = () => (
         <>
-            {Object.keys(hotPebblers).length > 0 && <Title order={3}>🔥   Hot Pebblers   🔥</Title>}
-            < Flex gap="md" >
-                {
-                    Object.keys(hotPebblers).length > 0 ? (
-                        divisions.map((division, i) => (
-                            <Stack key={i} align='center'>
-                                <Badge w={125} color={colorMap[division]}>{division}</Badge>
-                                <OverviewCard pebbler={hotPebblers[division][0]} hideDescription />
-                                <CustomDescription description={hotPebblers[division][0].description} />
-                            </Stack>
-                        ))
-                    ) : (
-                        <div> no data</div>
-                    )
-                }
-            </Flex >
+            {<Title order={3}>🔥   Hot Pebblers   🔥</Title>}
+            {largeScreen ? (
+                <Flex gap="md" >
+                    {
+                        Object.keys(hotPebblers).length > 0 ? (
+                            divisions.map((division, i) => (
+                                <Stack key={i} align='center'>
+                                    <Badge w={125} color={colorMap[division]}>{division}</Badge>
+                                    <OverviewCard pebbler={hotPebblers[division][0]} hideDescription />
+                                    <CustomDescription description={hotPebblers[division][0].description} />
+                                </Stack>
+                            ))
+                        ) : (
+                            <NoData />
+                        )
+                    }
+                </Flex>
+            ) : 
+            (
+                <Stack gap="md" >
+                    {
+                        Object.keys(hotPebblers).length > 0 ? (
+                            divisions.map((division, i) => (
+                                <Stack key={i} align='center'>
+                                    <Badge w={125} color={colorMap[division]}>{division}</Badge>
+                                    <OverviewCard pebbler={hotPebblers[division][0]} hideDescription />
+                                    <CustomDescription description={hotPebblers[division][0].description} />
+                                    {i != divisions.length - 1 && <Divider w={75} />}
+                                </Stack>
+                            ))
+                        ) : (
+                            <NoData />
+                        )
+                    }
+                </Stack>
+            )
+            }
         </>
     )
 
     const HotBouts = () => (
         <>
-            {hotBouts.length > 0 && <Title order={3}>🔥   Hot Bouts   🔥</Title>}
+            {<Title order={3}>🔥   Hot Bouts   🔥</Title>}
+
+            
 
             <Stack align="center">
                 {
-                    hotBouts.length === 0 ? (
-                        <div>No bouts found.</div>
+                    !(hotBouts.length) ? (
+                        <NoData />
                     ) :
                         largeScreen ? (
                             Array.from({ length: Math.ceil(hotBouts.length / 3) }).map((_, rowIdx) => (
@@ -193,11 +217,11 @@ export default function HomePage() {
 
     const HotPress = () => (
         <>
-            {hotPress.length > 0 && <Title order={3}>🔥   Hot of the Press   🔥</Title>}
+            {<Title order={3}>🔥   Hot of the Press   🔥</Title>}
 
             {
                 Object.keys(hotPress).length === 0 || hotPress.length === 0 ? (
-                    <div>No reports found.</div>
+                    <NoData />
                 ) :
 
                     largeScreen ? (
@@ -219,11 +243,11 @@ export default function HomePage() {
 
     const HotRivalries = () => (
         <>
-            {hotRivalries.length > 0 && <Title order={3}>🔥   Heated Rivalries   🔥</Title>}
+            {<Title order={3}>🔥   Heated Rivalries   🔥</Title>}
 
             {
                 Object.keys(hotRivalries).length === 0 || hotRivalries.length === 0 ? (
-                    <div>No rivalries found.</div>
+                    <NoData />
                 ) :
 
                     largeScreen ? (
@@ -254,8 +278,7 @@ export default function HomePage() {
 
     return (
         <>
-            {/* <HomeHeader largeScreen={largeScreen} /> */}
-            <HomeHeader />
+            {largeScreen ? <HomeHeader /> : <HomeHeaderMobile />}
             <Stack align='center' mt='md' mb='md' gap='lg'>
                 <HotPebblers />
                 <Divider w={largeScreen ? 1000 : 300} />

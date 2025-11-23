@@ -7,6 +7,7 @@ import { Activity } from "@/components/Pebbler/Activity";
 import { Performance } from "@/components/Pebbler/Performance";
 import { Look } from "@/components/Pebbler/Look";
 import {useEffect, useState, use } from "react";
+import { NoData } from "@/components/nodata"
 import axios from "axios";
 import Loading from "@/components/loading";
 
@@ -17,12 +18,12 @@ export default function PebblerPage({
 }) {
     async function fetchPebbler(pebblerName: string) {
         try {
-            console.log("Fetching pebbler...");
+            // console.log("Fetching pebbler...");
             const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/pebblers/basic/${pebblerName}`);
             return response.data;
         }
-        catch (error) {
-            console.error("Error fetching data:", error);
+         catch (error) { // eslint-disable-line @typescript-eslint/no-unused-vars
+            // console.error("Error fetching data:", error);
             return {};
         }
     }
@@ -44,7 +45,7 @@ export default function PebblerPage({
     }
 
     if (!pebbler || Object.keys(pebbler).length === 0) {
-        return <div>Error: Pebbler not found</div>;
+        return <NoData />
     }
 
     return (

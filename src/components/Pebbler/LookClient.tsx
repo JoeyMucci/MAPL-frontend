@@ -1,24 +1,30 @@
 "use client"
 
 import { FC, useState } from "react";
-import { Badge, Center, Stack, Flex, Text } from "@mantine/core";
+import { Badge, Center, Stack, Flex } from "@mantine/core";
 import { CareerSummary } from "@/types/stats";
 import { colorMap, divisions } from "@/vars";
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 import { CareerTable } from "../Rankings/CareerTable";
+import { NoData } from "@/components/nodata"
 
 
 export const LookClient: FC<{ careerSummary: CareerSummary[] }> = ({ careerSummary }) => {
     const careerSummaryMap: Record<string, CareerSummary> = {}
+    const [divisionIndex, setDivisionIndex] = useState<number>(0)
+
+    if(careerSummary === undefined || !careerSummary) {
+        return <NoData />
+    }
+
     for (const cs of careerSummary) {
         careerSummaryMap[cs.division] = cs
     }
 
     const validDivisions = divisions.filter(division => division in careerSummaryMap)
-    const [divisionIndex, setDivisionIndex] = useState<number>(0)
 
     if (validDivisions.length == 0) {
-        return <Text ta="center">No data</Text>
+        <NoData />
     }
 
     return (

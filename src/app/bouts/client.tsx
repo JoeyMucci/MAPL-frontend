@@ -10,16 +10,17 @@ import { getTime } from "@/functions";
 import { BoutsHeader } from "@/components/Headers/BoutsHeader";
 import Loading from "@/components/loading";
 import axios from "axios";
+import { NoData } from "@/components/nodata";
 
 export default function BoutsPage() {
   async function fetchBouts(day: number, month: number, year: number) {
     try {
-      console.log("Fetching bouts...")
+      // console.log("Fetching bouts...")
       const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/bouts/${month}/${day}/${year}`)
       return response.data
     }
-    catch (error) {
-      console.error("Error fetching data:", error)
+     catch (error) { // eslint-disable-line @typescript-eslint/no-unused-vars
+      // console.error("Error fetching data:", error)
       return {}
     }
   }
@@ -36,6 +37,7 @@ export default function BoutsPage() {
   const [month, setMonth] = useState<number>(curMonth)
   const [year, setYear] = useState<number>(curYear)
   const [bouts, setBouts] = useState<{ [division: string]: SimpleBout[] }>({})
+  const [isReady, setIsReady] = useState<boolean>(false)
 
   function toggleDate(
     setDay: (a: number) => void,
@@ -54,15 +56,12 @@ export default function BoutsPage() {
 
   useEffect(() => {
     fetchBouts(day, month, year).then((data) => {
-      setBouts(data.bout_info);
+      setBouts(data.bout_info)
+      setIsReady(true)
     });
   }, [day, month, year]);
 
-  if (!bouts) {
-    return <div>Error: Rankings not found</div>
-  }
-
-  if (Object.keys(bouts).length === 0) {
+  if (!isReady) {
     return <Loading />
   }
 
@@ -88,8 +87,8 @@ export default function BoutsPage() {
 
       <Stack align="center" mt={largeScreen ? "md" : ""} mb="md">
         {
-          bouts[division].length === 0 ? (
-            <div>No bouts found.</div>
+          !bouts || bouts[division].length === 0 ? (
+            <NoData />
           ) :
             largeScreen ? (
               Array.from({ length: Math.ceil(bouts[division].length / 3) }).map((_, rowIdx) => (

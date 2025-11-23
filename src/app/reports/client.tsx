@@ -7,17 +7,18 @@ import { useMediaQuery } from "@mantine/hooks";
 import { Stack, Flex, Text, Image, Anchor } from "@mantine/core";
 import { ReportsHeader } from "@/components/Headers/ReportsHeader";
 import { getTime, toCamelCase } from "@/functions";
+import { NoData } from "@/components/nodata";
 import axios from "axios";
 
 export default function ReportsPage() {
     async function fetchReports(month: number, year: number) {
         try {
-            console.log("Fetching reports...")
+            // console.log("Fetching reports...")
             const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/news/${month}/${year}`)
             return response.data
         }
-        catch (error) {
-            console.error("Error fetching data:", error)
+         catch (error) { // eslint-disable-line @typescript-eslint/no-unused-vars
+            // console.error("Error fetching data:", error)
             return {}
         }
     }
@@ -106,7 +107,7 @@ export default function ReportsPage() {
 
                 {
                     Object.keys(reports).length === 0 || reports[reporter].length === 0 ? (
-                        <div>No reports found.</div>
+                        <NoData />
                     ) :
 
                         largeScreen ? (

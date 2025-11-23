@@ -3,7 +3,7 @@
 import { JSX, useRef, useState } from "react";
 import { Card, Stack, Flex, Image, Text, Center, Button } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
-import { FormatFooter } from "@/components/Headers/FormatFooter";
+import { FormatFooter, FormatFooterMobile } from "@/components/Headers/FormatFooter";
 import { toCamelCase } from "@/functions";
 import { BasePebbleGraphic } from "@/components/Rankings/BasePebbleGraphic";
 import { DivisionTable } from "@/components/Rankings/DivisionTable";
@@ -712,7 +712,7 @@ function FormatPageHelper() {
                             <Stack mt="md" gap="md">
                                 <Button
                                     w={250}
-                                    h={100}
+                                    h={50}
                                     radius="lg"
                                     size="xl"
                                     className={classes.orangeHover}
@@ -723,7 +723,7 @@ function FormatPageHelper() {
                                 <CoolBoutSmall />
                                 <Button
                                     w={250}
-                                    h={100}
+                                    h={50}
                                     radius="lg"
                                     size="xl"
                                     className={classes.orangeHover}
@@ -736,7 +736,7 @@ function FormatPageHelper() {
                     </Stack>
                 </Center>
             </div >
-            <FormatFooter cur={currentPage} setPageAction={setAndScroll} />
+            {<FormatFooterMobile cur={currentPage} />}
         </>
     )
 }

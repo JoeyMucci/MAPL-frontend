@@ -1,4 +1,5 @@
 import { BasicHeader } from "@/components/Headers/BasicHeader";
+import { NoData } from "@/components/nodata";
 import { Text, Center } from "@mantine/core";
 import axios from "axios";
 import { Metadata } from "next";
@@ -14,12 +15,12 @@ export default async function ReporterPage({
 }) {
     async function fetchReporter(authorName: string) {
         try {
-            console.log("Fetching reporter...");
+            // console.log("Fetching reporter...");
             const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/news/author/${authorName}`);
             return response.data;
         }
-        catch (error) {
-            console.error("Error fetching data:", error);
+         catch (error) { // eslint-disable-line @typescript-eslint/no-unused-vars
+            // console.error("Error fetching data:", error);
             return {};
         }
     }
@@ -28,7 +29,7 @@ export default async function ReporterPage({
     const authorStats: { [key: string]: string } = await fetchReporter(name)
 
     if (!authorStats || Object.keys(authorStats).length === 0) {
-        return <div>Error: Reporter not found</div>;
+        return <NoData />
     }
 
     return (

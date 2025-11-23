@@ -9,6 +9,7 @@ import { RankingsTable } from "./RankingsTable";
 import { RankingsFooter } from "./RankingsFooter";
 import { Badge, Center, Space, Flex, Title, rem } from "@mantine/core";
 import { colorMap } from "@/vars";
+import { NoData } from "../nodata";
 
 export const Rankings: FC<{
     rankings: { [division: string]: PebblerRowStats[] },
@@ -48,13 +49,13 @@ export const Rankings: FC<{
                             <Title order={3}>Division</Title>
                         </Flex>}
                 </Center>
-                {rankings[division].length > 0 ? (
+                {rankings !== undefined && rankings[division].length > 0 ? (
                     <>
                         <RankingsTable pebblerRows={rankings[division]} division={division} />
                         <Space h="lg" />
                         <RankingsFooter division={division} />
                     </>) : (
-                    <div>No rankings found</div>
+                    <NoData />
                 )
                 }
             </>
