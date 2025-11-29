@@ -48,6 +48,14 @@ function FormatPageHelper() {
         }
     }
 
+    const handleScrollMobile = () => {
+        if (containerRef.current) {
+            const scrollTop = containerRef.current.scrollTop
+            const page = Math.round(scrollTop / (window.innerHeight - 60))
+            setCurrentPage(page)
+        }
+    }
+
     const BaseScoringText = () => (
         <Text ta="center" w={300} size="sm">
             {"H-hi... I'm Shaun. I am going first because I wanted to get this over with. " +
@@ -443,16 +451,16 @@ function FormatPageHelper() {
                 ref={containerRef}
                 style={{
                     width: "300",
-                    height: "calc(100vh - 110px)",
+                    height: "calc(100vh - 60px)",
                     overflowY: "scroll",
                     scrollSnapType: "y mandatory",
                 }}
-                onScroll={handleScroll}
+                onScroll={handleScrollMobile}
             >
                 <Center>
                     <Stack>
                         <Card style={{
-                            height: "calc(100vh - 110px)",
+                            height: "calc(100vh - 60px)",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "start",
@@ -478,7 +486,7 @@ function FormatPageHelper() {
                             </Flex>
                         </Card>
                         <Card style={{
-                            height: "calc(100vh - 110px)",
+                            height: "calc(100vh - 60px)",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "start",
@@ -499,7 +507,7 @@ function FormatPageHelper() {
                             </Stack>
                         </Card>
                         <Card style={{
-                            height: "calc(100vh - 110px)",
+                            height: "calc(100vh - 60px)",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "start",
@@ -520,7 +528,7 @@ function FormatPageHelper() {
                             </Stack>
                         </Card>
                         <Card style={{
-                            height: "calc(100vh - 110px)",
+                            height: "calc(100vh - 60px)",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "start",
@@ -546,7 +554,7 @@ function FormatPageHelper() {
                             </Flex>
                         </Card>
                         <Card style={{
-                            height: "calc(100vh - 110px)",
+                            height: "calc(100vh - 60px)",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "start",
@@ -570,7 +578,7 @@ function FormatPageHelper() {
                             </Center>
                         </Card>
                             <Card style={{
-                                height: "calc(100vh - 110px)",
+                                height: "calc(100vh - 60px)",
                                 display: "flex",
                                 alignItems: "center",
                                 justifyContent: "start",
@@ -585,7 +593,7 @@ function FormatPageHelper() {
                                 </Center>
                             </Card>
                         <Card style={{
-                            height: "calc(100vh - 110px)",
+                            height: "calc(100vh - 60px)",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "start",
@@ -606,7 +614,7 @@ function FormatPageHelper() {
                             </Stack>
                         </Card>
                         <Card style={{
-                            height: "calc(100vh - 110px)",
+                            height: "calc(100vh - 60px)",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "start",
@@ -621,7 +629,7 @@ function FormatPageHelper() {
                                 </Center>
                         </Card>
                         <Card style={{
-                            height: "calc(100vh - 110px)",
+                            height: "calc(100vh - 60px)",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "start",
@@ -642,7 +650,7 @@ function FormatPageHelper() {
                             </Stack>
                         </Card>
                         <Card style={{
-                            height: "calc(100vh - 110px)",
+                            height: "calc(100vh - 60px)",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "start",
@@ -666,7 +674,7 @@ function FormatPageHelper() {
                             </Center>
                         </Card>
                         <Card style={{
-                            height: "calc(100vh - 110px)",
+                            height: "calc(100vh - 60px)",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "start",
@@ -690,7 +698,7 @@ function FormatPageHelper() {
                                 </Center>
                         </Card>
                         <Card style={{
-                            height: "calc(100vh - 110px)",
+                            height: "calc(100vh - 60px)",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "start",

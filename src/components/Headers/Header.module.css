@@ -22,10 +22,10 @@
   /* On mobile we want this bar pinned to the viewport top.
      Use fixed so it stays visible on scroll. */
   position: fixed;
-  top: 60px;
+  top: 49px;
   left: 0px;
   right: 0px;
-  z-index: 100;
+  z-index: 102;
 }
 
 .formatFooterMain {
@@ -47,7 +47,7 @@
 }
 
 .orangeHeader {
-   background-color: var(--mantine-color-orange-6);
+  background-color: var(--mantine-color-orange-6);
 }
 
 /* whButton */
