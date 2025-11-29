@@ -1,4 +1,5 @@
 import React from "react";
+import { Text } from "@mantine/core"
 import {
     Table,
     TableThead,
@@ -12,43 +13,57 @@ export const TiebreakTable = () => (
     <Table striped withTableBorder>
         <TableThead>
             <TableTr ta="center">
-                <TableTd>Tiebreaker Precedence</TableTd>
+                <TableTd><Text size="xs">Tiebreaker Precedence</Text></TableTd>
             </TableTr>
         </TableThead>
         <TableTbody>
             <TableTr ta="center">
                 <TableTd>
-                    1. Pebbles
+                    <Text size="xs">
+                        1. Pebbles
+                    </Text>
                 </TableTd>
             </TableTr>
             <TableTr ta="center">
                 <TableTd>
-                    2. Quirk Pebbles
+                    <Text size="xs">
+                        2. Quirk Pebbles
+                    </Text>
                 </TableTd>
             </TableTr>
             <TableTr ta="center">
                 <TableTd>
-                    3. Wins
+                    <Text size="xs">
+                        3. Wins
+                    </Text>
                 </TableTd>
             </TableTr>
             <TableTr ta="center">
                 <TableTd>
-                    4. Ties
+                    <Text size="xs">
+                        4. Ties
+                    </Text>
                 </TableTd>
             </TableTr>
             <TableTr ta="center">
                 <TableTd>
-                    5. Pip Difference
+                    <Text size="xs">
+                        5. Pip Difference
+                    </Text>
                 </TableTd>
             </TableTr>
             <TableTr ta="center">
                 <TableTd>
-                    6. Pips For
+                    <Text size="xs">
+                        6. Pips For
+                    </Text>
                 </TableTd>
             </TableTr>
             <TableTr ta="center">
                 <TableTd>
-                    7. Random
+                    <Text size="xs">
+                        7. Random
+                    </Text>
                 </TableTd>
             </TableTr>
         </TableTbody>

@@ -32,9 +32,10 @@ export const OverviewCard: FC<{ pebbler: PersonalPebbler, hideText?: boolean, hi
     }
 
     return (
-        <Stack w={180} h={hideDescription ? 250 : 300} align="center">
+        <Stack w={180} h={hideDescription ? 275 : 325} align="center">
             <Card
                 w={180}
+                h={250}
                 radius="md"
                 withBorder
                 onClick={() => window.location.href = `/pebblers/${toCamelCase(pebbler.name)}`}

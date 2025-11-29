@@ -31,7 +31,7 @@ const Caro: FC<{ pebblers: PersonalPebbler[], largeScreen: boolean, label: strin
             w={largeScreen ? 1000 : 180}
             slideSize={180}
             slideGap={25}
-            height={300}
+            height={325}
             emblaOptions={{ loop: true, align: "start", slidesToScroll: largeScreen ? 5 : 1 }}
             classNames={largeScreen ? {
                 root: classes.carousel,
@@ -41,7 +41,7 @@ const Caro: FC<{ pebblers: PersonalPebbler[], largeScreen: boolean, label: strin
                 controls: { opacity: 0 }
             } : {}}
         >
-            {(label === "Recent Champs" && pebblers.length === 16 && largeScreen) ?
+            {(label === "Recent Champs" && largeScreen) ?
                 pebblers.map((pebbler, i) => (
                     i % 4 == 0 ? (
                         <Fragment key={i}>

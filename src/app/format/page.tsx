@@ -492,8 +492,8 @@ function FormatPageHelper() {
                                 <Image
                                     src={"/authors/" + toCamelCase("Ari") + ".png"}
                                     alt={"Image of " + "Ari" + " the reporter"}
-                                    h={150}
-                                    w={150}
+                                    h={100}
+                                    w={100}
                                 />
                                 {PebblingHistoryText()}
                             </Stack>
@@ -513,8 +513,8 @@ function FormatPageHelper() {
                                 <Image
                                     src={"/authors/" + toCamelCase("Ari") + ".png"}
                                     alt={"Image of " + "Ari" + " the reporter"}
-                                    h={150}
-                                    w={150}
+                                    h={100}
+                                    w={100}
                                 />
                                 {MAPLOverviewText()}
                             </Stack>
@@ -534,8 +534,8 @@ function FormatPageHelper() {
                                 <Image
                                     src={"/authors/" + toCamelCase("Ari") + ".png"}
                                     alt={"Image of " + "Ari" + " the reporter"}
-                                    h={150}
-                                    w={150}
+                                    h={100}
+                                    w={100}
                                 />
                                 {TraitsText()}
                             </Stack>
@@ -560,8 +560,8 @@ function FormatPageHelper() {
                                 <Image
                                     src={"/authors/" + toCamelCase("Ari") + ".png"}
                                     alt={"Image of " + "Ari" + " the reporter"}
-                                    h={150}
-                                    w={150}
+                                    h={100}
+                                    w={100}
                                 />
                                 {QuirksText()}
                             </Stack>
@@ -599,8 +599,8 @@ function FormatPageHelper() {
                                 <Image
                                     src={"/authors/" + toCamelCase("Ari") + ".png"}
                                     alt={"Image of " + "Ari" + " the reporter"}
-                                    h={150}
-                                    w={150}
+                                    h={100}
+                                    w={100}
                                 />
                                 {AbilitiesText()}
                             </Stack>
@@ -635,8 +635,8 @@ function FormatPageHelper() {
                                 <Image
                                     src={"/authors/" + toCamelCase("Ari") + ".png"}
                                     alt={"Image of " + "Ari" + " the reporter"}
-                                    h={150}
-                                    w={150}
+                                    h={100}
+                                    w={100}
                                 />
                                 {SchedulingText()}
                             </Stack>
@@ -656,8 +656,8 @@ function FormatPageHelper() {
                                 <Image
                                     src={"/authors/" + toCamelCase("Ari") + ".png"}
                                     alt={"Image of " + "Ari" + " the reporter"}
-                                    h={150}
-                                    w={150}
+                                    h={100}
+                                    w={100}
                                 />
                                 {DivisionFactorsText()}
                             </Stack>
@@ -680,8 +680,8 @@ function FormatPageHelper() {
                                 <Image
                                     src={"/authors/" + toCamelCase("Ari") + ".png"}
                                     alt={"Image of " + "Ari" + " the reporter"}
-                                    h={150}
-                                    w={150}
+                                    h={100}
+                                    w={100}
                                 />
                                 {PromotionDemotionText()}
                             </Stack>
@@ -704,8 +704,8 @@ function FormatPageHelper() {
                                 <Image
                                     src={"/authors/" + toCamelCase("Ari") + ".png"}
                                     alt={"Image of " + "Ari" + " the reporter"}
-                                    h={150}
-                                    w={150}
+                                    h={100}
+                                    w={100}
                                 />
                                 {ConclusionText()}
                             </Stack>

@@ -7,7 +7,6 @@ import { HomeHeader, HomeHeaderMobile } from "@/components/Headers/HomeHeader";
 import { OverviewCard } from '@/components/Pebbler/OverviewCard';
 import { Bout } from '@/components/Bout/SmallBout';
 import { SmallReport } from '@/components/Reports/SmallReport';
-import { getTime } from '@/functions';
 import { PersonalPebbler } from '@/types/pebblers';
 import { SimpleBout } from '@/types/bouts';
 import { ReportPreview } from '@/types/reports';
@@ -27,10 +26,10 @@ export default function HomePage() {
     let largeScreen = useMediaQuery('(min-width: 56em)')
     largeScreen = largeScreen === undefined ? true : largeScreen
 
-    async function fetchHotPebblers(month: number, year: number) {
+    async function fetchHotPebblers() {
         try {
             // console.log("Fetching hot pebblers...")
-            const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/hot/pebblers/${month}/${year}`)
+            const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/hot/pebblers`)
             return response.data
         }
          catch (error) { // eslint-disable-line @typescript-eslint/no-unused-vars
@@ -75,9 +74,6 @@ export default function HomePage() {
         }
     }
 
-    const month = parseInt(getTime().split("-")[1])
-    const year = parseInt(getTime().split("-")[0])
-
     const [hotPebblers, setHotPebblers] = useState<{ [division: string]: PersonalPebbler[] }>({})
     const [hotBouts, setHotBouts] = useState<SimpleBout[]>([])
     const [hotPress, setHotPress] = useState<ReportPreview[]>([])
@@ -88,7 +84,7 @@ export default function HomePage() {
     const [rivalriesFinished, setRivalriesFinished] = useState<boolean>(false)
 
     useEffect(() => {
-        fetchHotPebblers(month, year).then((data) => {
+        fetchHotPebblers().then((data) => {
             setHotPebblers(data)
             setPebblersFinished(true)
         })
@@ -107,7 +103,7 @@ export default function HomePage() {
             setHotRivalries(data)
             setRivalriesFinished(true)
         })
-    }, [month, year])
+    }, [])
 
     const CustomDescription: FC<{ description: string }> = ({ description }) => {
         const splits = description.split(' ')

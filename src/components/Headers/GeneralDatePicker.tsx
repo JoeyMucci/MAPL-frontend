@@ -15,6 +15,7 @@ interface DatePickerProps {
 
 export const GeneralDatePicker: FC<DatePickerProps> =
     ({ title, curDay, curMonth, curYear, onChange }) => {
+        const t = getTime()
         return (
             <Card mt="sm" radius="lg" bg="black">
                 <Title ta="center" c="white" mb="md" order={6} >
@@ -32,7 +33,7 @@ export const GeneralDatePicker: FC<DatePickerProps> =
                             value={`${curYear}-${curMonth}-${curDay}`}
                             defaultDate={`${curYear}-${curMonth}-${curDay}`}
                             minDate={leagueStart}
-                            maxDate={getTime().split('-')[0] + "-" + getTime().split('-')[1] + "-25"}
+                            maxDate={t.split('-')[0] + "-" + t.split('-')[1] + "-25"}
                             maxLevel="month"
                             onChange={onChange}
                         />
@@ -46,7 +47,7 @@ export const GeneralDatePicker: FC<DatePickerProps> =
                         value={`${curYear}-${curMonth}-1`}
                         defaultDate={`${curYear}-${curMonth}-1`}
                         minDate={leagueStart}
-                        maxDate={getTime()}
+                        maxDate={t}
                         maxLevel="year"
                         onChange={onChange}
                     />) : (
@@ -58,7 +59,7 @@ export const GeneralDatePicker: FC<DatePickerProps> =
                             value={`${curYear}-1-1`}
                             defaultDate={`${curYear}-1-1`}
                             minDate={leagueStart}
-                            maxDate={getTime()}
+                            maxDate={t}
                             onChange={onChange}
                         />
                     )

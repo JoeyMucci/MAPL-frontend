@@ -8,7 +8,7 @@
   background-color: var(--mantine-color-cyan-6);
   border-bottom: 1px solid black;
   position: sticky;
-  top: 0;
+  top: 0px;
   z-index: 101;
 }
 
@@ -22,7 +22,7 @@
   /* On mobile we want this bar pinned to the viewport top.
      Use fixed so it stays visible on scroll. */
   position: fixed;
-  top: 60;
+  top: 60px;
   left: 0px;
   right: 0px;
   z-index: 100;

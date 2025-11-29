@@ -1,5 +1,9 @@
 import { Text } from "@mantine/core"
 
-export const NoData = () => (
-    <Text c="midBlue" ta="center" size="xl" mt={36}>No Data 🥲</Text>
+interface NoDataProps {
+    mt?: number;
+}
+
+export const NoData = ({ mt = 36 }: NoDataProps) => (
+        <Text c="midBlue" ta="center" size="xl" mt={mt}>No Data 🥲</Text>
 )

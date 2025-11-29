@@ -4,6 +4,7 @@ import classes from './Rivalry.module.css';
 import { FullRivalryStats } from "@/types/stats";
 import { divisions } from "@/vars";
 import { toCamelCase } from "@/functions";
+import { NoData } from "@/components/nodata";
 
 export const RivalryCard: FC<{ stats: FullRivalryStats }> = ({ stats }) => {
     // Totals across the divisions
@@ -24,7 +25,7 @@ export const RivalryCard: FC<{ stats: FullRivalryStats }> = ({ stats }) => {
     const MiddleBlock = () => {
         if (one_wins + two_wins + ties === 0) {
             return (
-                <div> no history</div>
+                <NoData mt={0}/>
             )
         }
 

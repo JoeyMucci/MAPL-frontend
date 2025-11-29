@@ -22,12 +22,24 @@ export function fromCamelCase(name: string): string {
 }
 
 // Can change to mock other scenarios, return format is D-M-Y
-export function getTime() {
-    // return '2023-10-01'
+export function getTime(): string {
+    const now = new Date()
+    const year = now.getUTCFullYear()
+    const monthIndex = now.getUTCMonth() // 0-based
+    const day = now.getUTCDate()
 
-    const year = new Date().getFullYear()
-    const month = new Date().getMonth() + 1
-    const day = new Date().getDate()
+    const threshold = Date.UTC(year, monthIndex, 25, 20, 0, 0) // 25th 20:00:00 UTC
 
-    return `${year}-${month}-${day}`
+    if (now.getTime() > threshold) {
+        // return first day of next month (UTC)
+        let nextYear = year
+        let nextMonthIndex = monthIndex + 1
+        if (nextMonthIndex > 11) {
+            nextMonthIndex = 0
+            nextYear++
+        }
+        return `${nextYear}-${nextMonthIndex + 1}-1`
+    }
+
+    return `${year}-${monthIndex + 1}-${day}`
 }

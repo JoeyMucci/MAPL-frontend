@@ -165,8 +165,8 @@ export const RivalryHeader: FC<{
                     <Image
                         src={"/pebblers/" + toCamelCase(pebbler) + ".png"}
                         alt={"Image of " + toCamelCase(pebbler) + " the pebbler"}
-                        width={300}
-                        height={300}
+                        w="auto"
+                        h={300}
                         className={left ? "" : classes.flipY}
                     />
                 </Anchor>

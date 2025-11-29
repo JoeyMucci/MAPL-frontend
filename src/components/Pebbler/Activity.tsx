@@ -7,6 +7,7 @@ import { Flex, Stack, Title } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { GeneralDatePicker } from "@/components/Headers/GeneralDatePicker";
 import { NoData } from "@/components/nodata";
+import { getTime } from "@/functions";
 import axios from "axios";
 
 export const Activity: FC<{ pebblerName: string }> =
@@ -15,9 +16,9 @@ export const Activity: FC<{ pebblerName: string }> =
         let largeScreen = useMediaQuery('(min-width: 56em)')
         largeScreen = largeScreen === undefined ? true : largeScreen
 
-        const date = new Date()
-        const curMonth = date.getMonth() + 1 // getMonth() returns 0-11, so we add 1
-        const curYear = date.getFullYear()
+        const t = getTime()
+        const curMonth = parseInt(t.split("-")[1])
+        const curYear = parseInt(t.split("-")[0])
 
         const [month, setMonth] = useState<number>(curMonth)
         const [year, setYear] = useState<number>(curYear)

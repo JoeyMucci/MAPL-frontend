@@ -19,8 +19,9 @@ export default function RankingsPage() {
         }
     }
 
-    const curMonth = parseInt(getTime().split("-")[1])
-    const curYear = parseInt(getTime().split("-")[0])
+    const t = getTime()
+    const curMonth = parseInt(t.split("-")[1])
+    const curYear = parseInt(t.split("-")[0])
 
     const [month, setMonth] = useState<number>(curMonth)
     const [year, setYear] = useState<number>(curYear)

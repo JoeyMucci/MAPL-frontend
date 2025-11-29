@@ -2,13 +2,12 @@
 
 import { FC, useState } from "react";
 import { PebblerRowStats } from "@/types/stats";
-import { divisions } from "@/vars";
 import { RankingsHeader } from "../Headers/RankingsHeader";
 import { useMediaQuery } from "@mantine/hooks";
 import { RankingsTable } from "./RankingsTable";
 import { RankingsFooter } from "./RankingsFooter";
 import { Badge, Center, Space, Flex, Title, rem } from "@mantine/core";
-import { colorMap } from "@/vars";
+import { colorMap, divisions, MATCHES_PER_ROUND } from "@/vars";
 import { NoData } from "../nodata";
 
 export const Rankings: FC<{
@@ -51,7 +50,11 @@ export const Rankings: FC<{
                 </Center>
                 {rankings !== undefined && rankings[division].length > 0 ? (
                     <>
-                        <RankingsTable pebblerRows={rankings[division]} division={division} />
+                        <RankingsTable 
+                          pebblerRows={rankings[division]} 
+                          division={division}
+                          updated={rankings[divisions[divisions.length - 1]]?.reduce((sum, row) => sum + row.played, 0) % (2 * MATCHES_PER_ROUND) === 0}
+                        />
                         <Space h="lg" />
                         <RankingsFooter division={division} />
                     </>) : (

@@ -7,6 +7,7 @@ import {
     TableTr,
     TableTd,
     TableTbody,
+    Text,
     rem,
 } from "@mantine/core";
 import {
@@ -35,7 +36,7 @@ export const QuirkTable = () => (
                             </Flex>
                         </Center>
                     </TableTd>
-                    <TableTd>{quirkDescMap[quirk]}</TableTd>
+                    <TableTd><Text size="xs">{quirkDescMap[quirk]}</Text></TableTd>
                 </TableTr>
             ))}
         </TableTbody>

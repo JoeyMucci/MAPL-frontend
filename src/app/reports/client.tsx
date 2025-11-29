@@ -26,8 +26,9 @@ export default function ReportsPage() {
     let largeScreen = useMediaQuery('(min-width: 56em)')
     largeScreen = largeScreen === undefined ? true : largeScreen
 
-    const curMonth = parseInt(getTime().split("-")[1])
-    const curYear = parseInt(getTime().split("-")[0])
+    const t = getTime()
+    const curMonth = parseInt(t.split("-")[1])
+    const curYear = parseInt(t.split("-")[0])
 
     const [reporter, setReporter] = useState<string>("Merged")
     const [month, setMonth] = useState<number>(curMonth)

@@ -7,6 +7,7 @@ import {
     TableTr,
     TableTd,
     TableTbody,
+    Text,
     rem,
 } from "@mantine/core";
 import {
@@ -36,7 +37,7 @@ export const AbilityTable = () => (
                                 </Flex>
                             </Center>
                         </TableTd>
-                        <TableTd>{abilityDescMap[ability]}</TableTd>
+                        <TableTd><Text size="xs">{abilityDescMap[ability]}</Text></TableTd>
                     </TableTr>
                 )
             })}

@@ -28,9 +28,10 @@ export default function BoutsPage() {
   let largeScreen = useMediaQuery('(min-width: 56em)')
   largeScreen = largeScreen === undefined ? true : largeScreen
 
-  const curDay = parseInt(getTime().split("-")[2])
-  const curMonth = parseInt(getTime().split("-")[1])
-  const curYear = parseInt(getTime().split("-")[0])
+  const t = getTime()
+  const curDay = parseInt(t.split("-")[2])
+  const curMonth = parseInt(t.split("-")[1])
+  const curYear = parseInt(t.split("-")[0])
 
   const [division, setDivision] = useState<string>(divisions[0])
   const [day, setDay] = useState<number>(curDay)

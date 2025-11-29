@@ -5,7 +5,7 @@ import { OverviewCarousel } from "@/components/Pebbler/OverviewCarousel";
 import { PersonalPebbler } from "@/types/pebblers";
 import { Stack } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
-import { getTime, toCamelCase } from "@/functions";
+import { toCamelCase } from "@/functions";
 import { SearchableSelect } from "@/components/Headers/SearchableSelect";
 import axios from "axios";
 import Loading from "@/components/loading";
@@ -14,10 +14,10 @@ export default function PebblersPage() {
     let largeScreen = useMediaQuery('(min-width: 56em)')
     largeScreen = largeScreen === undefined ? true : largeScreen
 
-    async function fetchRecentWinners(month: number, year: number) {
+    async function fetchRecentWinners() {
         try {
             // console.log("Fetching recent winners...")
-            const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/rankings/winners/${month}/${year}`)
+            const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/rankings/winners`)
             return response.data
         }
          catch (error) { // eslint-disable-line @typescript-eslint/no-unused-vars
@@ -50,16 +50,6 @@ export default function PebblersPage() {
         }
     }
 
-    let month = parseInt(getTime().split("-")[1])
-    let year = parseInt(getTime().split("-")[0])
-
-    month -= 1
-
-    if (month == 0) {
-        month = 12
-        year -= 1
-    }
-
     const [recentWinners, setRecentWinners] = useState<PersonalPebbler[]>([])
     const [currentLeaders, setCurrentLeaders] = useState<PersonalPebbler[]>([])
     const [currentTrailers, setCurrentTrailers] = useState<PersonalPebbler[]>([])
@@ -71,7 +61,7 @@ export default function PebblersPage() {
     const [ytdFinished, setYTDFinished] = useState<boolean>(false)
 
     useEffect(() => {
-        fetchRecentWinners(month, year).then((data) => {
+        fetchRecentWinners().then((data) => {
             setRecentWinners(data)
             setWinnersFinished(true)
         })
@@ -88,7 +78,7 @@ export default function PebblersPage() {
             setYTDAbilityLeaders(data.abilities)
             setYTDFinished(true)
         })
-    }, [month, year])
+    }, [])
 
     if(
         !winnersFinished ||

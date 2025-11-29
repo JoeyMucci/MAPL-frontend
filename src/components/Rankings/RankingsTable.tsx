@@ -25,10 +25,10 @@ import {
     IconArrowDown,
     IconArrowsRightLeft
 } from "@tabler/icons-react";
-import { colorMap, MATCHES_PER_ROUND, FORM_THRESHOLD, PROMOTE_DEMOTE, PEBBLERS_PER_DIVISION } from "@/vars";
+import { colorMap, FORM_THRESHOLD, PROMOTE_DEMOTE, PEBBLERS_PER_DIVISION } from "@/vars";
 import classes from "./Rankings.module.css";
 
-export const RankingsTable: FC<{ pebblerRows: PebblerRowStats[], division: string }> = ({ pebblerRows, division }) => {
+export const RankingsTable: FC<{ pebblerRows: PebblerRowStats[], division: string, updated: boolean }> = ({ pebblerRows, division, updated }) => {
     const RankingChangeWidget: FC<{ rank: number, oldRank: number }> = ({ rank, oldRank }) => {
         const doubleUp: boolean = rank <= (oldRank - 3)
         const up: boolean = !doubleUp && (rank < oldRank)
@@ -74,16 +74,9 @@ export const RankingsTable: FC<{ pebblerRows: PebblerRowStats[], division: strin
 
     const includeForm: boolean = !pebblerRows.some(row => row.form.length < FORM_THRESHOLD);
 
-    let totalPlayed = 0
-    for (let i = 0; i < pebblerRows.length; i++) {
-        totalPlayed += pebblerRows[i].played
-    }
-
-    const includeRankChange: boolean = totalPlayed % (2 * MATCHES_PER_ROUND) == 0
-
     return (
         <>
-            {!includeRankChange && <Text>*Rankings will be updated when matchday concludes</Text>}
+            {!updated && <Text ta="center">⚠️ Rankings not yet updated ⚠️</Text>}
             <ScrollArea type="auto">
                 <Table striped>
                     <TableThead>
@@ -181,8 +174,8 @@ export const RankingsTable: FC<{ pebblerRows: PebblerRowStats[], division: strin
                                 >
                                     <TableTd w={70}>
                                         <Flex justify="space-evenly">
-                                            {pebblerRow.rank}
-                                            {includeRankChange && (
+                                            <Text size="md">{pebblerRow.rank}</Text>
+                                            {updated && (
                                                 <RankingChangeWidget rank={pebblerRow.rank} oldRank={pebblerRow.previous_rank} />
                                             )}
                                         </Flex>
