@@ -80,10 +80,8 @@ export default function BoutsPage() {
 
       <Center>
         {!largeScreen &&
-          <Flex align="center" gap={rem(10)}>
-            <Badge w={125} color={colorMap[division]}>{division}</Badge>
-            <Title order={3}>Division</Title>
-          </Flex>}
+            <Badge w={125} color={colorMap[division]} mt="sm" mb="sm">{division}</Badge>
+        }
       </Center>
 
       <Stack align="center" mt={largeScreen ? "md" : ""} mb="md">

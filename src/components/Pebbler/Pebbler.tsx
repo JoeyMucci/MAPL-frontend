@@ -2,7 +2,7 @@
 
 import React, { FC, useState } from "react";
 import { MediumPebbler } from "@/types/pebblers";
-import { tabs } from "@/vars";
+import { tabs, colorMap } from "@/vars";
 import { PebblerHeader } from "../Headers/PebblerHeader";
 import { Title } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
@@ -19,7 +19,7 @@ export const Pebbler: FC<{ pebbler: MediumPebbler, children: React.ReactNode }> 
     return (
         <>
             <PebblerHeader pebbler={pebbler} tabSelected={tab} largeScreen={largeScreen} toggler={toggleTab} />
-            {!largeScreen && <Title ta="center" order={3}>{tab}</Title>}
+            {!largeScreen && <Title c={colorMap[tab]} ta="center" order={3}>{tab}</Title>}
             {React.Children.map(children, child => {
                 if (React.isValidElement(child) && child.key === tab[0]) {
                     return child;

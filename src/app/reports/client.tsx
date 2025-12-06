@@ -8,6 +8,7 @@ import { Stack, Flex, Text, Image, Anchor } from "@mantine/core";
 import { ReportsHeader } from "@/components/Headers/ReportsHeader";
 import { getTime, toCamelCase } from "@/functions";
 import { NoData } from "@/components/nodata";
+import { colorMap } from "@/vars"
 import axios from "axios";
 
 export default function ReportsPage() {
@@ -62,7 +63,7 @@ export default function ReportsPage() {
                     !largeScreen && (
                         reporter === "Merged" ? (
                             <Flex align="center" gap="sm">
-                                <Text>{reporter}</Text>
+                                <Text c={colorMap[reporter]}>{reporter}</Text>
                                 <Anchor href="/reports/authors/ari">
                                     <Image
                                         src={"/authors/" + toCamelCase("Ari") + ".png"}
@@ -91,7 +92,7 @@ export default function ReportsPage() {
                         ) : (
                             <Flex align="center" gap="sm">
                                 <Anchor href={`/reports/authors/${toCamelCase(reporter)}`} c="black" underline="hover">
-                                    <Text>{reporter}</Text>
+                                     <Text c={colorMap[reporter]}>{reporter}</Text>
                                 </Anchor>
                                 <Anchor href={`/reports/authors/${toCamelCase(reporter)}`}>
                                     <Image
