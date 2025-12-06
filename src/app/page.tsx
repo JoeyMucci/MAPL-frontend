@@ -82,10 +82,16 @@ export default function HomePage() {
     const [boutsFinished, setBoutsFinished] = useState<boolean>(false)
     const [pressFinished, setPressFinished] = useState<boolean>(false)
     const [rivalriesFinished, setRivalriesFinished] = useState<boolean>(false)
+    const [year, setYear] = useState<number>()
+    const [month, setMonth] = useState<number>()
+    const [day, setDay] = useState<number>()
 
     useEffect(() => {
         fetchHotPebblers().then((data) => {
-            setHotPebblers(data)
+            setHotPebblers(data.performance_info)
+            setYear(data.date["year"])
+            setMonth(data.date["month"])
+            setDay(data.date["day"])
             setPebblersFinished(true)
         })
 
@@ -143,6 +149,13 @@ export default function HomePage() {
     const HotPebblers = () => (
         <>
             {<Title order={3}>🔥   Hot Pebblers   🔥</Title>}
+            {
+                Object.keys(hotPebblers).length > 0 && (
+                    <Text ta="center" >
+                        From {new Date(year!, month! - 1).toLocaleString("en-US", { month: "short" })}{" "}{day}{" "}{year}
+                    </Text>
+                )
+            }
             {largeScreen ? (
                 <Flex gap="md" >
                     {
@@ -166,10 +179,10 @@ export default function HomePage() {
                         Object.keys(hotPebblers).length > 0 ? (
                             divisions.map((division, i) => (
                                 <Stack key={i} align='center'>
+                                    <Divider w={75} />
                                     <Badge w={125} color={colorMap[division]}>{division}</Badge>
                                     <OverviewCard pebbler={hotPebblers[division][0]} hideDescription />
                                     <CustomDescription description={hotPebblers[division][0].description} />
-                                    {i != divisions.length - 1 && <Divider w={75} />}
                                 </Stack>
                             ))
                         ) : (
