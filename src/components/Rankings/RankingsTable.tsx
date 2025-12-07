@@ -76,12 +76,11 @@ export const RankingsTable: FC<{ pebblerRows: PebblerRowStats[], division: strin
 
     return (
         <>
-            {!updated && <Text ta="center">⚠️ Rankings not yet updated ⚠️</Text>}
             <ScrollArea type="auto">
                 <Table striped>
                     <TableThead>
                         <TableTr ta="center" fw={700}>
-                            <TableTd>Rank</TableTd>
+                            <TableTd className={classes.oneLine}>{updated ? "Rank" : "Live Rank"}</TableTd>
                             <TableTd ta="left">Pebbler</TableTd>
                             <TableTd>Pebbles</TableTd>
                             <TableTd className={classes.oneLine}>Quirk Pebbles</TableTd>
@@ -161,12 +160,14 @@ export const RankingsTable: FC<{ pebblerRows: PebblerRowStats[], division: strin
                             const ppbAway: number | string = pebblerRow.away_played === 0 ?
                                 "N/A" : (pebblerRow.away_pebbles / pebblerRow.away_played).toFixed(2);
 
+                            const trueRank = i + 1 
+
                             return (
                                 <TableTr
                                     key={i}
                                     ta="center"
-                                    className={pebblerRow.rank <= PROMOTE_DEMOTE && division !== divisions[0] ? classes.promotion : (
-                                        pebblerRow.rank >= PEBBLERS_PER_DIVISION - PROMOTE_DEMOTE + 1 &&
+                                    className={trueRank <= PROMOTE_DEMOTE && division !== divisions[0] ? classes.promotion : (
+                                        trueRank >= PEBBLERS_PER_DIVISION - PROMOTE_DEMOTE + 1 &&
                                             division !== divisions[divisions.length - 1] ?
                                             classes.demotion :
                                             ""
@@ -174,7 +175,7 @@ export const RankingsTable: FC<{ pebblerRows: PebblerRowStats[], division: strin
                                 >
                                     <TableTd w={70}>
                                         <Flex justify="space-evenly">
-                                            <Text size="md">{pebblerRow.rank}</Text>
+                                            <Text size="md">{trueRank}</Text>
                                             {updated && (
                                                 <RankingChangeWidget rank={pebblerRow.rank} oldRank={pebblerRow.previous_rank} />
                                             )}

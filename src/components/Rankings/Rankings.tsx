@@ -6,7 +6,7 @@ import { RankingsHeader } from "../Headers/RankingsHeader";
 import { useMediaQuery } from "@mantine/hooks";
 import { RankingsTable } from "./RankingsTable";
 import { RankingsFooter } from "./RankingsFooter";
-import { Badge, Center, Space, Flex, Title, rem } from "@mantine/core";
+import { Badge, Center, Space } from "@mantine/core";
 import { colorMap, divisions, MATCHES_PER_ROUND } from "@/vars";
 import { NoData } from "../nodata";
 
@@ -51,7 +51,11 @@ export const Rankings: FC<{
                         <RankingsTable 
                           pebblerRows={rankings[division]} 
                           division={division}
-                          updated={rankings[divisions[divisions.length - 1]]?.reduce((sum, row) => sum + row.played, 0) % (2 * MATCHES_PER_ROUND) === 0}
+                          updated={
+                            divisions.every(div => 
+                              rankings[div]?.reduce((sum, row) => sum + row.played, 0) % (2 * MATCHES_PER_ROUND) === 0
+                            )
+                          }
                         />
                         <Space h="lg" />
                         <RankingsFooter division={division} />
