@@ -1,6 +1,6 @@
 "use client"
 
-import { Button, Flex, Image, Stack, Modal } from "@mantine/core";
+import { Button, Flex, Image, Stack, Modal, Title } from "@mantine/core";
 import { useDisclosure, useMediaQuery } from '@mantine/hooks';
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
@@ -21,11 +21,21 @@ const links = [
 export const WebHeader = () => {
     const router = useRouter()
     const pathname = usePathname()
-    const tab = '/' + pathname!.split('/')[1]
+    const tab = "/" + pathname!.split('/')[1]
     let largeScreen = useMediaQuery('(min-width: 56em)')
     largeScreen = largeScreen === undefined ? true : largeScreen
 
     const [modalOpened, modalHandlers] = useDisclosure(false);
+
+    let tabName = tab
+
+    if(tab == '/') {
+        tabName = "Home"
+    }
+    else {
+        tabName = tab[1].toUpperCase() + tab.substring(2)
+    }
+    
 
     return (
         <header className={classes.webHeader}>
@@ -55,26 +65,32 @@ export const WebHeader = () => {
                     </Flex>
                 </Flex>
             ) : (
-                <Flex align="center" justify="flex-start" style={{ width: '100%' }}>
+                <Stack style={{ width: '100%' }}>
                     {!modalOpened && (
-                        <Flex align="center" justify="flex-start">
-                            <IconMenu2
-                                size={40}
-                                color="brown"
-                                style={{ cursor: "pointer" }}
-                                onClick={() => modalHandlers.open()}
-                            />
+                        <>
+                            <Flex align="center" style={{ width: '100%' }}>
+                                <Flex align="center">
+                                    <IconMenu2
+                                        size={40}
+                                        color="brown"
+                                        style={{ cursor: "pointer" }}
+                                        onClick={() => modalHandlers.open()}
+                                    />
 
-                            <Image
-                                src="/pebble.png"
-                                alt="The MAPL logo"
-                                h={40}
-                                w={40}
-                                m={10}
-                                onClick={() => router.push('/')}
-                                style={{ cursor: "pointer" }}
-                            />
-                        </Flex>
+                                    <Image
+                                        src="/pebble.png"
+                                        alt="The MAPL logo"
+                                        h={40}
+                                        w={40}
+                                        m={10}
+                                        onClick={() => router.push('/')}
+                                        style={{ cursor: "pointer" }}
+                                    />
+                                </Flex>
+                            
+                                <Title ta="center" order={1} style={{ flex: 1 }}>{tabName}</Title>
+                            </Flex>
+                        </>
                     )}
 
                     <Modal
@@ -120,7 +136,7 @@ export const WebHeader = () => {
                             ))}
                         </Stack>
                     </Modal>
-                </Flex>
+                </Stack>
             )}
         </header>
     )

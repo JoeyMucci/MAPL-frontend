@@ -10,20 +10,20 @@ import classes from "./Report.module.css";
 
 export const FullReport: FC<{ article: Report }> = ({ article }) => {
     const router = useRouter()
-    article.content = article.content.replace(/(\*+)/g, "*")
-    article.content = article.content.replace(/(\*[^*]+\*)/g, "")
-    article.content = article.content.replace(/^\s+/, "")
+    // article.content = article.content.replace(/(\*+)/g, "*")
+    // article.content = article.content.replace(/(\*[^*]+\*)/g, "")
+    // article.content = article.content.replace(/^\s+/, "")
 
-    article.title = article.title.replace(/\r?\n|\r/g, "")
-    article.title = article.title.replace(/^.*\*\*(.*)\*\*.*$/g, "$1")
-    article.title = article.title.replace(/^\*+|\*+$/g, "")
-    article.title = article.title.replace(/^\"+|\"+$/g, "")
-    article.title = article.title.replace(/^\'+|\'+$/g, "")
+    // article.title = article.title.replace(/\r?\n|\r/g, "")
+    // article.title = article.title.replace(/^.*\*\*(.*)\*\*.*$/g, "$1")
+    // article.title = article.title.replace(/^\*+|\*+$/g, "")
+    // article.title = article.title.replace(/^\"+|\"+$/g, "")
+    // article.title = article.title.replace(/^\'+|\'+$/g, "")
+    // article.title = article.title.replace(/^.*\*\*(.*)\*\*.*$/, "$1");
 
     let largeScreen = useMediaQuery('(min-width: 56em)')
     largeScreen = largeScreen === undefined ? true : largeScreen
 
-    article.title = article.title.replace(/^.*\*\*(.*)\*\*.*$/, "$1");
 
     return (
         <Stack w={largeScreen ? 1000 : 300} align="center" gap={0} mt="sm" mb="lg">

@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { Bout } from "@/components/Bout/SmallBout";
 import { SimpleBout } from "@/types/bouts";
-import { rem, Center, Badge, Title, Flex, Stack } from "@mantine/core";
+import { Center, Badge, Flex, Stack } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { colorMap, divisions } from "@/vars";
 import { getTime } from "@/functions";
