@@ -176,7 +176,9 @@ export const RankingsTable: FC<{ pebblerRows: PebblerRowStats[], division: strin
                                     <TableTd w={70}>
                                         <Flex justify="space-evenly">
                                             <Text size="md">{trueRank}</Text>
-                                            <RankingChangeWidget rank={trueRank} oldRank={updated ? pebblerRow.previous_rank : pebblerRow.rank} />
+                                            {updated && (
+                                                <RankingChangeWidget rank={pebblerRow.rank} oldRank={pebblerRow.previous_rank} />
+                                            )}
                                         </Flex>
                                     </TableTd>
                                     <TableTd w={200}>
