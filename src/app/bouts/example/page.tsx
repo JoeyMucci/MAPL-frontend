@@ -6,9 +6,11 @@ export const metadata: Metadata = {
   title: 'MAPL | Bouts'
 };
 
+// TODO: Remove once a real cool bout emerges in prod db
+
 export default function ExampleBoutPage() {
     return (
-        <Center mt="md">
+        <Center mt="md" mb="md">
             <CoolBout />
         </Center>
     )

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { SmallReport } from "@/components/Reports/SmallReport";
-import { Report } from "@/types/reports";
+import { ReportPreview } from "@/types/reports";
 import { useMediaQuery } from "@mantine/hooks";
 import { Stack, Flex, Text, Image, Anchor } from "@mantine/core";
 import { ReportsHeader } from "@/components/Headers/ReportsHeader";
@@ -34,7 +34,7 @@ export default function ReportsPage() {
     const [reporter, setReporter] = useState<string>("Merged")
     const [month, setMonth] = useState<number>(curMonth)
     const [year, setYear] = useState<number>(curYear)
-    const [reports, setReports] = useState<{ [reporter: string]: Report[] }>({})
+    const [reports, setReports] = useState<{ [reporter: string]: ReportPreview[] }>({})
 
     function toggleDate(setMonth: (a: number) => void, setYear: (a: number) => void, newDate: string): void {
         setMonth(parseInt(newDate.split('-')[1], 10))

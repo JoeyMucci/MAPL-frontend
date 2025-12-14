@@ -28,7 +28,7 @@ export function getTime(): string {
     const monthIndex = now.getUTCMonth() // 0-based
     const day = now.getUTCDate()
 
-    const threshold = Date.UTC(year, monthIndex, 25, 20, 0, 0) // 25th 20:00:00 UTC
+    const threshold = Date.UTC(year, monthIndex, 25, 20, 5, 0) // 25th 20:05:00 UTC
 
     if (now.getTime() > threshold) {
         // return first day of next month (UTC)

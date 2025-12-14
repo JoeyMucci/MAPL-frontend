@@ -10,8 +10,8 @@ export interface Report {
 
 export interface ReportPreview {
     author: string
-    title: string
-    id: number
+    title: string | null
+    id: number | null
     month: number
     day: number
     year: number
