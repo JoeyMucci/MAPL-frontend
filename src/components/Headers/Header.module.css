@@ -12,12 +12,6 @@
   z-index: 101;
 }
 
-.formatFooterBar {
-  position: sticky;
-  bottom: 40px;
-  z-index: 100;
-}
-
 .formatFooterBarTop {
   /* On mobile we want this bar pinned to the viewport top.
      Use fixed so it stays visible on scroll. */
@@ -34,9 +28,8 @@
   background-color: var(--mantine-color-purple-6);
   /* For browsers that do not support gradients */
   background-image: linear-gradient(225deg, var(--mantine-color-purple-6), var(--mantine-color-pink-6));
-  border-top: 1px solid black;
   position: sticky;
-  bottom: 0px;
+  top: 60px;
   z-index: 100;
 }
 

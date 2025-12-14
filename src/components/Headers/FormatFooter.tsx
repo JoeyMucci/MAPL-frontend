@@ -20,16 +20,6 @@ const tabs = [
 export const FormatFooter: FC<{ cur: number, setPageAction: (a: number) => void }> = ({ cur, setPageAction }) => {
     return (
         <Stack gap={0}>
-            <Progress
-                value={cur / 9 * 100}
-                size="lg"
-                transitionDuration={200}
-                bg="transparent"
-                color="orange"
-                radius={0}
-                h={10}
-                className={classes.formatFooterBar}
-            />
             <Flex className={classes.formatFooterMain} justify="space-between" align="center">
                 {tabs.map((tab, i) => (
                     <Button
