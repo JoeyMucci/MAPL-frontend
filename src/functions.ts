@@ -28,18 +28,22 @@ export function getTime(): string {
     const monthIndex = now.getUTCMonth() // 0-based
     const day = now.getUTCDate()
 
-    const threshold = Date.UTC(year, monthIndex, 25, 20, 5, 0) // 25th 20:05:00 UTC
+    let nextDay = Math.min(day, 25) // Competition ends on the 25th
+    let nextMonthIndex = monthIndex
+    let nextYear = year
 
+    const threshold = Date.UTC(year, monthIndex, day, 20, 5, 0) // 20:05:00 UTC
     if (now.getTime() > threshold) {
-        // return first day of next month (UTC)
-        let nextYear = year
-        let nextMonthIndex = monthIndex + 1
-        if (nextMonthIndex > 11) {
-            nextMonthIndex = 0
-            nextYear++
+        nextDay++
+        if(nextDay === 26) {
+            nextDay = 1
+            nextMonthIndex++
+            if (nextMonthIndex === 12) {
+                nextMonthIndex = 0
+                nextYear++
+            }
         }
-        return `${nextYear}-${nextMonthIndex + 1}-1`
     }
 
-    return `${year}-${monthIndex + 1}-${day}`
+    return `${nextYear}-${nextMonthIndex + 1}-${nextDay}`
 }
