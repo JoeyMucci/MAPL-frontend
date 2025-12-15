@@ -32,7 +32,7 @@ export default function HomePage() {
             const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/hot/pebblers`)
             return response.data
         }
-         catch (error) { // eslint-disable-line @typescript-eslint/no-unused-vars
+        catch (error) { // eslint-disable-line @typescript-eslint/no-unused-vars
             // console.error("Error fetching data:", error)
             return {}
         }
@@ -44,7 +44,7 @@ export default function HomePage() {
             const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/hot/bouts`)
             return response.data
         }
-         catch (error) { // eslint-disable-line @typescript-eslint/no-unused-vars
+        catch (error) { // eslint-disable-line @typescript-eslint/no-unused-vars
             // console.error("Error fetching data:", error)
             return {}
         }
@@ -56,7 +56,7 @@ export default function HomePage() {
             const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/hot/news`)
             return response.data
         }
-         catch (error) { // eslint-disable-line @typescript-eslint/no-unused-vars
+        catch (error) { // eslint-disable-line @typescript-eslint/no-unused-vars
             // console.error("Error fetching data:", error)
             return {}
         }
@@ -68,7 +68,7 @@ export default function HomePage() {
             const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/hot/rivalries`)
             return response.data
         }
-         catch (error) { // eslint-disable-line @typescript-eslint/no-unused-vars
+        catch (error) { // eslint-disable-line @typescript-eslint/no-unused-vars
             // console.error("Error fetching data:", error)
             return {}
         }
@@ -89,9 +89,11 @@ export default function HomePage() {
     useEffect(() => {
         fetchHotPebblers().then((data) => {
             setHotPebblers(data.performance_info)
-            setYear(data.date["year"])
-            setMonth(data.date["month"])
-            setDay(data.date["day"])
+            if (data.date) {
+                setYear(data.date["year"])
+                setMonth(data.date["month"])
+                setDay(data.date["day"])
+            }
             setPebblersFinished(true)
         })
 
@@ -150,7 +152,7 @@ export default function HomePage() {
         <>
             {<Title order={3}>🔥   Hot Pebblers   🔥</Title>}
             {
-                Object.keys(hotPebblers).length > 0 && (
+                hotPebblers && Object.keys(hotPebblers).length > 0 && (
                     <Text ta="center" >
                         From {new Date(year!, month! - 1).toLocaleString("en-US", { month: "short" })}{" "}{day}{" "}{year}
                     </Text>
@@ -159,7 +161,7 @@ export default function HomePage() {
             {largeScreen ? (
                 <Flex gap="md" >
                     {
-                        Object.keys(hotPebblers).length > 0 ? (
+                        hotPebblers && Object.keys(hotPebblers).length > 0 ? (
                             divisions.map((division, i) => (
                                 <Stack key={i} align='center'>
                                     <Badge w={125} color={colorMap[division]}>{division}</Badge>
@@ -172,25 +174,25 @@ export default function HomePage() {
                         )
                     }
                 </Flex>
-            ) : 
-            (
-                <Stack gap="md" >
-                    {
-                        Object.keys(hotPebblers).length > 0 ? (
-                            divisions.map((division, i) => (
-                                <Stack key={i} align='center'>
-                                    <Divider w={75} />
-                                    <Badge w={125} color={colorMap[division]}>{division}</Badge>
-                                    <OverviewCard pebbler={hotPebblers[division][0]} hideDescription />
-                                    <CustomDescription description={hotPebblers[division][0].description} />
-                                </Stack>
-                            ))
-                        ) : (
-                            <NoData />
-                        )
-                    }
-                </Stack>
-            )
+            ) :
+                (
+                    <Stack gap="md" >
+                        {
+                            hotPebblers && Object.keys(hotPebblers).length > 0 ? (
+                                divisions.map((division, i) => (
+                                    <Stack key={i} align='center'>
+                                        <Divider w={75} />
+                                        <Badge w={125} color={colorMap[division]}>{division}</Badge>
+                                        <OverviewCard pebbler={hotPebblers[division][0]} hideDescription />
+                                        <CustomDescription description={hotPebblers[division][0].description} />
+                                    </Stack>
+                                ))
+                            ) : (
+                                <NoData />
+                            )
+                        }
+                    </Stack>
+                )
             }
         </>
     )
@@ -199,7 +201,7 @@ export default function HomePage() {
         <>
             {<Title order={3}>🔥   Hot Bouts   🔥</Title>}
 
-            
+
 
             <Stack align="center">
                 {
@@ -276,7 +278,7 @@ export default function HomePage() {
         </>
     )
 
-    if(
+    if (
         !pebblersFinished ||
         !boutsFinished ||
         !pressFinished ||
