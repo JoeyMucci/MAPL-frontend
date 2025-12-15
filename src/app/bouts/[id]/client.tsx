@@ -95,32 +95,8 @@ export default function BoutPage({
         return <Loading />
     }
 
-
     if (!bout || Object.keys(bout).length === 0) {
         return <NoData />
-    }
-
-    const lessThanEqualDate = (date1: string, date2: string): boolean => {
-        const darr1 = date1.split('-')
-        const darr2 = date2.split('-')
-
-        if (parseInt(darr1[0]) < parseInt(darr2[0])) {
-            return true
-        }
-        else if (parseInt(darr1[0]) > parseInt(darr2[0])) {
-            return false
-        }
-        else {
-            if (parseInt(darr1[1]) < parseInt(darr2[1])) {
-                return true
-            }
-            else if (parseInt(darr1[1]) > parseInt(darr2[1])) {
-                return false
-            }
-            else {
-                return parseInt(darr1[2]) <= parseInt(darr2[2])
-            }
-        }
     }
 
     const Stacks = () => {
@@ -134,7 +110,7 @@ export default function BoutPage({
         return (
             <>
                 {/* Only show the report if it is there or the date has not passed (coming soon) */}
-                {(reports.length > 0 || lessThanEqualDate(getTime(), `${bout.year}-${bout.month}-${bout.day}`)) &&
+                {(reports.length > 0 || getTime() === `${bout.year}-${bout.month}-${bout.day}`) &&
                     <Stack align="center">
                         <Title order={5}>
                             Report
@@ -189,7 +165,7 @@ export default function BoutPage({
         <Stack align="center" mt="md" mb="md">
             <FullBout bout={bout} />
             {((pebbleBreakdown && resultBreakdown) ||
-            (reports.length > 0 || lessThanEqualDate(getTime(), `${bout.year}-${bout.month}-${bout.day}`))) &&
+            (reports.length > 0 || getTime() === `${bout.year}-${bout.month}-${bout.day}`)) &&
                 <Title order={3}>
                     More About This Bout
                 </Title>
