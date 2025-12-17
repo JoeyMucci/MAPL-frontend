@@ -6,7 +6,7 @@ import { ReportPreview } from "@/types/reports";
 import { useMediaQuery } from "@mantine/hooks";
 import { Stack, Flex, Text, Image, Anchor } from "@mantine/core";
 import { ReportsHeader } from "@/components/Headers/ReportsHeader";
-import { getTime, toCamelCase } from "@/functions";
+import { getLocalTime, toCamelCase } from "@/functions";
 import { NoData } from "@/components/nodata";
 import { colorMap } from "@/vars"
 import axios from "axios";
@@ -27,7 +27,7 @@ export default function ReportsPage() {
     let largeScreen = useMediaQuery('(min-width: 56em)')
     largeScreen = largeScreen === undefined ? true : largeScreen
 
-    const t = getTime()
+    const t = getLocalTime()
     const curMonth = parseInt(t.split("-")[1])
     const curYear = parseInt(t.split("-")[0])
 

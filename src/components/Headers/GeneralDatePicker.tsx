@@ -2,7 +2,7 @@ import { FC } from "react";
 import { Stack, Card, Title } from "@mantine/core";
 import { MonthPicker, DatePicker, YearPicker } from "@mantine/dates";
 import { leagueStart } from "@/vars";
-import { getTime } from "@/functions";
+import { getMaxTime } from "@/functions";
 import classes from "./Header.module.css";
 
 interface DatePickerProps {
@@ -15,7 +15,7 @@ interface DatePickerProps {
 
 export const GeneralDatePicker: FC<DatePickerProps> =
     ({ title, curDay, curMonth, curYear, onChange }) => {
-        const t = getTime()
+        const t = getMaxTime()
         return (
             <Card mt="sm" radius="lg" bg="black">
                 <Title ta="center" c="white" mb="md" order={6} >
@@ -33,7 +33,7 @@ export const GeneralDatePicker: FC<DatePickerProps> =
                             value={`${curYear}-${curMonth}-${curDay}`}
                             defaultDate={`${curYear}-${curMonth}-${curDay}`}
                             minDate={leagueStart}
-                            maxDate={t.split('-')[0] + "-" + t.split('-')[1] + "-25"}
+                            maxDate={t}
                             maxLevel="month"
                             onChange={onChange}
                         />

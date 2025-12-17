@@ -6,7 +6,7 @@ import { SimpleBout } from "@/types/bouts";
 import { Center, Badge, Flex, Stack } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { colorMap, divisions } from "@/vars";
-import { getTime } from "@/functions";
+import { getLocalTime } from "@/functions";
 import { BoutsHeader } from "@/components/Headers/BoutsHeader";
 import Loading from "@/components/loading";
 import axios from "axios";
@@ -28,7 +28,7 @@ export default function BoutsPage() {
   let largeScreen = useMediaQuery('(min-width: 56em)')
   largeScreen = largeScreen === undefined ? true : largeScreen
 
-  const t = getTime()
+  const t = getLocalTime()
   const curDay = parseInt(t.split("-")[2])
   const curMonth = parseInt(t.split("-")[1])
   const curYear = parseInt(t.split("-")[0])

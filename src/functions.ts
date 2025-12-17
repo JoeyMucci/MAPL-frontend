@@ -21,29 +21,39 @@ export function fromCamelCase(name: string): string {
     return res
 }
 
+export function isComingSoon(m: number, d: number, y: number): boolean {
+    const now = new Date()
+    const nowTime = now.getTime()
+    const minTime = Date.UTC(y, m - 1, d, 12, 0, 0)
+    const maxTime = Date.UTC(y, m - 1, d, 20, 5 ,0)
+    return nowTime >= minTime && nowTime <= maxTime
+}
+
+export function getLocalTime(): string {
+    const now = new Date()
+    const year = now.getFullYear()
+    const monthIndex = now.getMonth() // 0-based
+    const day = now.getDate()
+    return `${year}-${monthIndex + 1}-${day}`
+}
+
 // Can change to mock other scenarios, return format is D-M-Y
-export function getTime(): string {
+export function getMaxTime(): string {
     const now = new Date()
     const year = now.getUTCFullYear()
     const monthIndex = now.getUTCMonth() // 0-based
-    const day = now.getUTCDate()
 
-    let nextDay = Math.min(day, 25) // Competition ends on the 25th
     let nextMonthIndex = monthIndex
     let nextYear = year
 
-    const threshold = Date.UTC(year, monthIndex, day, 20, 5, 0) // 20:05:00 UTC
+    const threshold = Date.UTC(year, monthIndex, 25, 20, 0, 0) // 20:00:00 UTC
     if (now.getTime() > threshold) {
-        nextDay++
-        if(nextDay === 26) {
-            nextDay = 1
-            nextMonthIndex++
-            if (nextMonthIndex === 12) {
-                nextMonthIndex = 0
-                nextYear++
-            }
+        nextMonthIndex++
+        if (nextMonthIndex === 12) {
+            nextMonthIndex = 0
+            nextYear++
         }
     }
 
-    return `${nextYear}-${nextMonthIndex + 1}-${nextDay}`
+    return `${nextYear}-${nextMonthIndex + 1}-25`
 }

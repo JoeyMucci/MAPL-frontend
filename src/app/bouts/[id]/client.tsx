@@ -12,7 +12,7 @@ import { NoData } from "@/components/nodata";
 import { RivalryCard } from "@/components/Rivalry/RivalryCard";
 import { ReportPreview } from "@/types/reports";
 import { SmallReport } from "@/components/Reports/SmallReport";
-import { getTime } from "@/functions"
+import { isComingSoon } from "@/functions"
 
 export default function BoutPage({
     params,
@@ -110,7 +110,7 @@ export default function BoutPage({
         return (
             <>
                 {/* Only show the report if it is there or the date has not passed (coming soon) */}
-                {(reports.length > 0 || getTime() === `${bout.year}-${bout.month}-${bout.day}`) &&
+                {(reports.length > 0 || isComingSoon(bout.month, bout.day, bout.year)) &&
                     <Stack align="center">
                         <Title order={5}>
                             Report
@@ -165,7 +165,7 @@ export default function BoutPage({
         <Stack align="center" mt="md" mb="md">
             <FullBout bout={bout} />
             {((pebbleBreakdown && resultBreakdown) ||
-            (reports.length > 0 || getTime() === `${bout.year}-${bout.month}-${bout.day}`)) &&
+            (reports.length > 0 || isComingSoon(bout.month, bout.day, bout.year))) &&
                 <Title order={3}>
                     More About This Bout
                 </Title>

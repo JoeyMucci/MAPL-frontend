@@ -8,7 +8,7 @@ import { GeneralDatePicker } from "@/components/Headers/GeneralDatePicker";
 import { RankingSummary } from "@/components/Rankings/RankingSummary";
 import { LineChart } from "@mantine/charts";
 import { NoData } from "@/components/nodata";
-import { getTime } from "@/functions";
+import { getLocalTime } from "@/functions";
 import axios from "axios";
 
 export const Performance: FC<{ pebblerName: string }> =
@@ -17,7 +17,7 @@ export const Performance: FC<{ pebblerName: string }> =
         let largeScreen = useMediaQuery('(min-width: 56em)')
         largeScreen = largeScreen === undefined ? true : largeScreen
 
-        const curYear = parseInt(getTime().split("-")[0])
+        const curYear = parseInt(getLocalTime().split("-")[0])
         const [year, setYear] = useState<number>(curYear)
         const [performances, setPerformances] = useState<PerformanceSummary[]>([])
 

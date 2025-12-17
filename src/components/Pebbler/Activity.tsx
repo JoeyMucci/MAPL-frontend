@@ -7,7 +7,7 @@ import { Flex, Stack, Title } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { GeneralDatePicker } from "@/components/Headers/GeneralDatePicker";
 import { NoData } from "@/components/nodata";
-import { getTime } from "@/functions";
+import { getLocalTime } from "@/functions";
 import axios from "axios";
 
 export const Activity: FC<{ pebblerName: string }> =
@@ -16,7 +16,7 @@ export const Activity: FC<{ pebblerName: string }> =
         let largeScreen = useMediaQuery('(min-width: 56em)')
         largeScreen = largeScreen === undefined ? true : largeScreen
 
-        const t = getTime()
+        const t = getLocalTime()
         const curMonth = parseInt(t.split("-")[1])
         const curYear = parseInt(t.split("-")[0])
 

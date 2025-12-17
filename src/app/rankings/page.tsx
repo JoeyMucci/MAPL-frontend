@@ -3,7 +3,7 @@
 import { Rankings } from "@/components/Rankings/Rankings";
 import { useState, useEffect } from "react";
 import { PebblerRowStats } from "@/types/stats";
-import { getTime } from "@/functions";
+import { getLocalTime } from "@/functions";
 import Loading from "@/components/loading";
 import axios from "axios";
 
@@ -19,7 +19,7 @@ export default function RankingsPage() {
         }
     }
 
-    const t = getTime()
+    const t = getLocalTime()
     const curMonth = parseInt(t.split("-")[1])
     const curYear = parseInt(t.split("-")[0])
 
