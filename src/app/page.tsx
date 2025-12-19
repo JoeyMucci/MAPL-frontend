@@ -228,7 +228,7 @@ export default function HomePage() {
 
     const HotPress = () => (
         <>
-            {<Title order={3}>🔥   Hot of the Press   🔥</Title>}
+            {<Title order={3}>🔥   Hot off the Press   🔥</Title>}
 
             {
                 Object.keys(hotPress).length === 0 || hotPress.length === 0 ? (
