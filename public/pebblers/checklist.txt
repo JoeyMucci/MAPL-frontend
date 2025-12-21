@@ -1,18 +1,3 @@
-bert
-bload
-bloshiJr.
-bloshi
-bonez
-brad
-buzz
-cammy
-carrotz
-casey
-chad
-chalk
-chaucer
-croc
-cuddlez
 daffy
 dave
 dominicBluey
@@ -29,7 +14,6 @@ gnaf
 gregory
 grumps
 hayley
-hugz
 ignatius
 imaReddy
 jiggy
@@ -81,4 +65,3 @@ tonkotsu
 waddles
 wasabi
 watson
-yoad

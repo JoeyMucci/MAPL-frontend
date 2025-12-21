@@ -1,6 +1,5 @@
 // import { FC } from "react";
-import { Container, Flex, Stack, Text, rem, Button, Image } from "@mantine/core";
-import Link from 'next/link'
+import { Container, Flex, Stack, Text, rem, Button, Image, Anchor} from "@mantine/core";
 import classes from "./Header.module.css";
 
 // TODO: IMPLEMENT MOBILE FRIENDLY
@@ -25,12 +24,12 @@ export const HomeHeader = () => {
                 </Flex>
                 <Text className={classes.fadeInUpSecond} size="xl">A perpetual dice rolling tournament ecosystem for stuffed animals and figures</Text>
                 <Flex className={classes.fadeInUpThird} gap="md">
-                    <Link href='/format'>
+                    <Anchor href='/format'>
                         <Button color='purple' radius='lg' w={150}>How it Works</Button>
-                    </Link>
-                    <Link href='/rankings'>
+                    </Anchor>
+                    <Anchor href='/rankings'>
                         <Button color='pink' radius='lg' w={150}>Tables</Button>
-                    </Link>
+                    </Anchor>
                 </Flex>
             </Stack>
         </Container >
@@ -56,12 +55,12 @@ export const HomeHeaderMobile = () => {
                 </Stack>
                 <Text className={classes.fadeInUpSecond} size="xl" ta="center">A perpetual dice rolling tournament ecosystem for stuffed animals and figures</Text>
                 <Flex className={classes.fadeInUpThird} gap="md">
-                    <Link href='/format'>
+                    <Anchor href='/format'>
                         <Button color='purple' radius='lg' w={150}>How it Works</Button>
-                    </Link>
-                    <Link href='/rankings'>
+                    </Anchor>
+                    <Anchor href='/rankings'>
                         <Button color='pink' radius='lg' w={150}>Tables</Button>
-                    </Link>
+                    </Anchor>
                 </Flex>
             </Stack>
         </Container >
