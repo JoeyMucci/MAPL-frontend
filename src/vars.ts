@@ -83,17 +83,17 @@ export const traitDescMap: { [key: string]: string } = {
 export const quirkDescMap: { [key: string]: string } = {
     "Pity Pebble": "If trailing by two or more, gain pebble instantly",
     "Proud Pebble": "If leading by two or more, gain pebble instantly",
-    "Oddball": "If roll parity differs from day parity and opponent roll parity, gain pebble instantly",
-    "Even Temper": "If roll parity matches day parity and opponent roll parity, gain pebble instantly",
-    "Untouchable": "If opponent roll is one, gain pebble instantly",
+    "Oddball": "If roll parity differs from day parity and opponent's roll parity, gain pebble instantly",
+    "Even Temper": "If roll parity matches day parity and opponent's roll parity, gain pebble instantly",
+    "Untouchable": "If opponent's roll is one, gain pebble instantly",
 }
 
 export const abilityDescMap: { [key: string]: string } = {
-    "Miracle": "If trailing opponent, upgrade roll to opponent's roll (12% trigger rate)",
-    "Lucky Seven": "If leading opponent, upgrade roll to 7 (12% trigger rate)",
-    "Generosity": "If tied with opponent, double tie bonus (36% trigger rate)",
-    "Will to Win": "If tied with opponent, reroll and double win bonus (36% trigger rate)",
-    "Tip the Scales": "If trailing by one, switch rolls with opponent (24% trigger rate)",
+    "Miracle": "If trailing opponent, upgrade your roll to opponent's roll (12% trigger rate)",
+    "Lucky Seven": "If leading opponent, upgrade your roll to 7 (12% trigger rate)",
+    "Generosity": "If tied with opponent, double your tie bonus (36% trigger rate)",
+    "Will to Win": "If tied with opponent, reroll and double your win bonus (36% trigger rate)",
+    "Tip the Scales": "If trailing by one, switch your roll with opponent's roll (24% trigger rate)",
 }
 
 export const abilityActionMap: { [key: string]: string } = {
