@@ -29,6 +29,22 @@ export function isComingSoon(m: number, d: number, y: number): boolean {
     return nowTime >= minTime && nowTime <= maxTime
 }
 
+export function isWaitingForNextMonthPublication(): boolean {
+    const now = new Date()
+    const day = now.getUTCDate()
+    const hour = now.getUTCHours()
+    const minute = now.getUTCMinutes()
+    if(day === 25) {
+        if(hour === 19 && minute >= 50) {
+            return true
+        }
+        else if(hour === 20 && minute <= 5) {
+            return true
+        }
+    }
+    return false
+}
+
 export function getLocalTime(): string {
     const now = new Date()
     const year = now.getFullYear()
@@ -46,7 +62,7 @@ export function getMaxTime(): string {
     let nextMonthIndex = monthIndex
     let nextYear = year
 
-    const threshold = Date.UTC(year, monthIndex, 25, 20, 0, 0) // 20:00:00 UTC
+    const threshold = Date.UTC(year, monthIndex, 25, 20, 5, 0) // 20:05:00 UTC
     if (now.getTime() > threshold) {
         nextMonthIndex++
         if (nextMonthIndex === 12) {
@@ -55,5 +71,5 @@ export function getMaxTime(): string {
         }
     }
 
-    return `${nextYear}-${nextMonthIndex + 1}-25`
+    return `${2029}-${nextMonthIndex + 1}-25`
 }

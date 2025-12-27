@@ -21,6 +21,7 @@ import {
 import { NoData } from '@/components/nodata';
 import axios from "axios";
 import Loading from '@/components/loading';
+import { isWaitingForNextMonthPublication } from '@/functions';
 
 export default function HomePage() {
     let largeScreen = useMediaQuery('(min-width: 56em)')
@@ -64,6 +65,9 @@ export default function HomePage() {
 
     async function fetchHotRivalries() {
         try {
+            if(isWaitingForNextMonthPublication()) {
+                return {}
+            }
             // console.log("Fetching hot rivalries...")
             const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/hot/rivalries`)
             return response.data
@@ -113,7 +117,7 @@ export default function HomePage() {
         })
     }, [])
 
-    const CustomDescription: FC<{ description: string }> = ({ description }) => {
+    const CustomDescription: FC<{ description: string, showRanking : boolean }> = ({ description, showRanking}) => {
         const splits = description.split(' ')
         const oldPebbles = parseInt(splits[0].split('UP')[0])
         const newPebbles = parseInt(splits[0].split('UP')[1])
@@ -135,15 +139,17 @@ export default function HomePage() {
                     </Flex>
                 </Flex>
 
-                <Flex gap='md' align='center'>
-                    <Text size='lg'>+{rankDifference} ranking</Text>
-                    <Flex gap={0} align='center'>
-                        <Text size='lg'>{newRank}</Text>
-                        {rankDifference >= 3 && <IconArrowsUp color={colorMap['W']} />}
-                        {rankDifference < 3 && rankDifference > 0 && <IconArrowUp color={colorMap['W']} />}
-                        {rankDifference === 0 && <IconArrowsRightLeft color={colorMap['T']} />}
+                {showRanking && 
+                    <Flex gap='md' align='center'>
+                        <Text size='lg'>+{rankDifference} ranking</Text>
+                        <Flex gap={0} align='center'>
+                            <Text size='lg'>{newRank}</Text>
+                            {rankDifference >= 3 && <IconArrowsUp color={colorMap['W']} />}
+                            {rankDifference < 3 && rankDifference > 0 && <IconArrowUp color={colorMap['W']} />}
+                            {rankDifference === 0 && <IconArrowsRightLeft color={colorMap['T']} />}
+                        </Flex>
                     </Flex>
-                </Flex>
+                }
             </Stack>
         )
     }
@@ -166,7 +172,7 @@ export default function HomePage() {
                                 <Stack key={i} align='center'>
                                     <Badge w={125} color={colorMap[division]}>{division}</Badge>
                                     <OverviewCard pebbler={hotPebblers[division][0]} hideDescription />
-                                    <CustomDescription description={hotPebblers[division][0].description} />
+                                    <CustomDescription description={hotPebblers[division][0].description} showRanking={day! >= 3}/>
                                 </Stack>
                             ))
                         ) : (
@@ -184,7 +190,7 @@ export default function HomePage() {
                                         <Divider w={75} />
                                         <Badge w={125} color={colorMap[division]}>{division}</Badge>
                                         <OverviewCard pebbler={hotPebblers[division][0]} hideDescription />
-                                        <CustomDescription description={hotPebblers[division][0].description} />
+                                        <CustomDescription description={hotPebblers[division][0].description} showRanking={day! >= 3}/>
                                     </Stack>
                                 ))
                             ) : (
