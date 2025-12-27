@@ -71,5 +71,5 @@ export function getMaxTime(): string {
         }
     }
 
-    return `${2029}-${nextMonthIndex + 1}-25`
+    return `${nextYear}-${nextMonthIndex + 1}-25`
 }
