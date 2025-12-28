@@ -17,7 +17,7 @@ import {
 
 import { theme } from "./theme";
 
-export const leagueStart: string = "2023-01-01"
+export const leagueStart: string = "2026-01-01"
 
 export const MATCHES_PER_ROUND = 12
 export const FORM_THRESHOLD = 5
