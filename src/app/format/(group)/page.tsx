@@ -1,7 +1,7 @@
 "use client"
 
 import { JSX, useRef, useState } from "react";
-import { Card, Stack, Flex, Image, Text, Center, Button } from "@mantine/core";
+import { Card, Stack, Flex, Image, Text, Center, Button, Anchor } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { FormatFooter, FormatFooterMobile } from "@/components/Headers/FormatFooter";
 import { toCamelCase } from "@/functions";
@@ -152,7 +152,7 @@ function FormatPageHelper() {
             {"Thanks for your attention. Click the home button if you want to see the latest in the MAPL. " +
                 "Click on the graphic for the bout between Gregory and Marcel to see how crazy bouts can get, " +
                 "or click on their names to learn more about them. " +
-                "Finally, consider clicking on the glossary button to review some of the graphics we went over here. Bye bye."}
+                "Finally, consider clicking on the glossary button to review some of the graphics we went over here and one more we didn't. Bye bye."}
         </Text>
     )
 
@@ -184,12 +184,14 @@ function FormatPageHelper() {
                                 m={0}
                             >
                                 <Flex justify="center" align="center">
-                                    <Image
-                                        src={"/authors/" + toCamelCase("Ari") + ".png"}
-                                        alt={"Image of " + "Ari" + " the reporter"}
-                                        h={300}
-                                        w={300}
-                                    />
+                                    <Anchor href="/format/shaun">
+                                        <Image
+                                            src={"/referees/shaun.png"}
+                                            alt={"Image of " + "Shaun" + " the referee"}
+                                            h={300}
+                                            w={300}
+                                        />
+                                    </Anchor>
                                     {BaseScoringText()}
                                 </Flex>
                                 <Flex w={1000} justify="center">
@@ -210,12 +212,14 @@ function FormatPageHelper() {
                                 m={0}
                             >
                                 <Flex justify="center" align="center">
-                                    <Image
-                                        src={"/authors/" + toCamelCase("Ari") + ".png"}
-                                        alt={"Image of " + "Ari" + " the reporter"}
-                                        h={300}
-                                        w={300}
-                                    />
+                                    <Anchor href="/format/shaun">
+                                        <Image
+                                            src={"/referees/shaun2.png"}
+                                            alt={"Image of " + "Shaun" + " the referee"}
+                                            h={300}
+                                            w={300}
+                                        />
+                                    </Anchor>
                                     {PebblingHistoryText()}
                                 </Flex>
                             </Card>
@@ -231,12 +235,14 @@ function FormatPageHelper() {
                                 m={0}
                             >
                                 <Flex justify="center" align="center">
-                                    <Image
-                                        src={"/authors/" + toCamelCase("Ari") + ".png"}
-                                        alt={"Image of " + "Ari" + " the reporter"}
-                                        h={300}
-                                        w={300}
-                                    />
+                                    <Anchor href="/format/shaun">
+                                        <Image
+                                            src={"/referees/shaun3.png"}
+                                            alt={"Image of " + "Shaun" + " the referee"}
+                                            h={300}
+                                            w={300}
+                                        />
+                                    </Anchor>
                                     {MAPLOverviewText()}
                                 </Flex>
                             </Card>
@@ -252,12 +258,14 @@ function FormatPageHelper() {
                                 m={0}
                             >
                                 <Flex justify="center" align="center">
-                                    <Image
-                                        src={"/authors/" + toCamelCase("Ari") + ".png"}
-                                        alt={"Image of " + "Ari" + " the reporter"}
-                                        h={300}
-                                        w={300}
-                                    />
+                                    <Anchor href="/format/neville">
+                                        <Image
+                                            src={"/referees/neville.png"}
+                                            alt={"Image of " + "Neville" + " the referee"}
+                                            h={300}
+                                            w={300}
+                                        />
+                                    </Anchor>
                                     {TraitsText()}
                                 </Flex>
                                 <Flex w={1000} justify="center">
@@ -278,12 +286,14 @@ function FormatPageHelper() {
                                 m={0}
                             >
                                 <Flex justify="center" align="center">
-                                    <Image
-                                        src={"/authors/" + toCamelCase("Ari") + ".png"}
-                                        alt={"Image of " + "Ari" + " the reporter"}
-                                        h={300}
-                                        w={300}
-                                    />
+                                    <Anchor href="/format/neville">
+                                        <Image
+                                            src={"/referees/neville2.png"}
+                                            alt={"Image of " + "Neville" + " the referee"}
+                                            h={300}
+                                            w={300}
+                                        />
+                                    </Anchor>
                                     {QuirksText()}
                                 </Flex>
                                 <Flex justify="center" align="center">
@@ -307,12 +317,14 @@ function FormatPageHelper() {
                                 m={0}
                             >
                                 <Flex justify="center" align="center">
-                                    <Image
-                                        src={"/authors/" + toCamelCase("Ari") + ".png"}
-                                        alt={"Image of " + "Ari" + " the reporter"}
-                                        h={300}
-                                        w={300}
-                                    />
+                                    <Anchor href="/format/neville">
+                                        <Image
+                                            src={"/referees/neville3.png"}
+                                            alt={"Image of " + "Neville" + " the referee"}
+                                            h={300}
+                                            w={300}
+                                        />
+                                    </Anchor>
                                     {AbilitiesText()}
                                 </Flex>
                                 <Flex w={1000} justify="center">
@@ -333,12 +345,14 @@ function FormatPageHelper() {
                                 m={0}
                             >
                                 <Flex justify="center" align="center">
-                                    <Image
-                                        src={"/authors/" + toCamelCase("Ari") + ".png"}
-                                        alt={"Image of " + "Ari" + " the reporter"}
-                                        h={300}
-                                        w={300}
-                                    />
+                                    <Anchor href="/format/tickle">
+                                        <Image
+                                            src={"/referees/tickle.png"}
+                                            alt={"Image of " + "Tickle" + " the referee"}
+                                            h={300}
+                                            w={300}
+                                        />
+                                    </Anchor>
                                     {SchedulingText()}
                                 </Flex>
                             </Card>
@@ -354,12 +368,14 @@ function FormatPageHelper() {
                                 m={0}
                             >
                                 <Flex justify="center" align="center">
-                                    <Image
-                                        src={"/authors/" + toCamelCase("Ari") + ".png"}
-                                        alt={"Image of " + "Ari" + " the reporter"}
-                                        h={300}
-                                        w={300}
-                                    />
+                                    <Anchor href="/format/tickle">
+                                        <Image
+                                            src={"/referees/tickle2.png"}
+                                            alt={"Image of " + "Tickle" + " the referee"}
+                                            h={300}
+                                            w={300}
+                                        />
+                                    </Anchor>
                                     {DivisionFactorsText()}
                                 </Flex>
                                 <Flex w={1000} justify="center">
@@ -380,12 +396,14 @@ function FormatPageHelper() {
                                 m={0}
                             >
                                 <Flex justify="center" align="center">
-                                    <Image
-                                        src={"/authors/" + toCamelCase("Ari") + ".png"}
-                                        alt={"Image of " + "Ari" + " the reporter"}
-                                        h={300}
-                                        w={300}
-                                    />
+                                    <Anchor href="/format/tickle">
+                                        <Image
+                                            src={"/referees/tickle3.png"}
+                                            alt={"Image of " + "Tickle" + " the referee"}
+                                            h={300}
+                                            w={300}
+                                        />
+                                    </Anchor>
                                     {PromotionDemotionText()}
                                 </Flex>
                                 <Flex w={1000} justify="center">
@@ -407,8 +425,8 @@ function FormatPageHelper() {
                             >
                                 <Flex justify="center" align="center">
                                     <Image
-                                        src={"/authors/" + toCamelCase("Ari") + ".png"}
-                                        alt={"Image of " + "Ari" + " the reporter"}
+                                        src={"/referees/" + "all" + ".png"}
+                                        alt={"Image of " + "all" + " the referees"}
                                         h={300}
                                         w={300}
                                     />
@@ -471,12 +489,14 @@ function FormatPageHelper() {
                             m={0}
                         >
                             <Stack justify="center" align="center" gap={0}>
-                                <Image
-                                    src={"/authors/" + toCamelCase("Ari") + ".png"}
-                                    alt={"Image of " + "Ari" + " the reporter"}
-                                    h={100}
-                                    w={100}
-                                />
+                                <Anchor href="/format/shaun">
+                                    <Image
+                                        src={"/referees/shaun.png"}
+                                        alt={"Image of " + "Shaun" + " the referee"}
+                                        h={100}
+                                        w={100}
+                                    />
+                                </Anchor>
                                 {BaseScoringText()}
                             </Stack>
                             <Flex w={300} justify="center">
@@ -497,12 +517,14 @@ function FormatPageHelper() {
                             m={0}
                         >
                             <Stack justify="center" align="center" gap={0}>
-                                <Image
-                                    src={"/authors/" + toCamelCase("Ari") + ".png"}
-                                    alt={"Image of " + "Ari" + " the reporter"}
-                                    h={100}
-                                    w={100}
-                                />
+                                <Anchor href="/format/shaun">
+                                    <Image
+                                        src={"/referees/shaun2.png"}
+                                        alt={"Image of " + "Ari" + " the referee"}
+                                        h={100}
+                                        w={100}
+                                    />
+                                </Anchor>
                                 {PebblingHistoryText()}
                             </Stack>
                         </Card>
@@ -518,12 +540,14 @@ function FormatPageHelper() {
                             m={0}
                         >
                             <Stack justify="center" align="center" gap={0}>
-                                <Image
-                                    src={"/authors/" + toCamelCase("Ari") + ".png"}
-                                    alt={"Image of " + "Ari" + " the reporter"}
-                                    h={100}
-                                    w={100}
-                                />
+                                <Anchor href="/format/shaun">
+                                    <Image
+                                        src={"/referees/shaun3.png"}
+                                        alt={"Image of " + "Ari" + " the referee"}
+                                        h={100}
+                                        w={100}
+                                    />
+                                </Anchor>
                                 {MAPLOverviewText()}
                             </Stack>
                         </Card>
@@ -539,12 +563,14 @@ function FormatPageHelper() {
                             m={0}
                         >
                             <Stack justify="center" align="center" gap={0}>
-                                <Image
-                                    src={"/authors/" + toCamelCase("Ari") + ".png"}
-                                    alt={"Image of " + "Ari" + " the reporter"}
-                                    h={100}
-                                    w={100}
-                                />
+                                <Anchor href="/format/neville">
+                                    <Image
+                                        src={"/referees/neville.png"}
+                                        alt={"Image of " + "Neville" + " the referee"}
+                                        h={100}
+                                        w={100}
+                                    />
+                                </Anchor>
                                 {TraitsText()}
                             </Stack>
                             <Flex w={300} justify="center">
@@ -565,33 +591,35 @@ function FormatPageHelper() {
                             m={0}
                         >
                             <Stack justify="center" align="center" gap={0}>
-                                <Image
-                                    src={"/authors/" + toCamelCase("Ari") + ".png"}
-                                    alt={"Image of " + "Ari" + " the reporter"}
-                                    h={100}
-                                    w={100}
-                                />
+                                <Anchor href="/format/neville">
+                                    <Image
+                                        src={"/referees/neville2.png"}
+                                        alt={"Image of " + "Neville" + " the referee"}
+                                        h={100}
+                                        w={100}
+                                    />
+                                </Anchor>
                                 {QuirksText()}
                             </Stack>
                             <Center mt="md" w={300}>
                                 <FullPebbleGraphic />
                             </Center>
                         </Card>
-                            <Card style={{
-                                height: "calc(100dvh - 60px)",
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "start",
-                                scrollSnapAlign: "start",
-                            }}
-                                w={300}
-                                p={0}
-                                m={0}
-                            >
-                                <Center mt="md" w={300}>
-                                    <QuirkTable />
-                                </Center>
-                            </Card>
+                        <Card style={{
+                            height: "calc(100dvh - 60px)",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "start",
+                            scrollSnapAlign: "start",
+                        }}
+                            w={300}
+                            p={0}
+                            m={0}
+                        >
+                            <Center mt="md" w={300}>
+                                <QuirkTable />
+                            </Center>
+                        </Card>
                         <Card style={{
                             height: "calc(100dvh - 60px)",
                             display: "flex",
@@ -604,12 +632,14 @@ function FormatPageHelper() {
                             m={0}
                         >
                             <Stack justify="center" align="center" gap={0}>
-                                <Image
-                                    src={"/authors/" + toCamelCase("Ari") + ".png"}
-                                    alt={"Image of " + "Ari" + " the reporter"}
-                                    h={100}
-                                    w={100}
-                                />
+                                <Anchor href="/format/neville">
+                                    <Image
+                                        src={"/referees/neville3.png"}
+                                        alt={"Image of " + "Neville" + " the referee"}
+                                        h={100}
+                                        w={100}
+                                    />
+                                </Anchor>
                                 {AbilitiesText()}
                             </Stack>
                         </Card>
@@ -640,12 +670,14 @@ function FormatPageHelper() {
                             m={0}
                         >
                             <Stack justify="center" align="center" gap={0}>
-                                <Image
-                                    src={"/authors/" + toCamelCase("Ari") + ".png"}
-                                    alt={"Image of " + "Ari" + " the reporter"}
-                                    h={100}
-                                    w={100}
-                                />
+                                <Anchor href="/format/tickle">
+                                    <Image
+                                        src={"/referees/tickle.png"}
+                                        alt={"Image of " + "Tickle" + " the referee"}
+                                        h={100}
+                                        w={100}
+                                    />
+                                </Anchor>
                                 {SchedulingText()}
                             </Stack>
                         </Card>
@@ -661,12 +693,14 @@ function FormatPageHelper() {
                             m={0}
                         >
                             <Stack justify="center" align="center" gap={0}>
-                                <Image
-                                    src={"/authors/" + toCamelCase("Ari") + ".png"}
-                                    alt={"Image of " + "Ari" + " the reporter"}
-                                    h={100}
-                                    w={100}
-                                />
+                                <Anchor href="/format/tickle">
+                                    <Image
+                                        src={"/referees/tickle2.png"}
+                                        alt={"Image of " + "Tickle" + " the referee"}
+                                        h={100}
+                                        w={100}
+                                    />
+                                </Anchor>
                                 {DivisionFactorsText()}
                             </Stack>
                             <Center mt="md" w={300}>
@@ -685,12 +719,14 @@ function FormatPageHelper() {
                             m={0}
                         >
                             <Stack justify="center" align="center" gap={0}>
-                                <Image
-                                    src={"/authors/" + toCamelCase("Ari") + ".png"}
-                                    alt={"Image of " + "Ari" + " the reporter"}
-                                    h={100}
-                                    w={100}
-                                />
+                                <Anchor href="/format/tickle">
+                                    <Image
+                                        src={"/referees/tickle3.png"}
+                                        alt={"Image of " + "Tickle" + " the referee"}
+                                        h={100}
+                                        w={100}
+                                    />
+                                </Anchor>
                                 {PromotionDemotionText()}
                             </Stack>
                             <Center mt="md" w={300}>
@@ -710,8 +746,8 @@ function FormatPageHelper() {
                         >
                             <Stack justify="center" align="center" gap={0}>
                                 <Image
-                                    src={"/authors/" + toCamelCase("Ari") + ".png"}
-                                    alt={"Image of " + "Ari" + " the reporter"}
+                                    src={"/referees/" + "all" + ".png"}
+                                    alt={"Image of " + "all" + " the referees"}
                                     h={100}
                                     w={100}
                                 />

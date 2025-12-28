@@ -8,11 +8,7 @@ export const metadata: Metadata = {
   title: 'MAPL | Reports'
 };
 
-export default async function ReporterPage({
-    params,
-}: {
-    params: Promise<{ name: string }>
-}) {
+export default async function ReporterPage() {
     async function fetchReporter(authorName: string) {
         try {
             // console.log("Fetching reporter...");
@@ -25,7 +21,7 @@ export default async function ReporterPage({
         }
     }
 
-    const { name } = await params
+    const name = "lippo"
     const authorStats: { [key: string]: string } = await fetchReporter(name)
 
     if (!authorStats || Object.keys(authorStats).length === 0) {
@@ -34,7 +30,7 @@ export default async function ReporterPage({
 
     return (
         <>
-            <BasicHeader identifier={authorStats.name} dir="authors" />
+            <BasicHeader identifier={authorStats.name} dir="reporters" />
             <Center>
                 <Text mt="md" mb="md" ta="center" size="xl" w={300}>{authorStats.description}</Text>
             </Center>

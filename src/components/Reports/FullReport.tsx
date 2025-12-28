@@ -30,12 +30,12 @@ export const FullReport: FC<{ article: Report }> = ({ article }) => {
             <Stack gap={0} align="center">
                 <Title ta="center">{article.title}</Title>
                 <Flex
-                    onClick={() => router.push(`/reports/authors/${toCamelCase(article.author)}`)}
+                    onClick={() => router.push(`/reports/${toCamelCase(article.author)}`)}
                     className={classes.cursorPointer}
                     align="center"
                 >
                     <Image
-                        src={"/authors/" + toCamelCase(article.author) + ".png"}
+                        src={"/reporters/" + toCamelCase(article.author) + ".png"}
                         alt={"Image of " + article.author + " the reporter"}
                         h={35}
                         w={35}

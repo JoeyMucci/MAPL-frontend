@@ -5,7 +5,7 @@ import { ComplicatedBout } from "@/types/bouts"
 import { Anchor, Badge, Card, Center, Flex, Image, rem, Stack, Text, Title, Tooltip } from "@mantine/core"
 import { useMediaQuery } from "@mantine/hooks"
 import { toCamelCase } from "@/functions"
-import { abilityActionMap, abilityDescMap, abilityMap, colorMap, quirkDescMap, quirkMap, quirkMultMap, traitDescMap, traitMap } from "@/vars"
+import { abilityActionMap, abilityDescMap, abilityMap, abilityMultMap, colorMap, quirkDescMap, quirkMap, quirkMultMap, traitDescMap, traitMap } from "@/vars"
 import { theme } from "@/theme"
 import classes from "./Bout.module.css";
 
@@ -302,11 +302,11 @@ export const FullBout: FC<{ bout: ComplicatedBout }> = ({ bout }) => {
         <Stack w={300} gap="xl">
             <Flex justify="space-between">
                 <Image
-                            src={"/pebblers/" + toCamelCase(awayPebbler.name) + ".png"}
-                            alt={"Image of " + awayPebbler.name + " the pebbler"}
-                            h={50}
-                            w={50}
-                        />
+                    src={"/pebblers/" + toCamelCase(awayPebbler.name) + ".png"}
+                    alt={"Image of " + awayPebbler.name + " the pebbler"}
+                    h={50}
+                    w={50}
+                />
                 <Image
                     className={classes.flipY}
                     src={"/pebblers/" + toCamelCase(homePebbler.name) + ".png"}
@@ -574,6 +574,15 @@ export const FullBout: FC<{ bout: ComplicatedBout }> = ({ bout }) => {
             <Card w={300} radius="md" style={{ minHeight: 300 }} bg="orange">
                 <Center>
                     <Stack align="center" gap={rem(4)} mb="lg">
+                        <Badge w={125} color={colorMap[bout.division]}>{bout.division}</Badge>
+                        <Flex gap="sm">
+                            <Text size="xs" span c="purple">
+                                Quirk Factor={quirkMultMap[bout.division]}
+                            </Text>
+                            <Text size="xs" span c="pink">
+                                Ability Factor={abilityMultMap[bout.division]}
+                            </Text>
+                        </Flex>
                         <Stack gap="md" align="center">
                             <Flex gap={rem(4)} align="center">
                                 <Anchor href={`/pebblers/${toCamelCase(awayPebbler.name)}`}>
@@ -606,7 +615,6 @@ export const FullBout: FC<{ bout: ComplicatedBout }> = ({ bout }) => {
                                 </Anchor>
                             </Flex>
                         </Stack>
-                        <Badge w={125} color={colorMap[bout.division]}>{bout.division}</Badge>
                         <Title ta="left" order={4}>
                             {bout.month.toString()}/{bout.day.toString()}/{bout.year}
                         </Title>
@@ -623,6 +631,15 @@ export const FullBout: FC<{ bout: ComplicatedBout }> = ({ bout }) => {
         <Card w={1000} radius="md" style={{ minHeight: 300 }} bg="orange">
             <Center>
                 <Stack align="center" gap={rem(4)} mb="lg">
+                    <Badge w={125} color={colorMap[bout.division]}>{bout.division}</Badge>
+                    <Flex gap="sm">
+                        <Text size="xs" span c="purple">
+                            Quirk Factor={quirkMultMap[bout.division]}
+                        </Text>
+                        <Text size="xs" span c="pink">
+                            Ability Factor={abilityMultMap[bout.division]}
+                        </Text>
+                    </Flex>
                     <Flex gap="md">
                         <Anchor href={`/pebblers/${toCamelCase(awayPebbler.name)}`} c="black" underline="hover">
                             <Title order={2} w={200} ta="right">{awayPebbler.name}</Title>
@@ -632,7 +649,6 @@ export const FullBout: FC<{ bout: ComplicatedBout }> = ({ bout }) => {
                             <Title order={2} w={200} ta="left">{homePebbler.name}</Title>
                         </Anchor>
                     </Flex>
-                    <Badge w={125} color={colorMap[bout.division]}>{bout.division}</Badge>
                     <Title ta="left" order={4}>
                         {bout.month.toString()}/{bout.day.toString()}/{bout.year}
                     </Title>

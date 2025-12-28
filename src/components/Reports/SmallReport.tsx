@@ -23,12 +23,12 @@ export const SmallReport: FC<{ article: ReportPreview }> = ({ article }) => {
                         align="center"
                         h={35}
                     >
-                        <Anchor href={`/reports/authors/${toCamelCase(article.author)}`} c="black" underline="hover">
+                        <Anchor href={`/reports/${toCamelCase(article.author)}`} c="black" underline="hover">
                             <Text>{article.author}</Text>
                         </Anchor>
-                        <Anchor href={`/reports/authors/${toCamelCase(article.author)}`}>
+                        <Anchor href={`/reports/${toCamelCase(article.author)}`}>
                             <Image
-                                src={"/authors/" + toCamelCase(article.author) + ".png"}
+                                src={"/reporters/" + toCamelCase(article.author) + ".png"}
                                 alt={"Image of " + article.author + " the reporter"}
                                 h={35}
                                 w={35}
@@ -60,12 +60,12 @@ export const SmallReport: FC<{ article: ReportPreview }> = ({ article }) => {
                     align="center"
                     h={35}
                 >
-                    <Anchor href={`/reports/authors/${toCamelCase(article.author)}`} c="black" underline="hover">
+                    <Anchor href={`/reports/${toCamelCase(article.author)}`} c="black" underline="hover">
                         <Text>{article.author}</Text>
                     </Anchor>
-                    <Anchor href={`/reports/authors/${toCamelCase(article.author)}`}>
+                    <Anchor href={`/reports/${toCamelCase(article.author)}`}>
                         <Image
-                            src={"/authors/" + toCamelCase(article.author) + ".png"}
+                            src={"/reporters/" + toCamelCase(article.author) + ".png"}
                             alt={"Image of " + article.author + " the reporter"}
                             h={35}
                             w={35}

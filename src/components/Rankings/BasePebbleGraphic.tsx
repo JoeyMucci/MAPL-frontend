@@ -20,7 +20,7 @@ export const BasePebbleGraphic = () => (
                     <Text c="goodGreen">Win</Text>
                     <Text>:</Text>
                     <Space w={5} />
-                    <Text fs="italic">Roll Difference</Text>
+                    <Text>Roll Difference</Text>
                     <Space w={5} />
                     <Text>+</Text>
                     <Space w={5} />

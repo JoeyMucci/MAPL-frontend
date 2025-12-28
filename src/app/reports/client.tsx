@@ -64,25 +64,25 @@ export default function ReportsPage() {
                         reporter === "Merged" ? (
                             <Flex align="center" gap="sm">
                                 <Text c={colorMap[reporter]}>{reporter}</Text>
-                                <Anchor href="/reports/authors/ari">
+                                <Anchor href="/reports/ari">
                                     <Image
-                                        src={"/authors/" + toCamelCase("Ari") + ".png"}
+                                        src={"/reporters/" + toCamelCase("Ari") + ".png"}
                                         alt={"Image of " + "Ari" + " the reporter"}
                                         h={35}
                                         w={35}
                                     />
                                 </Anchor>
-                                <Anchor href="/reports/authors/patrick">
+                                <Anchor href="/reports/patrick">
                                     <Image
-                                        src={"/authors/" + toCamelCase("Patrick") + ".png"}
+                                        src={"/reporters/" + toCamelCase("Patrick") + ".png"}
                                         alt={"Image of " + "Patrick" + " the reporter"}
                                         h={35}
                                         w={35}
                                     />
                                 </Anchor>
-                                <Anchor href="/reports/authors/lippo">
+                                <Anchor href="/reports/lippo">
                                     <Image
-                                        src={"/authors/" + toCamelCase("Lippo") + ".png"}
+                                        src={"/reporters/" + toCamelCase("Lippo") + ".png"}
                                         alt={"Image of " + "Lippo" + " the reporter"}
                                         h={35}
                                         w={35}
@@ -91,12 +91,12 @@ export default function ReportsPage() {
                             </Flex>
                         ) : (
                             <Flex align="center" gap="sm">
-                                <Anchor href={`/reports/authors/${toCamelCase(reporter)}`} c="black" underline="hover">
+                                <Anchor href={`/reports/${toCamelCase(reporter)}`} c="black" underline="hover">
                                      <Text c={colorMap[reporter]}>{reporter}</Text>
                                 </Anchor>
-                                <Anchor href={`/reports/authors/${toCamelCase(reporter)}`}>
+                                <Anchor href={`/reports/${toCamelCase(reporter)}`}>
                                     <Image
-                                        src={"/authors/" + toCamelCase(reporter) + ".png"}
+                                        src={"/reporters/" + toCamelCase(reporter) + ".png"}
                                         alt={"Image of " + reporter + " the reporter"}
                                         h={35}
                                         w={35}
