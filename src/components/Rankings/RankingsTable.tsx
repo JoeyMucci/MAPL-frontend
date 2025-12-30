@@ -17,7 +17,7 @@ import {
 } from "@mantine/core"
 import { toCamelCase } from "@/functions";
 import { divisions } from "@/vars";
-import { theme } from "@/theme"
+import { theme } from "@/theme";
 import {
     IconArrowsUp,
     IconArrowUp,

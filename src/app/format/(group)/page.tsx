@@ -16,6 +16,7 @@ import { TiebreakTable } from "@/components/Rankings/TiebreakTable";
 import { CoolBoutSmall } from "@/components/Bout/SmallCoolBout";
 import classes from "./Format.module.css";
 import NoSsr from "@/components/nossr";
+import { PromotionGraphic } from "@/components/Rankings/PromotionGraphic";
 
 export default function FormatPage(): JSX.Element {
     return (
@@ -407,9 +408,14 @@ function FormatPageHelper() {
                                     {PromotionDemotionText()}
                                 </Flex>
                                 <Flex w={1000} justify="center">
-                                    <Center w={500}>
-                                        <TiebreakTable />
-                                    </Center>
+                                    <Flex justify="center" align="center">
+                                        <Center w={500}>
+                                            <PromotionGraphic />
+                                        </Center>
+                                        <Center w={500}>
+                                            <TiebreakTable />
+                                        </Center>
+                                    </Flex>
                                 </Flex>
                             </Card>
                             <Card style={{
@@ -731,6 +737,21 @@ function FormatPageHelper() {
                             </Stack>
                             <Center mt="md" w={300}>
                                 <TiebreakTable />
+                            </Center>
+                        </Card>
+                        <Card style={{
+                            height: "calc(100dvh - 60px)",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "start",
+                            scrollSnapAlign: "start",
+                        }}
+                            w={300}
+                            p={0}
+                            m={0}
+                        >
+                            <Center mt="md" w={300}>
+                                <PromotionGraphic />
                             </Center>
                         </Card>
                         <Card style={{

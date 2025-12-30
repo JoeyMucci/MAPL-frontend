@@ -40,7 +40,7 @@ export const FormatFooter: FC<{ cur: number, setPageAction: (a: number) => void 
 export const FormatFooterMobile: FC<{ cur: number }> = ({ cur }) => {
     return (
         <Progress
-            value={cur / 11 * 100}
+            value={cur / 12 * 100}
             size="lg"
             transitionDuration={200}
             bg="transparent"

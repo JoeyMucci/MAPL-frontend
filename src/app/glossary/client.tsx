@@ -21,6 +21,7 @@ import { BasePebbleGraphic } from "@/components/Rankings/BasePebbleGraphic";
 import { FullPebbleGraphic } from "@/components/Rankings/FullPebbleGraphic";
 import { TiebreakTable } from "@/components/Rankings/TiebreakTable";
 import { toCamelCase } from "@/functions";
+import { PromotionGraphic } from "@/components/Rankings/PromotionGraphic";
 
 export default function GlossaryPage() {
     let largeScreen = useMediaQuery('(min-width: 56em)')
@@ -84,6 +85,7 @@ export default function GlossaryPage() {
                 <QuirkTable />
                 <AbilityTable />
                 <DivisionTable />
+                <PromotionGraphic/>
                 <TiebreakTable />
                 <TermTable />
             </Stack>
