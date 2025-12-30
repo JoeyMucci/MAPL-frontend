@@ -13,7 +13,7 @@ export const LookClient: FC<{ careerSummary: CareerSummary[] }> = ({ careerSumma
     const careerSummaryMap: Record<string, CareerSummary> = {}
     const [divisionIndex, setDivisionIndex] = useState<number>(0)
 
-    if(careerSummary === undefined || !careerSummary) {
+    if(careerSummary === undefined || !careerSummary || careerSummary.length === 0) {
         return <NoData />
     }
 
