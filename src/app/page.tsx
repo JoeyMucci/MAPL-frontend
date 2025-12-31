@@ -284,6 +284,24 @@ export default function HomePage() {
         </>
     )
 
+    const HotVideoBig = () => (
+        <>
+            {<Title order={3}>🔥   Sizzle Reel   🔥</Title>}
+            <iframe width="896" height="504"
+                src="https://youtube.com/embed/PGFkJR16bzM">
+            </iframe>
+        </>
+    )
+
+    const HotVideoSmall = () => (
+        <>
+            {<Title order={3}>🔥   Sizzle Reel   🔥</Title>}
+            <iframe width="288" height="162"
+                src="https://youtube.com/embed/PGFkJR16bzM">
+            </iframe>
+        </>
+    )
+
     if (
         !pebblersFinished ||
         !boutsFinished ||
@@ -304,6 +322,8 @@ export default function HomePage() {
                 <HotPress />
                 <Divider w={largeScreen ? 1000 : 300} />
                 <HotRivalries />
+                <Divider w={largeScreen ? 1000 : 300} />
+                {largeScreen ? <HotVideoBig /> : <HotVideoSmall />}
             </Stack>
         </>
     )
