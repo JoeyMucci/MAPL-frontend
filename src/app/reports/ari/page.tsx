@@ -8,6 +8,8 @@ export const metadata: Metadata = {
   title: 'MAPL | Reports'
 };
 
+export const dynamic = "force-dynamic";
+
 export default async function ReporterPage() {
     async function fetchReporter(authorName: string) {
         try {
