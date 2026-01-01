@@ -109,8 +109,8 @@ export default function BoutPage({
 
         return (
             <>
-                {/* Only show the report if it is there or the date has not passed (coming soon) */}
-                {(reports.length > 0 || isComingSoon(bout.month, bout.day, bout.year)) &&
+                {/* Only show the report if it is there or the date has not passed and the bout is over */}
+                {(reports.length > 0 || (isComingSoon(bout.month, bout.day, bout.year) && bout.away_roll !== null)) &&
                     <Stack align="center">
                         <Title order={5}>
                             Report
