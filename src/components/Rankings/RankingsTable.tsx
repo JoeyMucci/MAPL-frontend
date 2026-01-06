@@ -72,7 +72,9 @@ export const RankingsTable: FC<{ pebblerRows: PebblerRowStats[], division: strin
         )
     }
 
-    const includeForm: boolean = !pebblerRows.some(row => row.form.length < FORM_THRESHOLD);
+    const totalPlayed = pebblerRows.reduce((sum, row) => sum + row.played, 0)
+    const eodSix = (FORM_THRESHOLD + 1) * (PEBBLERS_PER_DIVISION - 1)
+    const includeForm: boolean = totalPlayed === eodSix && updated || totalPlayed >= eodSix
 
     return (
         <>
