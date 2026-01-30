@@ -25,7 +25,7 @@ export function isComingSoon(m: number, d: number, y: number): boolean {
     const now = new Date()
     const nowTime = now.getTime()
     const minTime = Date.UTC(y, m - 1, d, 12, 0, 0)
-    const maxTime = Date.UTC(y, m - 1, d, 20, 5 ,0)
+    const maxTime = Date.UTC(y, m - 1, d, 20, 0 ,0)
     return nowTime >= minTime && nowTime <= maxTime
 }
 
