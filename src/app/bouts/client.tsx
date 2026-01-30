@@ -12,6 +12,8 @@ import Loading from "@/components/loading";
 import axios from "axios";
 import { NoData } from "@/components/nodata";
 
+const DAYS_PER_CYCLE = 25
+
 export default function BoutsPage() {
   async function fetchBouts(day: number, month: number, year: number) {
     try {
@@ -29,7 +31,8 @@ export default function BoutsPage() {
   largeScreen = largeScreen === undefined ? true : largeScreen
 
   const t = getLocalTime()
-  const curDay = parseInt(t.split("-")[2])
+  let curDay = parseInt(t.split("-")[2])
+  curDay = curDay < DAYS_PER_CYCLE ? curDay : DAYS_PER_CYCLE;
   const curMonth = parseInt(t.split("-")[1])
   const curYear = parseInt(t.split("-")[0])
 
