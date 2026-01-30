@@ -4,7 +4,6 @@ import { JSX, useRef, useState } from "react";
 import { Card, Stack, Flex, Image, Text, Center, Button, Anchor } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { FormatFooter, FormatFooterMobile } from "@/components/Headers/FormatFooter";
-import { toCamelCase } from "@/functions";
 import { BasePebbleGraphic } from "@/components/Rankings/BasePebbleGraphic";
 import { DivisionTable } from "@/components/Rankings/DivisionTable";
 import { TraitTable } from "@/components/Rankings/TraitTable";

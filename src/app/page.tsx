@@ -21,7 +21,6 @@ import {
 import { NoData } from '@/components/nodata';
 import axios from "axios";
 import Loading from '@/components/loading';
-import { isWaitingForNextMonthPublication } from '@/functions';
 
 export default function HomePage() {
     let largeScreen = useMediaQuery('(min-width: 56em)')
@@ -65,9 +64,6 @@ export default function HomePage() {
 
     async function fetchHotRivalries() {
         try {
-            if(isWaitingForNextMonthPublication()) {
-                return {}
-            }
             // console.log("Fetching hot rivalries...")
             const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/hot/rivalries`)
             return response.data
