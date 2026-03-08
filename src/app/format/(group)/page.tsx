@@ -1,6 +1,6 @@
 "use client"
 
-import { JSX, useRef, useState } from "react";
+import { JSX, useRef, useState, useEffect } from "react";
 import { Card, Stack, Flex, Image, Text, Center, Button, Anchor } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { FormatFooter, FormatFooterMobile } from "@/components/Headers/FormatFooter";
@@ -13,9 +13,12 @@ import { AbilityTable } from "@/components/Rankings/AbilityTable";
 import { theme } from "@/theme";
 import { TiebreakTable } from "@/components/Rankings/TiebreakTable";
 import { CoolBoutSmall } from "@/components/Bout/SmallCoolBout";
+import { Bout } from '@/components/Bout/SmallBout';
 import classes from "./Format.module.css";
 import NoSsr from "@/components/nossr";
 import { PromotionGraphic } from "@/components/Rankings/PromotionGraphic";
+import axios from "axios";
+import { SimpleBout } from '@/types/bouts';
 
 export default function FormatPage(): JSX.Element {
     return (
@@ -23,12 +26,34 @@ export default function FormatPage(): JSX.Element {
     )
 }
 
+async function fetchCoolBout() {
+        try {
+            // console.log("Fetching cool bout...")
+            const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/coolbout`)
+            return response.data
+        }
+        catch (error) { // eslint-disable-line @typescript-eslint/no-unused-vars
+            // console.error("Error fetching data:", error)
+            return {}
+        }
+    }
+
+
 function FormatPageHelper() {
     const containerRef = useRef<HTMLDivElement>(null)
     const [currentPage, setCurrentPage] = useState(0)
+    const [coolBout, setCoolBout] = useState<SimpleBout | null>(null);
+    const [finished, setFinished] = useState<boolean>(false);
 
     let largeScreen = useMediaQuery('(min-width: 56em)')
     largeScreen = largeScreen === undefined ? true : largeScreen
+
+    useEffect(() => {
+        fetchCoolBout().then((data) => {
+            setCoolBout(data)
+            setFinished(true)
+        })
+    }, [])
 
     const handleScroll = () => {
         if (containerRef.current) {
@@ -150,8 +175,8 @@ function FormatPageHelper() {
     const ConclusionText = () => (
         <Text ta="center" w={300} span size="sm">
             {"Thanks for your attention. Click the home button if you want to see the latest in the MAPL. " +
-                "Click on the graphic for the bout between Gregory and Marcel to see how crazy bouts can get, " +
-                "or click on their names to learn more about them. " +
+                "Click on the graphic for the bout to see how crazy bouts can get, " +
+                "or click on the pebblers' names to learn more about them. " +
                 "Finally, consider clicking on the glossary button to review some of the graphics we went over here and one more we didn't. Bye bye."}
         </Text>
     )
@@ -448,7 +473,11 @@ function FormatPageHelper() {
                                     >
                                         Home
                                     </Button>
-                                    <CoolBoutSmall />
+                                    {finished ? (
+                                        <Bout bout={coolBout!} showDate />
+                                    ) : (
+                                        <CoolBoutSmall />
+                                    )}
                                     <Button
                                         w={250}
                                         h={100}
@@ -784,7 +813,11 @@ function FormatPageHelper() {
                                 >
                                     Home
                                 </Button>
-                                <CoolBoutSmall />
+                                {finished ? (
+                                    <Bout bout={coolBout!} showDate/>
+                                ) : (
+                                    <CoolBoutSmall />
+                                )}
                                 <Button
                                     w={250}
                                     h={50}
